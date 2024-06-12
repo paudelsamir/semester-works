@@ -1,6 +1,6 @@
 # Semester-works
 
-Welcome to my repository! Here, you'll find all the resources, lab assignments, and projects I have worked on during my college journey.
+Welcome to my repository! Here, you'll find all the resources, lab assignments, and projects I have worked on during my college journey. Mostly codes
 
 ## About Me
 
