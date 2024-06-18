@@ -6,79 +6,49 @@ struct Node {
     struct Node* next;
 };
 
-void insertAtPosition(struct Node** head, int data, int position) {
+void insertAtPosition(struct Node** head, int data, int pos) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
-        fprintf(stderr, "Memory allocation failed!\n");
-        return;
-    }
     newNode->data = data;
-    newNode->next = NULL;
-
-    if (position == 1) {
-        newNode->next = *head;
+    if (pos == 1) {
+        newNode->next = *head;  
         *head = newNode;
-        printf("Node with data %d inserted at position %d.\n", data, position);
-        return;
+    } else {
+        struct Node* temp = *head;
+        for (int i = 1; temp != NULL && i < pos - 1; i++) temp = temp->next;
+        if (temp != NULL) {
+            newNode->next = temp->next;
+            temp->next = newNode;
+        } else {
+            free(newNode);
+            return;
+        }
     }
-
-    struct Node* temp = *head;
-    int i = 1;
-    while (temp != NULL && i < position - 1) {
-        temp = temp->next;
-        i++;
-    }
-
-    if (temp == NULL) {
-        printf("Position %d exceeds the length of the linked list.\n", position);
-        free(newNode);
-        return;
-    }
-
-    newNode->next = temp->next;
-    temp->next = newNode;
-    printf("Node with data %d inserted at position %d.\n", data, position);
+    printList(*head); // Automatically print list after insertion
 }
 
-void deleteAtPosition(struct Node** head, int position) {
-    if (*head == NULL) {
-        printf("Linked list is empty. Deletion not possible.\n");
-        return;
-    }
-
+void deleteAtPosition(struct Node** head, int pos) {
+    if (*head == NULL) return;
     struct Node* temp = *head;
-    if (position == 1) {
+    if (pos == 1) {
         *head = temp->next;
         free(temp);
-        printf("Node at position %d deleted.\n", position);
-        return;
+    } else {
+        struct Node* prev = NULL;
+        for (int i = 1; temp != NULL && i < pos; i++) {
+            prev = temp;
+            temp = temp->next;
+        }
+        if (temp != NULL) {
+            prev->next = temp->next;
+            free(temp);
+        } else {
+            return;
+        }
     }
-
-    int i = 1;
-    struct Node* prev = NULL;
-    while (temp != NULL && i < position) {
-        prev = temp;
-        temp = temp->next;
-        i++;
-    }
-
-    if (temp == NULL) {
-        printf("Position %d exceeds the length of the linked list.\n", position);
-        return;
-    }
-
-    prev->next = temp->next;
-    free(temp);
-    printf("Node at position %d deleted.\n", position);
+    printList(*head); // Automatically print list after deletion
 }
 
 void printList(struct Node* head) {
-    if (head == NULL) {
-        printf("Linked list is empty.\n");
-        return;
-    }
-
-    printf("Linked list: ");
     while (head != NULL) {
         printf("%d -> ", head->data);
         head = head->next;
@@ -97,41 +67,25 @@ void freeList(struct Node** head) {
 
 int main() {
     struct Node* head = NULL;
-    int choice, data, position;
+    int choice, data, pos;
 
     while (1) {
-        printf("\nOperations on Linked List:\n");
-        printf("1. Insert node at a specific position\n");
-        printf("2. Delete node at a specific position\n");
-        printf("3. Print linked list\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
+        printf("\n1. Insert\n2. Delete\n3. Exit\nEnter choice: ");
         scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                printf("Enter data to insert: ");
-                scanf("%d", &data);
-                printf("Enter position to insert: ");
-                scanf("%d", &position);
-                insertAtPosition(&head, data, position);
-                break;
-            case 2:
-                printf("Enter position to delete: ");
-                scanf("%d", &position);
-                deleteAtPosition(&head, position);
-                break;
-            case 3:
-                printList(head);
-                break;
-            case 4:
-                freeList(&head);
-                printf("Exiting the program.\n");
-                return 0;
-            default:
-                printf("Invalid choice! Please enter a valid option.\n");
+        if (choice == 3) break;
+        if (choice == 1) {
+            printf("Enter data and position: ");
+            scanf("%d %d", &data, &pos);
+            insertAtPosition(&head, data, pos);
+        } else if (choice == 2) {
+            printf("Enter position: ");
+            scanf("%d", &pos);
+            deleteAtPosition(&head, pos);
+        } else {
+            printf("Invalid choice\n");
         }
     }
 
+    freeList(&head);
     return 0;
 }

@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-#define MAX 100
+#define MAX_ROWS 100
+#define MAX_COLS 100
+#define MAX_NON_ZERO MAX_ROWS * MAX_COLS
 
-// Function to create a sparse matrix
-void createSparseMatrix(int sparseMatrix[MAX][3], int matrix[MAX][MAX], int rows, int cols) {
+void createSparseMatrix(int matrix[MAX_ROWS][MAX_COLS], int rows, int cols, int sparseMatrix[MAX_NON_ZERO][3]) {
     int k = 1;
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -20,19 +21,23 @@ void createSparseMatrix(int sparseMatrix[MAX][3], int matrix[MAX][MAX], int rows
     sparseMatrix[0][2] = k - 1;
 }
 
-// Function to print the sparse matrix
-void printSparseMatrix(int sparseMatrix[MAX][3]) {
+void printSparseMatrix(int sparseMatrix[MAX_NON_ZERO][3]) {
+    int nonZeroCount = sparseMatrix[0][2];
+
     printf("Sparse Matrix Representation:\n");
-    for (int i = 0; i <= sparseMatrix[0][2]; i++) {
-        printf("%d %d %d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
+    printf("Rows: %d, Columns: %d, Non-Zero Count: %d\n", sparseMatrix[0][0], sparseMatrix[0][1], nonZeroCount);
+    printf("Row Col Value\n");
+
+    for (int i = 1; i <= nonZeroCount; i++) {
+        printf("%3d %3d %4d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
     }
 }
 
 int main() {
-    int matrix[MAX][MAX], sparseMatrix[MAX][3];
+    int matrix[MAX_ROWS][MAX_COLS];
+    int sparseMatrix[MAX_NON_ZERO][3] = {0};
     int rows, cols;
-    
-    // User input
+
     printf("Enter number of rows and columns: ");
     scanf("%d %d", &rows, &cols);
 
@@ -43,7 +48,7 @@ int main() {
         }
     }
 
-    createSparseMatrix(sparseMatrix, matrix, rows, cols);
+    createSparseMatrix(matrix, rows, cols, sparseMatrix);
     printSparseMatrix(sparseMatrix);
 
     return 0;
@@ -51,20 +56,17 @@ int main() {
 
 /*
 Sample Input:
-Enter number of rows and columns: 4 5
+Enter number of rows and columns: 3 4
 Enter matrix elements:
-0 0 3 0 4
-0 0 5 7 0
-0 0 0 0 0
-0 2 6 0 0
+0 0 0 0
+5 0 0 8
+0 0 7 0
 
 Expected Output:
 Sparse Matrix Representation:
-4 5 6
-0 2 3
-0 4 4
-1 2 5
-1 3 7
-3 1 2
-3 2 6
+Rows: 3, Columns: 4, Non-Zero Count: 4
+Row Col Value
+  1   0    5
+  1   3    8
+  2   2    7
 */
