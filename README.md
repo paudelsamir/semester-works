@@ -1,4 +1,7 @@
 # Semester-works
+![GitHub last commit](https://img.shields.io/github/last-commit/paudelsamir/semester-works)
+![GitHub repo size](https://img.shields.io/github/repo-size/paudelsamir/semester-works)
+
 
 Welcome to my repository! Here, you'll find all the resources, lab assignments, and projects I have worked on during my college journey. Mostly codes
 
