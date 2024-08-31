@@ -16,7 +16,7 @@ This repository is organized by semester, with each semester containing director
 - [Semester 1](semester-1)
 - [Semester 2](semester-2)
 - [Semester 3](semester-3)
-- [Semester 4](#semester-4)
+- [Semester 4](semester-4)
 - [Semester 5](#semester-5)
 - [Semester 6](#semester-6)
 - [Semester 7](#semester-7)
