@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="bookstore.xsl"?>
+
+<books>
+    <book>
+        <title>harry potter</title>
+        <author>j.k. rowling</author>
+    </book>
+    <book>
+        <title>atomic habits</title>
+        <author>james clear</author>
+    </book>
+</books>
