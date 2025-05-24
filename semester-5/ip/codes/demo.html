@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Demo</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <button id="hideBtn">Hide</button>
+  <button id="showBtn">Show</button>
+  <div id="box" style="width:100px;height:100px;background:red;margin-top:20px;"></div>
+
+  <script>
+    $("#hideBtn").click(function(){
+      $("#box").fadeOut();
+    });
+
+    $("#showBtn").click(function(){
+      $("#box").fadeIn();
+    });
+  </script>
+</body>
+</html>
