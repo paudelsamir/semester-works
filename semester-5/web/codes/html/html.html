@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Error Handling Demo</title>
+</head>
+<body>
+    <h1>open your console (F12)</h1>
+
+    <script>
+        class ValidationError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "ValidationError";
+            }
+        }
+
+        function validateUsername(username) {
+            if (username.length < 5) {
+                throw new ValidationError("username too short");
+            }
+            return true;
+        }
+
+        try {
+            validateUsername("abc");
+            console.log("username is valid");
+        } catch (error) {
+            console.error("caught:", error.name, "-", error.message);
+        } finally {
+            console.log("validation done");
+        }
+    </script>
+</body>
+</html>
