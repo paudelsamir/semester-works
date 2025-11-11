@@ -1,0 +1,42 @@
+@model PersonModel
+@{
+    ViewData["Title"] = "About Me";
+}
+
+<div>
+    <h2>Profile Information</h2>
+    <p>Name: @Model.Name</p>
+    <p>Age: @Model.Age</p>
+    
+
+    <partial name="_ContactInfoPartial" model="@Model" />
+    
+    <h2>Update Information</h2>
+    <form method="post" asp-action="UpdateInfo">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Age"></label>
+            <input asp-for="Age">
+            <span asp-validation-for="Age"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email">
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="Github"></label>
+            <input asp-for="Github">
+            <span asp-validation-for="Github"></span>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+@model IEnumerable<MoodBoard.Models.Mood>
+
+@{
+    ViewData["Title"] = "Mood Board";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">My Mood Board</h1>
+    <p class="lead">Track your moods and inspirational quotes</p>
+    <a asp-action="Create" class="btn btn-primary">Add New Mood</a>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 @(ViewData["IsDarkMode"] == "true" ? "bg-dark text-white" : "")">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Feeling</h5>
+                    <p class="card-text font-italic">@item.Quote</p>
+                    <p class="card-text"><small class="text-muted">@item.CreatedAt.ToString("MMM dd, yyyy HH:mm")</small></p>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function getRandomQuote() {
+            fetch('https://api.quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('Quote').value = `${data.content} - ${data.author}`;
+                })
+                .catch(error => console.error('Error fetching quote:', error));
+        }
+    </script>
+}

@@ -1,0 +1,53 @@
+@model MoodBoard.Models.Mood
+
+@{
+    ViewData["Title"] = "Add New Mood";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card @(ViewData["IsDarkMode"] == "true" ? "bg-dark text-white" : "")">
+            <div class="card-body">
+                <h4 class="card-title text-center mb-4">How are you feeling today?</h4>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Feeling" class="control-label"></label>
+                        <input asp-for="Feeling" class="form-control" placeholder="Enter your mood..." />
+                        <span asp-validation-for="Feeling" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Quote" class="control-label"></label>
+                        <div class="input-group">
+                            <input asp-for="Quote" class="form-control" placeholder="Enter an inspiring quote..." />
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-secondary" onclick="getRandomQuote()">
+                                    Get Random Quote
+                                </button>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Quote" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function getRandomQuote() {
+            fetch('https://api.quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('Quote').value = `${data.content} - ${data.author}`;
+                })
+                .catch(error => console.error('Error fetching quote:', error));
+        }
+    </script>
+}

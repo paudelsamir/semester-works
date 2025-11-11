@@ -1,0 +1,13 @@
+@model webAppDemo.Models.PersonAddressViewModel
+
+@using (Html.BeginForm()) {
+    <div>
+        @Html.LabelFor(m => m.Person.Name)
+        @Html.TextBoxFor(m => m.Person.Name)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Address.City)
+        @Html.TextBoxFor(m => m.Address.City)
+    </div>
+    <input type="submit" value="Save" />
+}
