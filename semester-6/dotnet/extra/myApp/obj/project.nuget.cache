@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dc6L4JteTu8=",
+  "dgSpecHash": "mp/GcF6eejI=",
   "success": true,
-  "projectFilePath": "/home/sam/Github/semester-works/semester-6/dotnet/myApp/myApp.csproj",
+  "projectFilePath": "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/myApp.csproj",
   "expectedPackageFiles": [
     "/home/sam/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
   ],

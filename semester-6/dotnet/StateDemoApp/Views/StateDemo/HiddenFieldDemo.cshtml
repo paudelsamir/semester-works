@@ -1,0 +1,8 @@
+@model StateDemoApp.Models.User
+
+<form asp-action="HiddenFieldDemo" method="post">
+    @Html.HiddenFor(m => m.Id)
+    <p>Name: @Model.Name</p>
+    <p>Age: @Model.Age</p>
+    <input type="submit" value="Submit" />
+</form>

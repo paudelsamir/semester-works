@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/sam/Github/semester-works/semester-6/dotnet/myApp/myApp.csproj": {}
+    "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/myApp.csproj": {}
   },
   "projects": {
-    "/home/sam/Github/semester-works/semester-6/dotnet/myApp/myApp.csproj": {
+    "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/myApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/sam/Github/semester-works/semester-6/dotnet/myApp/myApp.csproj",
+        "projectUniqueName": "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/myApp.csproj",
         "projectName": "myApp",
-        "projectPath": "/home/sam/Github/semester-works/semester-6/dotnet/myApp/myApp.csproj",
+        "projectPath": "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/myApp.csproj",
         "packagesPath": "/home/sam/.nuget/packages/",
-        "outputPath": "/home/sam/Github/semester-works/semester-6/dotnet/myApp/obj/",
+        "outputPath": "/home/sam/Github/semester-works/semester-6/dotnet/extra/myApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/sam/.nuget/NuGet/NuGet.Config"
