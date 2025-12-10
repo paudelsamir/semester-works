@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET Centric Computing Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #512da8 0%, #673ab7 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+            column-count: 2;
+            column-gap: 30px;
+        }
+
+        .unit {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid #673ab7;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .unit-title {
+            color: #512da8;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .unit-number {
+            background: #673ab7;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 0.9em;
+        }
+
+        .topic {
+            margin-bottom: 20px;
+        }
+
+        .topic-title {
+            color: #673ab7;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            padding: 5px 0;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .method {
+            color: #dcdcaa;
+        }
+
+        .type {
+            color: #4ec9b0;
+        }
+
+        .bullet-list {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .important {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 1024px) {
+            .content {
+                column-count: 1;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        .inline-code {
+            background: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 .NET Centric Computing</h1>
+            <p>Complete Cheat Sheet - ASP.NET Core MVC with C#</p>
+        </div>
+
+        <div class="content">
+            <!-- Unit 1: Language Preliminaries -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">1</span>
+                    Language Preliminaries
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. Constructors</div>
+                    <div class="code-block"><span class="comment">// Default Constructor</span>
+<span class="keyword">public class</span> <span class="type">Vehicle</span> {
+    <span class="keyword">public</span> <span class="method">Vehicle</span>() {
+        Console.WriteLine(<span class="string">"Vehicle created"</span>);
+    }
+}
+
+<span class="comment">// Parameterized Constructor</span>
+<span class="keyword">public class</span> <span class="type">Person</span> {
+    <span class="keyword">private string</span> name;
+    <span class="keyword">private int</span> age;
+    
+    <span class="keyword">public</span> <span class="method">Person</span>(<span class="keyword">string</span> name, <span class="keyword">int</span> age) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Properties</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">Person</span> {
+    <span class="keyword">private string</span> name;
+    
+    <span class="comment">// Full Property</span>
+    <span class="keyword">public string</span> Name {
+        <span class="keyword">get</span> { <span class="keyword">return</span> name; }
+        <span class="keyword">set</span> { name = value; }
+    }
+    
+    <span class="comment">// Auto-Property</span>
+    <span class="keyword">public int</span> Age { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Arrays & Strings</div>
+                    <div class="code-block"><span class="keyword">int</span>[] array = <span class="keyword">new int</span>[] {5, 6, 7, 8, 9};
+<span class="keyword">int</span>[] array2 = <span class="keyword">new int</span>[5];
+
+Console.WriteLine(<span class="string">"Length: "</span> + array.Length);
+Array.Sort(array);
+Array.Reverse(array);
+Array.Copy(array, array2, array.Length);</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. Indexers</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">MyCollection</span> {
+    <span class="keyword">private string</span>[] data = <span class="keyword">new string</span>[3];
+    
+    <span class="comment">// Indexer</span>
+    <span class="keyword">public string this</span>[<span class="keyword">int</span> index] {
+        <span class="keyword">get</span> { <span class="keyword">return</span> data[index]; }
+        <span class="keyword">set</span> { data[index] = value; }
+    }
+}
+
+<span class="comment">// Usage</span>
+MyCollection col = <span class="keyword">new</span> MyCollection();
+col[0] = <span class="string">"Hello"</span>;
+Console.WriteLine(col[0]);</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. Inheritance & Base Keyword</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">Animal</span> {
+    <span class="keyword">public void</span> <span class="method">Eat</span>() {
+        Console.WriteLine(<span class="string">"Animal Eats"</span>);
+    }
+}
+
+<span class="keyword">public class</span> <span class="type">Dog</span> : <span class="type">Animal</span> {
+    <span class="keyword">public void</span> <span class="method">Eat</span>() {
+        <span class="keyword">base</span>.Eat(); <span class="comment">// Call parent method</span>
+        Console.WriteLine(<span class="string">"Dog eats"</span>);
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">6. Method Overriding</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">Animal</span> {
+    <span class="keyword">public virtual void</span> <span class="method">MakeSound</span>() {
+        Console.WriteLine(<span class="string">"Animal sound"</span>);
+    }
+}
+
+<span class="keyword">public class</span> <span class="type">Dog</span> : <span class="type">Animal</span> {
+    <span class="keyword">public override void</span> <span class="method">MakeSound</span>() {
+        Console.WriteLine(<span class="string">"Dog barks"</span>);
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">7. Polymorphism</div>
+                    <div class="code-block"><span class="type">Animal</span> animal = <span class="keyword">new</span> <span class="type">Dog</span>();
+animal.MakeSound(); <span class="comment">// Calls Dog's MakeSound</span></div>
+                    <div class="note"><strong>Note:</strong> Runtime polymorphism achieved through method overriding with virtual/override keywords.</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">8. Structs</div>
+                    <div class="code-block"><span class="keyword">public struct</span> <span class="type">Point</span> {
+    <span class="keyword">public int</span> X;
+    <span class="keyword">public int</span> Y;
+}
+
+<span class="type">Point</span> p1;
+p1.X = 10;
+p1.Y = 20;</div>
+                    <div class="tip"><strong>Tip:</strong> Structs are value types, classes are reference types.</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">9. Enums</div>
+                    <div class="code-block"><span class="keyword">public enum</span> <span class="type">DaysOfWeek</span> {
+    Sunday, Monday, Tuesday,
+    Wednesday, Thursday, Friday, Saturday
+}
+
+<span class="type">DaysOfWeek</span> today = <span class="type">DaysOfWeek</span>.Monday;</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">10. Abstract Class</div>
+                    <div class="code-block"><span class="keyword">public abstract class</span> <span class="type">Animal</span> {
+    <span class="keyword">public abstract void</span> <span class="method">MakeSound</span>();
+    
+    <span class="keyword">public void</span> <span class="method">Sleep</span>() {
+        Console.WriteLine(<span class="string">"Sleeping..."</span>);
+    }
+}
+
+<span class="keyword">public class</span> <span class="type">Dog</span> : <span class="type">Animal</span> {
+    <span class="keyword">public override void</span> <span class="method">MakeSound</span>() {
+        Console.WriteLine(<span class="string">"Bark!"</span>);
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">11. Sealed Class</div>
+                    <div class="code-block"><span class="keyword">public sealed class</span> <span class="type">FinalClass</span> {
+    <span class="comment">// Cannot be inherited</span>
+}
+
+<span class="comment">// This will cause error:</span>
+<span class="keyword">public class</span> <span class="type">Derived</span> : <span class="type">FinalClass</span> { }</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">12. Interfaces</div>
+                    <div class="code-block"><span class="keyword">public interface</span> <span class="type">IWalk</span> {
+    <span class="keyword">void</span> <span class="method">Walk</span>();
+}
+
+<span class="keyword">public interface</span> <span class="type">ISwim</span> {
+    <span class="keyword">void</span> <span class="method">Swim</span>();
+}
+
+<span class="comment">// Multiple Interface Implementation</span>
+<span class="keyword">public class</span> <span class="type">Human</span> : <span class="type">IWalk</span>, <span class="type">ISwim</span> {
+    <span class="keyword">public void</span> <span class="method">Walk</span>() {
+        Console.WriteLine(<span class="string">"Walking"</span>);
+    }
+    
+    <span class="keyword">public void</span> <span class="method">Swim</span>() {
+        Console.WriteLine(<span class="string">"Swimming"</span>);
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">13. Delegates</div>
+                    <div class="code-block"><span class="comment">// Declaration</span>
+<span class="keyword">public delegate void</span> <span class="type">SimpleDelegate</span>();
+
+<span class="comment">// Usage</span>
+<span class="keyword">class</span> <span class="type">Program</span> {
+    <span class="keyword">static void</span> <span class="method">Main</span>() {
+        <span class="type">SimpleDelegate</span> d = <span class="keyword">new</span> <span class="type">SimpleDelegate</span>(MyFunc);
+        d(); <span class="comment">// Invocation</span>
+    }
+    
+    <span class="keyword">static void</span> <span class="method">MyFunc</span>() {
+        Console.WriteLine(<span class="string">"Called by delegate"</span>);
+    }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">14. Events</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">Button</span> {
+    <span class="keyword">public event</span> <span class="type">EventHandler</span> Click;
+    
+    <span class="keyword">public void</span> <span class="method">ClickButton</span>() {
+        Click?.Invoke(<span class="keyword">this</span>, EventArgs.Empty);
+    }
+}
+
+<span class="comment">// Usage</span>
+<span class="type">Button</span> btn = <span class="keyword">new</span> <span class="type">Button</span>();
+btn.Click += (s, e) => Console.WriteLine(<span class="string">"Clicked!"</span>);
+btn.ClickButton();</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">15. Partial Classes</div>
+                    <div class="code-block"><span class="comment">// File1.cs</span>
+<span class="keyword">public partial class</span> <span class="type">Animal</span> {
+    <span class="keyword">public void</span> <span class="method">Method1</span>() { }
+}
+
+<span class="comment">// File2.cs</span>
+<span class="keyword">public partial class</span> <span class="type">Animal</span> {
+    <span class="keyword">public void</span> <span class="method">Method2</span>() { }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">16. Collections & Generics</div>
+                    <div class="code-block"><span class="keyword">using</span> System.Collections.Generic;
+
+<span class="comment">// List</span>
+List&lt;<span class="keyword">string</span>&gt; names = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;();
+names.Add(<span class="string">"John"</span>);
+
+<span class="comment">// Dictionary</span>
+Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt; ages = 
+    <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt;();
+ages.Add(<span class="string">"John"</span>, 25);
+
+<span class="comment">// Iteration</span>
+<span class="keyword">foreach</span> (<span class="keyword">var</span> name <span class="keyword">in</span> names) {
+    Console.WriteLine(name);
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">17. LINQ & Lambda Expressions</div>
+                    <div class="code-block">List&lt;<span class="keyword">int</span>&gt; numbers = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt; {1, 2, 3, 4, 5};
+
+<span class="comment">// Lambda Expression</span>
+<span class="keyword">var</span> evenNums = numbers.Where(n => n % 2 == 0);
+
+<span class="comment">// LINQ Query Syntax</span>
+<span class="keyword">var</span> result = <span class="keyword">from</span> n <span class="keyword">in</span> numbers
+              <span class="keyword">where</span> n > 2
+              <span class="keyword">select</span> n;
+
+<span class="keyword">foreach</span> (<span class="keyword">var</span> num <span class="keyword">in</span> evenNums) {
+    Console.WriteLine(num);
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">18. Exception Handling</div>
+                    <div class="code-block"><span class="keyword">try</span> {
+    <span class="keyword">int</span> result = 10 / 0;
+}
+<span class="keyword">catch</span> (DivideByZeroException ex) {
+    Console.WriteLine(<span class="string">"Cannot divide by zero"</span>);
+}
+<span class="keyword">catch</span> (Exception ex) {
+    Console.WriteLine(<span class="string">$"Error: {ex.Message}"</span>);
+}
+<span class="keyword">finally</span> {
+    Console.WriteLine(<span class="string">"Cleanup code"</span>);
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">19. Async/Await Programming</div>
+                    <div class="code-block"><span class="keyword">public static async</span> Task <span class="method">Main</span>() {
+    Console.WriteLine(<span class="string">"Start"</span>);
+    <span class="keyword">await</span> DoSomethingAsync();
+    Console.WriteLine(<span class="string">"End"</span>);
+}
+
+<span class="keyword">public static async</span> Task <span class="method">DoSomethingAsync</span>() {
+    Console.WriteLine(<span class="string">"Async started"</span>);
+    <span class="keyword">await</span> Task.Delay(2000);
+    Console.WriteLine(<span class="string">"Async completed"</span>);
+}</div>
+                    <div class="important"><strong>Important:</strong> Use async/await for I/O operations, network calls, and database queries.</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">20. Attributes</div>
+                    <div class="code-block">[Obsolete(<span class="string">"Use NewMethod instead"</span>)]
+<span class="keyword">public void</span> <span class="method">OldMethod</span>() { }
+
+[Serializable]
+<span class="keyword">public class</span> <span class="type">MyClass</span> { }
+
+<span class="comment">// Custom Attribute</span>
+[AttributeUsage(AttributeTargets.Class)]
+<span class="keyword">public class</span> <span class="type">AuthorAttribute</span> : Attribute {
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}</div>
+                </div>
+            </div>
+
+            <!-- Unit 2: Introduction to ASP.NET -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">2</span>
+                    ASP.NET Framework Overview
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">.NET Framework Comparison</div>
+                    <ul class="bullet-list">
+                        <li><strong>.NET Framework:</strong> Windows-only, legacy framework</li>
+                        <li><strong>.NET Core:</strong> Cross-platform, modern, lightweight</li>
+                        <li><strong>Mono:</strong> Open-source implementation for mobile</li>
+                        <li><strong>ASP.NET Web Forms:</strong> Event-driven, legacy</li>
+                        <li><strong>ASP.NET MVC:</strong> Model-View-Controller pattern</li>
+                        <li><strong>ASP.NET Web API:</strong> RESTful services</li>
+                        <li><strong>ASP.NET Core:</strong> Unified, cross-platform framework</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Compilation & Execution</div>
+                    <div class="note">
+                        <strong>Process:</strong><br>
+                        1. C# Code → Compiler → MSIL (Microsoft Intermediate Language)<br>
+                        2. MSIL → CLR (Common Language Runtime) → Native Code<br>
+                        3. <strong>CLI:</strong> Common Language Infrastructure specification<br>
+                        4. <strong>CLR:</strong> Execution engine (.NET runtime)
+                    </div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">.NET CLI Commands</div>
+                    <div class="code-block"><span class="comment"># Create new project</span>
+dotnet new webapp -n MyApp
+
+<span class="comment"># Build project</span>
+dotnet build
+
+<span class="comment"># Run application</span>
+dotnet run
+
+<span class="comment"># Test application</span>
+dotnet test
+
+<span class="comment"># Publish for deployment</span>
+dotnet publish -c Release</div>
+                </div>
+            </div>
+
+            <!-- Unit 3: HTTP & ASP.NET Core -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">3</span>
+                    HTTP & MVC Architecture
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">HTTP Request/Response</div>
+                    <div class="code-block"><span class="comment">// HTTP Request Format</span>
+GET /api/products HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Authorization: Bearer token123
+
+<span class="comment">// HTTP Response Format</span>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 256
+
+{ "id": 1, "name": "Product" }</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">MVC Pattern</div>
+                    <ul class="bullet-list">
+                        <li><strong>Model:</strong> Data and business logic</li>
+                        <li><strong>View:</strong> UI presentation layer</li>
+                        <li><strong>Controller:</strong> Handles requests, coordinates Model & View</li>
+                    </ul>
+                    <div class="tip"><strong>Flow:</strong> User → Controller → Model → Controller → View → User</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">ASP.NET Core Architecture</div>
+                    <ul class="bullet-list">
+                        <li><strong>Kestrel:</strong> Cross-platform web server</li>
+                        <li><strong>Middleware Pipeline:</strong> Request/response processing</li>
+                        <li><strong>Dependency Injection:</strong> Built-in IoC container</li>
+                        <li><strong>Configuration:</strong> appsettings.json</li>
+                        <li><strong>Logging:</strong> Built-in logging providers</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Project Conventions</div>
+                    <ul class="bullet-list">
+                        <li><strong>Program.cs:</strong> Application entry point</li>
+                        <li><strong>Startup.cs:</strong> Configure services & middleware</li>
+                        <li><strong>Controllers/:</strong> Controller classes</li>
+                        <li><strong>Views/:</strong> Razor view files</li>
+                        <li><strong>Models/:</strong> Data models</li>
+                        <li><strong>wwwroot/:</strong> Static files (CSS, JS, images)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Unit 4: Creating ASP.NET Core MVC Applications -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">4</span>
+                    ASP.NET Core MVC Applications
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. Controllers & Actions</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">HomeController</span> : Controller {
+    <span class="comment">// Action returning View</span>
+    <span class="keyword">public</span> IActionResult <span class="method">Index</span>() {
+        <span class="keyword">return</span> View();
+    }
+    
+    <span class="comment">// Action returning JSON</span>
+    <span class="keyword">public</span> IActionResult <span class="method">GetData</span>() {
+        <span class="keyword">var</span> data = <span class="keyword">new</span> { Name = <span class="string">"John"</span>, Age = 25 };
+        <span class="keyword">return</span> Json(data);
+    }
+    
+    <span class="comment">// Action with parameters</span>
+    <span class="keyword">public</span> IActionResult <span class="method">Details</span>(<span class="keyword">int</span> id) {
+        <span class="keyword">return</span> View();
+    }
+}</div>
+                    <div class="note"><strong>Action Results:</strong> ViewResult, JsonResult, RedirectResult, ContentResult, FileResult, StatusCodeResult</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Razor Views & Syntax</div>
+                    <div class="code-block"><span class="comment">@* Razor View Example *@</span>
+@model MyApp.Models.Product
+
+&lt;h1&gt;@Model.Name&lt;/h1&gt;
+&lt;p&gt;Price: @Model.Price&lt;/p&gt;
+
+<span class="comment">@* Code blocks *@</span>
+@{
+    var total = Model.Price * Model.Quantity;
+}
+
+<span class="comment">@* Loops *@</span>
+@foreach (var item in Model.Items) {
+    &lt;li&gt;@item.Name&lt;/li&gt;
+}
+
+<span class="comment">@* Conditionals *@</span>
+@if (Model.IsActive) {
+    &lt;span&gt;Active&lt;/span&gt;
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Tag Helpers</div>
+                    <div class="code-block"><span class="comment">&lt;!-- Form Tag Helper --&gt;</span>
+&lt;form asp-controller=<span class="string">"Home"</span> asp-action=<span class="string">"Submit"</span>&gt;
+    &lt;input asp-for=<span class="string">"Name"</span> /&gt;
+    &lt;span asp-validation-for=<span class="string">"Name"</span>&gt;&lt;/span&gt;
+    &lt;button type=<span class="string">"submit"</span>&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+<span class="comment">&lt;!-- Anchor Tag Helper --&gt;</span>
+&lt;a asp-controller=<span class="string">"Product"</span> asp-action=<span class="string">"Details"</span> 
+   asp-route-id=<span class="string">"5"</span>&gt;View Product&lt;/a&gt;
+
+                <div class="topic">
+                    <div class="topic-title">4. Model Binding & Validation</div>
+                    <div class="code-block"><span class="comment">// Model with Data Annotations</span>
+<span class="keyword">public class</span> <span class="type">Product</span> {
+    [Required(<span class="string">ErrorMessage = "Name is required"</span>)]
+    [StringLength(100)]
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    [Range(0.01, 999999)]
+    <span class="keyword">public decimal</span> Price { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    [EmailAddress]
+    <span class="keyword">public string</span> Email { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="comment">// Action with Model Binding</span>
+[HttpPost]
+<span class="keyword">public</span> IActionResult <span class="method">Create</span>(<span class="type">Product</span> product) {
+    <span class="keyword">if</span> (ModelState.IsValid) {
+        <span class="comment">// Save to database</span>
+        <span class="keyword">return</span> RedirectToAction(<span class="string">"Index"</span>);
+    }
+    <span class="keyword">return</span> View(product);
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. URL Routing</div>
+                    <div class="code-block"><span class="comment">// Attribute Routing</span>
+[Route(<span class="string">""</span>)]
+<span class="keyword">public class</span> <span class="type">HomeController</span> : Controller {
+    [Route(<span class="string">"/"</span>)]
+    <span class="keyword">public</span> IActionResult <span class="method">Index</span>() => View();
+    
+    [Route(<span class="string">"about"</span>)]
+    <span class="keyword">public</span> IActionResult <span class="method">About</span>() => View();
+}
+
+<span class="comment">// Configure default route in Program.cs</span>
+app.MapControllerRoute(
+    name: <span class="string">"default"</span>,
+    pattern: <span class="string">"{controller=Home}/{action=Index}/{id?}"</span>);
+</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">6. Dependency Injection</div>
+                    <div class="code-block"><span class="comment">// Service Interface</span>
+<span class="keyword">public interface</span> <span class="type">IProductService</span> {
+    List&lt;<span class="type">Product</span>&gt; <span class="method">GetAll</span>();
+}
+
+<span class="keyword">public class</span> <span class="type">ProductService</span> : <span class="type">IProductService</span> {
+    <span class="keyword">public</span> List&lt;<span class="type">Product</span>&gt; <span class="method">GetAll</span>() {
+        <span class="keyword">return</span> <span class="keyword">new</span> List&lt;<span class="type">Product</span>&gt;();
+    }
+}
+
+<span class="comment">// Register in Program.cs</span>
+builder.Services.AddScoped&lt;<span class="type">IProductService</span>, <span class="type">ProductService</span>&gt;();
+
+<span class="comment">// Use in Controller</span>
+<span class="keyword">public class</span> <span class="type">ProductController</span> : Controller {
+    <span class="keyword">private readonly</span> <span class="type">IProductService</span> _service;
+    
+    <span class="keyword">public</span> <span class="method">ProductController</span>(<span class="type">IProductService</span> service) {
+        _service = service;
+    }
+}</div>
+                    <div class="note"><strong>DI Lifetimes:</strong> Transient (new each time), Scoped (once per request), Singleton (once per app)</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">7. Web API Controllers</div>
+                    <div class="code-block">[ApiController]
+[Route(<span class="string">"api/[controller]"</span>)]
+<span class="keyword">public class</span> <span class="type">ProductApiController</span> : ControllerBase {
+    [HttpGet]
+    <span class="keyword">public</span> ActionResult&lt;List&lt;<span class="type">Product</span>&gt;&gt; <span class="method">GetAll</span>() {
+        <span class="keyword">return</span> Ok(<span class="keyword">new</span> List&lt;<span class="type">Product</span>&gt;());
+    }
+    
+    [HttpGet(<span class="string">"{id}"</span>)]
+    <span class="keyword">public</span> ActionResult&lt;<span class="type">Product</span>&gt; <span class="method">GetById</span>(<span class="keyword">int</span> id) {
+        <span class="keyword">return</span> Ok(<span class="keyword">new</span> <span class="type">Product</span>());
+    }
+    
+    [HttpPost]
+    <span class="keyword">public</span> ActionResult&lt;<span class="type">Product</span>&gt; <span class="method">Create</span>(<span class="type">Product</span> product) {
+        <span class="keyword">return</span> CreatedAtAction(<span class="string">"GetById"</span>, <span class="keyword">new</span> { id = 1 }, product);
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- Unit 5: Working with Database -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">5</span>
+                    Working with Database
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. ADO.NET Basics</div>
+                    <div class="code-block"><span class="keyword">using</span> System.Data;
+<span class="keyword">using</span> System.Data.SqlClient;
+
+<span class="comment">// Connection</span>
+<span class="keyword">string</span> connectionString = <span class="string">"Server=.;Database=MyDb;Trusted_Connection=true;"</span>;
+SqlConnection conn = <span class="keyword">new</span> SqlConnection(connectionString);
+
+<span class="comment">// Command</span>
+SqlCommand cmd = <span class="keyword">new</span> SqlCommand(<span class="string">"SELECT * FROM Products"</span>, conn);
+
+<span class="comment">// Reader</span>
+conn.Open();
+SqlDataReader reader = cmd.ExecuteReader();
+<span class="keyword">while</span> (reader.Read()) {
+    <span class="keyword">var</span> id = reader[<span class="string">"Id"</span>];
+    <span class="keyword">var</span> name = reader[<span class="string">"Name"</span>];
+}
+conn.Close();</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Entity Framework Core Setup</div>
+                    <div class="code-block"><span class="comment">// DbContext</span>
+<span class="keyword">public class</span> <span class="type">ApplicationDbContext</span> : DbContext {
+    <span class="keyword">public</span> ApplicationDbContext(DbContextOptions&lt;<span class="type">ApplicationDbContext</span>&gt; options) 
+        : <span class="keyword">base</span>(options) { }
+    
+    <span class="keyword">public</span> DbSet&lt;<span class="type">Product</span>&gt; Products { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public</span> DbSet&lt;<span class="type">Category</span>&gt; Categories { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="comment">// Configure in Program.cs</span>
+builder.Services.AddDbContext&lt;<span class="type">ApplicationDbContext</span>&gt;(options =>
+    options.UseSqlServer(builder.Configuration
+        .GetConnectionString(<span class="string">"DefaultConnection"</span>)));
+</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Data Models & Relationships</div>
+                    <div class="code-block"><span class="keyword">public class</span> <span class="type">Product</span> {
+    [Key]
+    <span class="keyword">public int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    [Required]
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    <span class="keyword">public decimal</span> Price { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    [ForeignKey(<span class="string">"Category"</span>)]
+    <span class="keyword">public int</span> CategoryId { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    <span class="keyword">public</span> <span class="type">Category</span> Category { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">public class</span> <span class="type">Category</span> {
+    <span class="keyword">public int</span> Id { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    
+    <span class="comment">// Navigation property</span>
+    <span class="keyword">public</span> ICollection&lt;<span class="type">Product</span>&gt; Products { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. CRUD Operations with EF Core</div>
+                    <div class="code-block"><span class="comment">// Create</span>
+<span class="keyword">var</span> product = <span class="keyword">new</span> <span class="type">Product</span> { Name = <span class="string">"Laptop"</span>, Price = 50000 };
+_context.Products.Add(product);
+<span class="keyword">await</span> _context.SaveChangesAsync();
+
+<span class="comment">// Read</span>
+<span class="keyword">var</span> products = <span class="keyword">await</span> _context.Products.ToListAsync();
+<span class="keyword">var</span> singleProduct = <span class="keyword">await</span> _context.Products.FindAsync(id);
+
+<span class="comment">// Update</span>
+product.Name = <span class="string">"Desktop"</span>;
+_context.Products.Update(product);
+<span class="keyword">await</span> _context.SaveChangesAsync();
+
+<span class="comment">// Delete</span>
+_context.Products.Remove(product);
+<span class="keyword">await</span> _context.SaveChangesAsync();</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. Migrations</div>
+                    <div class="code-block"><span class="comment">// Create migration</span>
+dotnet ef migrations add <span class="string">InitialCreate</span>
+
+<span class="comment">// Apply migration</span>
+dotnet ef database update
+
+<span class="comment">// Remove migration</span>
+dotnet ef migrations remove
+
+<span class="comment">// Update database</span>
+dotnet ef database update 20231207100000</div>
+                </div>
+            </div>
+
+            <!-- Unit 6: State Management -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">6</span>
+                    State Management
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. Session State (Server-side)</div>
+                    <div class="code-block"><span class="comment">// Configure in Program.cs</span>
+builder.Services.AddSession();
+
+app.UseSession();
+
+<span class="comment">// Store data</span>
+HttpContext.Session.SetString(<span class="string">"Username"</span>, <span class="string">"John"</span>);
+HttpContext.Session.SetInt32(<span class="string">"UserId"</span>, 123);
+
+<span class="comment">// Retrieve data</span>
+<span class="keyword">var</span> username = HttpContext.Session.GetString(<span class="string">"Username"</span>);
+<span class="keyword">var</span> userId = HttpContext.Session.GetInt32(<span class="string">"UserId"</span>);</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. TempData</div>
+                    <div class="code-block"><span class="comment">// Store temporary data</span>
+TempData[<span class="string">"Message"</span>] = <span class="string">"Operation successful"</span>;
+<span class="keyword">return</span> RedirectToAction(<span class="string">"Index"</span>);
+
+<span class="comment">// Retrieve in next action</span>
+<span class="keyword">var</span> message = TempData[<span class="string">"Message"</span>];
+
+<span class="comment">// In View with Razor</span>
+@TempData[<span class="string">"Message"</span>]</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Cookies (Client-side)</div>
+                    <div class="code-block"><span class="comment">// Set cookie</span>
+Response.Cookies.Append(<span class="string">"UserPreference"</span>, <span class="string">"Dark"</span>, 
+    <span class="keyword">new</span> CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(7) });
+
+<span class="comment">// Read cookie</span>
+Request.Cookies.TryGetValue(<span class="string">"UserPreference"</span>, <span class="keyword">out var</span> preference);
+
+<span class="comment">// Delete cookie</span>
+Response.Cookies.Delete(<span class="string">"UserPreference"</span>);</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. Caching</div>
+                    <div class="code-block"><span class="comment">// Configure in Program.cs</span>
+builder.Services.AddMemoryCache();
+
+<span class="comment">// Use cache</span>
+<span class="keyword">public class</span> <span class="type">ProductController</span> : Controller {
+    <span class="keyword">private readonly</span> IMemoryCache _cache;
+    
+    <span class="keyword">public</span> <span class="method">ProductController</span>(IMemoryCache cache) {
+        _cache = cache;
+    }
+    
+    <span class="keyword">public async</span> Task&lt;IActionResult&gt; <span class="method">Index</span>() {
+        <span class="keyword">if</span> (!_cache.TryGetValue(<span class="string">"products"</span>, <span class="keyword">out var</span> products)) {
+            products = <span class="keyword">await</span> _context.Products.ToListAsync();
+            _cache.Set(<span class="string">"products"</span>, products, 
+                <span class="keyword">new</span> MemoryCacheEntryOptions().SetAbsoluteExpiration(
+                    TimeSpan.FromMinutes(10)));
+        }
+        <span class="keyword">return</span> View(products);
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- Unit 7: Client-side Development -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">7</span>
+                    Client-side Development
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. jQuery Basics</div>
+                    <div class="code-block"><span class="comment">// Selectors</span>
+$(<span class="string">".class-name"</span>).hide();
+$(<span class="string">"#id-name"</span>).show();
+$(<span class="string">"p"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);
+
+<span class="comment">// Event Handling</span>
+$(<span class="string">".btn"</span>).click(<span class="keyword">function</span>() {
+    alert(<span class="string">"Button clicked!"</span>);
+});
+
+<span class="comment">// AJAX Request</span>
+$.ajax({
+    type: <span class="string">"GET"</span>,
+    url: <span class="string">"/api/products"</span>,
+    dataType: <span class="string">"json"</span>,
+    success: <span class="keyword">function</span>(data) {
+        console.log(data);
+    }
+});</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Form Validation</div>
+                    <div class="code-block"><span class="comment">// Client-side validation with Razor</span>
+@model MyApp.Models.Product
+
+&lt;form asp-action=<span class="string">"Create"</span>&gt;
+    &lt;div&gt;
+        &lt;label asp-for=<span class="string">"Name"</span>&gt;&lt;/label&gt;
+        &lt;input asp-for=<span class="string">"Name"</span> required /&gt;
+        &lt;span asp-validation-for=<span class="string">"Name"</span>&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button type=<span class="string">"submit"</span>&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+<span class="comment">// Include jQuery validation</span>
+&lt;script src=<span class="string">"~/lib/jquery-validation/jquery.validate.js"</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="string">"~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"</span>&gt;&lt;/script&gt;</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Single Page Applications (SPA)</div>
+                    <ul class="bullet-list">
+                        <li><strong>Angular:</strong> Full-featured framework by Google, TypeScript-based</li>
+                        <li><strong>React:</strong> Component-based library by Facebook, JSX syntax</li>
+                        <li><strong>Vue.js:</strong> Progressive framework, easy learning curve</li>
+                        <li><strong>Advantages:</strong> Better UX, faster interactions, offline support</li>
+                        <li><strong>Disadvantages:</strong> Higher complexity, SEO challenges, larger bundle size</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. Angular Basics</div>
+                    <div class="code-block"><span class="comment">// Component</span>
+@Component({
+  selector: <span class="string">'app-product'</span>,
+  template: `&lt;h1&gt;{{title}}&lt;/h1&gt;`,
+  styleUrls: [<span class="string">'./product.component.css'</span>]
+})
+<span class="keyword">export class</span> <span class="type">ProductComponent</span> {
+  title = <span class="string">'Product List'</span>;
+}
+
+<span class="comment">// Service</span>
+@Injectable()
+<span class="keyword">export class</span> <span class="type">ProductService</span> {
+  constructor(<span class="keyword">private</span> http: HttpClient) { }
+  
+  getProducts() {
+    <span class="keyword">return this</span>.http.get(<span class="string">'/api/products'</span>);
+  }
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. React Basics</div>
+                    <div class="code-block"><span class="comment">// Functional Component</span>
+<span class="keyword">function</span> <span class="type">ProductList</span>() {
+  const [products, setProducts] = React.useState([]);
+  
+  React.useEffect(() => {
+    fetch(<span class="string">'/api/products'</span>)
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  }, []);
+  
+  <span class="keyword">return</span> (
+    &lt;div&gt;
+      {products.map(p => &lt;div key={p.id}&gt;{p.name}&lt;/div&gt;)}
+    &lt;/div&gt;
+  );
+}</div>
+                </div>
+            </div>
+
+            <!-- Unit 8: Security -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">8</span>
+                    Securing ASP.NET Core Applications
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. ASP.NET Core Identity</div>
+                    <div class="code-block"><span class="comment">// Configure Identity in Program.cs</span>
+builder.Services.AddDefaultIdentity&lt;<span class="type">IdentityUser</span>&gt;(options => 
+    options.SignIn.RequireConfirmedAccount = <span class="keyword">true</span>)
+    .AddEntityFrameworkStores&lt;<span class="type">ApplicationDbContext</span>&gt;();
+
+<span class="comment">// Sign up user</span>
+<span class="keyword">var</span> user = <span class="keyword">new</span> <span class="type">IdentityUser</span> { UserName = <span class="string">"john@example.com"</span>, Email = <span class="string">"john@example.com"</span> };
+<span class="keyword">var</span> result = <span class="keyword">await</span> _userManager.CreateAsync(user, <span class="string">"Password@123"</span>);
+
+<span class="comment">// Sign in user</span>
+<span class="keyword">await</span> _signInManager.SignInAsync(user, isPersistent: <span class="keyword">false</span>);</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Authorization - Roles & Claims</div>
+                    <div class="code-block"><span class="comment">// Add role to user</span>
+<span class="keyword">await</span> _userManager.AddToRoleAsync(user, <span class="string">"Admin"</span>);
+
+<span class="comment">// Authorize by role</span>
+[Authorize(Roles = <span class="string">"Admin"</span>)]
+<span class="keyword">public</span> IActionResult <span class="method">AdminPanel</span>() {
+    <span class="keyword">return</span> View();
+}
+
+<span class="comment">// Add claims</span>
+<span class="keyword">var</span> claims = <span class="keyword">new</span> List&lt;Claim&gt; {
+    <span class="keyword">new</span> Claim(<span class="string">"Department"</span>, <span class="string">"IT"</span>),
+    <span class="keyword">new</span> Claim(<span class="string">"Level"</span>, <span class="string">"Senior"</span>)
+};
+<span class="keyword">await</span> _userManager.AddClaimsAsync(user, claims);
+
+<span class="comment">// Authorize by claim</span>
+[Authorize(Policy = <span class="string">"ITDepartment"</span>)]
+<span class="keyword">public</span> IActionResult <span class="method">ItPanel</span>() {
+    <span class="keyword">return</span> View();
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Policies & Authorization</div>
+                    <div class="code-block"><span class="comment">// Define policy in Program.cs</span>
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(<span class="string">"ITDepartment"</span>, policy => 
+        policy.RequireClaim(<span class="string">"Department"</span>, <span class="string">"IT"</span>));
+
+<span class="comment">// Use policy</span>
+[Authorize(Policy = <span class="string">"ITDepartment"</span>)]
+<span class="keyword">public</span> IActionResult <span class="method">SecureAction</span>() {
+    <span class="keyword">return</span> View();
+}</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. Security Best Practices</div>
+                    <div class="code-block"><span class="comment">// Prevent CSRF attacks</span>
+&lt;form asp-controller=<span class="string">"Home"</span> asp-action=<span class="string">"Submit"</span>&gt;
+    &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"__RequestVerificationToken"</span> 
+           value=<span class="string">"@Html.AntiForgeryToken()"</span> /&gt;
+&lt;/form&gt;
+
+<span class="comment">// Escape output to prevent XSS</span>
+&lt;p&gt;@Html.Encode(Model.UserInput)&lt;/p&gt;
+
+<span class="comment">// Parameterized queries prevent SQL Injection</span>
+<span class="keyword">var</span> user = <span class="keyword">await</span> _context.Users
+    .FromSqlInterpolated($<span class="string">"SELECT * FROM Users WHERE Email = {email}"</span>)
+    .FirstOrDefaultAsync();
+
+<span class="comment">// Use HTTPS only</span>
+app.UseHttpsRedirection();</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. Common Vulnerabilities</div>
+                    <ul class="bullet-list">
+                        <li><strong>XSS (Cross-Site Scripting):</strong> Inject malicious scripts via user input</li>
+                        <li><strong>SQL Injection:</strong> Malicious SQL commands through parameters</li>
+                        <li><strong>CSRF (Cross-Site Request Forgery):</strong> Unauthorized actions on behalf of user</li>
+                        <li><strong>Open Redirect:</strong> Redirect user to untrusted external site</li>
+                    </ul>
+                    <div class="important"><strong>Prevention:</strong> Input validation, parameterized queries, CSRF tokens, HTTPOnly cookies, HTTPS</div>
+                </div>
+            </div>
+
+            <!-- Unit 9: Hosting & Deployment -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">9</span>
+                    Hosting & Deploying Applications
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">1. Web Servers & Hosting Models</div>
+                    <ul class="bullet-list">
+                        <li><strong>IIS (Internet Information Services):</strong> Windows-based web server by Microsoft</li>
+                        <li><strong>Nginx:</strong> High-performance reverse proxy and web server</li>
+                        <li><strong>Apache:</strong> Cross-platform open-source web server</li>
+                        <li><strong>Kestrel:</strong> Cross-platform ASP.NET Core web server</li>
+                        <li><strong>ASP.NET Core Module:</strong> Manages ASP.NET Core application lifecycle on IIS</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">2. Deployment Process</div>
+                    <div class="code-block"><span class="comment">// Create release build</span>
+dotnet publish -c Release
+
+<span class="comment">// Output structure</span>
+bin/Release/net6.0/publish/
+  - MyApp.dll
+  - appsettings.json
+  - wwwroot/
+  - deps files
+  - runtime config
+
+<span class="comment">// Deploy to server</span>
+- Copy publish folder to server
+- Configure web server
+- Set environment variables
+- Configure database connections</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">3. Docker & Containerization</div>
+                    <div class="code-block"><span class="comment"># Dockerfile</span>
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+WORKDIR /app
+COPY . .
+EXPOSE 80
+ENTRYPOINT [<span class="string">"dotnet"</span>, <span class="string">"MyApp.dll"</span>]
+
+<span class="comment"># Build Docker image</span>
+docker build -t myapp:1.0 .
+
+<span class="comment"># Run container</span>
+docker run -d -p 8080:80 myapp:1.0
+
+<span class="comment"># docker-compose.yml</span>
+version: <span class="string">'3'</span>
+services:
+  app:
+    build: .
+    ports:
+      - <span class="string">"80:80"</span>
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: MyPassword@123</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">4. Environment Configuration</div>
+                    <div class="code-block"><span class="comment">// appsettings.json</span>
+{
+  <span class="string">"ConnectionStrings"</span>: {
+    <span class="string">"DefaultConnection"</span>: <span class="string">"Server=localhost;Database=MyDb;..."</span>
+  },
+  <span class="string">"Logging"</span>: {
+    <span class="string">"LogLevel"</span>: {
+      <span class="string">"Default"</span>: <span class="string">"Information"</span>
+    }
+  }
+}
+
+<span class="comment">// appsettings.Production.json</span>
+{
+  <span class="string">"ConnectionStrings"</span>: {
+    <span class="string">"DefaultConnection"</span>: <span class="string">"Server=prod-server;Database=ProdDb;..."</span>
+  },
+  <span class="string">"Logging"</span>: {
+    <span class="string">"LogLevel"</span>: {
+      <span class="string">"Default"</span>: <span class="string">"Error"</span>
+    }
+  }
+}
+
+<span class="comment">// Set environment</span>
+ASPNETCORE_ENVIRONMENT=Production</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">5. Azure Cloud Deployment</div>
+                    <div class="code-block"><span class="comment">// Create Azure App Service</span>
+az group create --name myResourceGroup --location eastus
+
+az appservice plan create --name myAppPlan 
+    --resource-group myResourceGroup --sku F1
+
+az webapp create --resource-group myResourceGroup 
+    --plan myAppPlan --name myWebApp
+
+<span class="comment">// Deploy using Azure CLI</span>
+dotnet publish -c Release
+az webapp deployment source config-zip --resource-group myResourceGroup 
+    --name myWebApp --src publish.zip
+
+<span class="comment">// Monitor and configure in Azure Portal</span>
+- App Service
+- Application Insights
+- Azure SQL Database
+- Key Vault for secrets</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">6. Performance Considerations</div>
+                    <ul class="bullet-list">
+                        <li><strong>Caching:</strong> Use memory cache and distributed cache for frequently accessed data</li>
+                        <li><strong>Compression:</strong> Enable gzip compression for responses</li>
+                        <li><strong>Async Operations:</strong> Use async/await to improve throughput</li>
+                        <li><strong>Database Indexing:</strong> Index frequently queried columns</li>
+                        <li><strong>CDN:</strong> Use Content Delivery Network for static assets</li>
+                        <li><strong>Monitoring:</strong> Track application performance with Application Insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="unit">
+                <div class="unit-title">
+                    <span class="unit-number">🔑</span>
+                    Quick Reference
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Common Data Annotations</div>
+                    <div class="code-block">[Required] - Field is required
+[StringLength(100)] - Max length
+[Range(0, 100)] - Range validation
+[EmailAddress] - Valid email format
+[RegularExpression(@"pattern")] - Regex match
+[Display(Name = "Label")] - Display name
+[DataType(DataType.Date)] - Data type hint
+[ScaffoldColumn(false)] - Hide in forms</div>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Useful NuGet Packages</div>
+                    <ul class="bullet-list">
+                        <li><span class="inline-code">Microsoft.EntityFrameworkCore</span> - ORM</li>
+                        <li><span class="inline-code">Microsoft.AspNetCore.Identity.EntityFrameworkCore</span> - Authentication</li>
+                        <li><span class="inline-code">AutoMapper</span> - DTO mapping</li>
+                        <li><span class="inline-code">Newtonsoft.Json</span> - JSON serialization</li>
+                        <li><span class="inline-code">Serilog</span> - Advanced logging</li>
+                        <li><span class="inline-code">FluentValidation</span> - Advanced validation</li>
+                    </ul>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-title">Key Concepts Summary</div>
+                    <ul class="bullet-list">
+                        <li><strong>OOP:</strong> Inheritance, Polymorphism, Encapsulation, Abstraction</li>
+                        <li><strong>Design Patterns:</strong> MVC, Repository, Dependency Injection</li>
+                        <li><strong>Async Programming:</strong> Improve responsiveness and scalability</li>
+                        <li><strong>Entity Framework:</strong> Simplifies database operations</li>
+                        <li><strong>Security:</strong> Authentication, Authorization, Input validation</li>
+                        <li><strong>Deployment:</strong> Docker, Azure, IIS hosting options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
