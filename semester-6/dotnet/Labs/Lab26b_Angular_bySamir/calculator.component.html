@@ -1,0 +1,92 @@
+<div class="calculator-container">
+  <div class="card">
+    <div class="card-header">
+      <h2>🧮 Calculator</h2>
+    </div>
+    <div class="card-body">
+      
+      <div class="form-group">
+        <label for="num1">Number 1:</label>
+        <input 
+          id="num1"
+          type="number" 
+          [(ngModel)]="number1" 
+          class="form-control"
+          placeholder="Enter first number"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="num2">Number 2:</label>
+        <input 
+          id="num2"
+          type="number" 
+          [(ngModel)]="number2" 
+          class="form-control"
+          placeholder="Enter second number"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="operation">Operation:</label>
+        <select 
+          id="operation"
+          [(ngModel)]="operation" 
+          class="form-control"
+        >
+          <option value="add">➕ Add</option>
+          <option value="subtract">➖ Subtract</option>
+          <option value="multiply">✖️ Multiply</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button (click)="compute()" class="btn btn-primary">Compute</button>
+        <button (click)="clear()" class="btn btn-secondary">Clear</button>
+      </div>
+
+      <div *ngIf="operationPerformed" class="result-box">
+        <h3>Result: <span class="result-value">{{ result }}</span></h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .calculator-container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .card { 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: none;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .result-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #155724;
+  }
+</style>

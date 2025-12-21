@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "State Management Demo";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">🔄 Lab 25: State Management</h1>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5>1️⃣ Session State</h5>
+                </div>
+                <div class="card-body">
+                    <p><small>Storage: Server | Lifetime: Until timeout</small></p>
+                    <p>Data stored server-side, survives across requests.</p>
+                    <a href="/State/SetSession" class="btn btn-sm btn-primary">Set Session</a>
+                    <a href="/State/GetSession" class="btn btn-sm btn-success">Get Session</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5>2️⃣ TempData</h5>
+                </div>
+                <div class="card-body">
+                    <p><small>Storage: Server/Cookie | Lifetime: One redirect</small></p>
+                    <p>Perfect for success/error messages after redirect.</p>
+                    <a href="/State/SetTempData" class="btn btn-sm btn-warning">Set & Redirect</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5>3️⃣ Cookies</h5>
+                </div>
+                <div class="card-body">
+                    <p><small>Storage: Client | Lifetime: Set expiration</small></p>
+                    <p>Stored on client browser, max 4KB per cookie.</p>
+                    <a href="/State/SetCookie" class="btn btn-sm btn-danger">Set Cookie</a>
+                    <a href="/State/GetCookie" class="btn btn-sm btn-info">Get Cookie</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5>4️⃣ Query String</h5>
+                </div>
+                <div class="card-body">
+                    <p><small>Storage: Client | Lifetime: Single request</small></p>
+                    <p>Data passed via URL parameters.</p>
+                    <a href="/State/QueryStringDemo?id=123&name=Samir&course=BICT" class="btn btn-sm btn-secondary">Use Query String</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+</style>

@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Protected Page";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h4>Protected Page</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <strong>@ViewBag.Message</strong>
+                    </div>
+
+                    <p>This page is protected by the [Authorize] attribute.</p>
+                    <p>Only authenticated users can access this page.</p>
+
+                    <p class="text-muted"><small>If you were not logged in, you would be redirected to the login page.</small></p>
+
+                    <a href="/" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Lab25_StateManagement_bySamir/1.0.0": {
+        "runtime": {
+          "Lab25_StateManagement_bySamir.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Lab25_StateManagement_bySamir/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

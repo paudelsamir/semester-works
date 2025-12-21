@@ -1,0 +1,16 @@
+{
+  "name": "Lab26c_React_bySamir",
+  "version": "1.0.0",
+  "description": "React Calculator App - Lab 26c",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["React", "Calculator", "Lab26c"],
+  "author": "Samir Paudel (114-079/D)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

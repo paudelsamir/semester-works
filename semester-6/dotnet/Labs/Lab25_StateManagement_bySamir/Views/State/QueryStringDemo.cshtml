@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Query String Demo";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h4>🔗 Query String Parameters</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <td><strong>ID:</strong></td>
+                            <td>@ViewBag.Id</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Name:</strong></td>
+                            <td>@ViewBag.Name</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Course:</strong></td>
+                            <td>@ViewBag.Course</td>
+                        </tr>
+                    </table>
+
+                    <p><small>📍 Notice the URL: <code>?id=123&name=Samir&course=BICT</code></small></p>
+                    <p><small>⚠️ Query strings are visible in URL and not secure</small></p>
+                    
+                    <a href="/State/Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

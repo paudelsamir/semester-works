@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Cookie Demo";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4>🍪 Cookie Data</h4>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.Message</div>
+                    }
+
+                    <table class="table">
+                        <tr>
+                            <td><strong>User Theme:</strong></td>
+                            <td>@ViewBag.CookieTheme</td>
+                        </tr>
+                    </table>
+
+                    <p><small>🔹 Cookie stored on your browser</small></p>
+                    <p><small>🔹 Will expire in 7 days</small></p>
+                    
+                    <a href="/State/Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+Student Information
+===================
+Name: Samir
+Roll No: 114/079
+Age: 22
+Address: Lalitpur
+
+Lab No.: 12
+Name: Samir Paudel
+Roll No./Section: 114-079/D
+
+Comment: Nirvana
+Date: 12/19/2025 8:49:20 AM

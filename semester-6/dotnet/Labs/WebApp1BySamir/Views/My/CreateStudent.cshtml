@@ -1,0 +1,95 @@
+@model WebApp1BySamir.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student Record";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0">@ViewData["Title"]</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CreateStudent" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        
+                        <!-- Student ID -->
+                        <div class="mb-3">
+                            <label asp-for="StdID" class="form-label"></label>
+                            <input asp-for="StdID" class="form-control" placeholder="Enter Student ID" />
+                            <span asp-validation-for="StdID" class="text-danger"></span>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Full Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-3">
+                            <label asp-for="Address" class="form-label"></label>
+                            <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter Address"></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <!-- Faculty -->
+                        <div class="mb-3">
+                            <label asp-for="Faculty" class="form-label"></label>
+                            <select asp-for="Faculty" class="form-select">
+                                <option value="">-- Select Faculty --</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Management">Management</option>
+                                <option value="Science">Science</option>
+                                <option value="Humanities">Humanities</option>
+                                <option value="Law">Law</option>
+                                <option value="Education">Education</option>
+                            </select>
+                            <span asp-validation-for="Faculty" class="text-danger"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="example@email.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label"></label>
+                            <input asp-for="Phone" class="form-control" placeholder="9841234567" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <!-- Age -->
+                        <div class="mb-3">
+                            <label asp-for="Age" class="form-label"></label>
+                            <input asp-for="Age" type="number" class="form-control" placeholder="Enter Age" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success btn-lg w-100">
+                                <i class="fas fa-save"></i> Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                    <a asp-action="MyRazorPage" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to My Razor Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

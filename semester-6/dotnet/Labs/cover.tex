@@ -1,0 +1,118 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=0.8in, bottom=0.8in, left=0.8in, right=0.8in]{geometry}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{tabularx}
+
+% Custom column types for better spacing
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Centered fixed width
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}     % Wrapped flexible width
+
+\begin{document}
+
+% ============================================
+% COVER PAGE
+% ============================================
+\begin{titlepage}
+\centering
+\setstretch{1.2}
+
+\vspace*{0.5cm}
+{\fontsize{22}{26}\selectfont\textbf{PATAN MULTIPLE CAMPUS}}\par
+\vspace{0.3cm}
+{\fontsize{16}{20}\selectfont\textbf{PATAN DHOKA, LALITPUR}}\par
+\vspace{0.2cm}
+{\fontsize{12}{15}\selectfont (Department of Computer Science and Information Technology)}\par
+
+\vspace{1.5cm}
+\includegraphics[width=5cm]{logo_tu.jpeg}\par
+\vspace{1.5cm}
+
+{\fontsize{14}{18}\selectfont\textbf{NET CENTRIC COMPUTING}}\par
+\vspace{0.4cm}
+{\fontsize{20}{24}\selectfont\textbf{LAB REPORT}}\par
+\vspace{0.4cm}
+{\fontsize{14}{18}\selectfont\textbf{BSc. CSIT - 6th Semester}}\par
+
+\vfill
+
+\begin{flushleft}
+\begin{minipage}[t]{0.52\textwidth}
+\textbf{Submitted By:}\\[0.2cm]
+Name: \textbf{Samir Paudel}\\
+Program: BSc. CSIT\\
+Semester: 6th Semester\\
+Section: D\\
+Roll No: 114/079\\
+Symbol No: \textbf{79010103}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\begin{flushleft} 
+\textbf{Submitted To:}\\[0.2cm]
+Department of Computer Science and\\
+Information Technology\\
+Patan Multiple Campus\\
+Patan Dhoka, Lalitpur\\
+Tribhuvan University
+\end{flushleft}
+\end{minipage}
+\end{flushleft}
+
+\vspace{1.5cm} % Extra space added since date rule was removed
+
+\end{titlepage}
+
+% ============================================
+% INDEX PAGE
+% ============================================
+\newpage
+\pagenumbering{gobble}
+
+\begin{center}
+    \vspace*{0.3cm}
+    {\fontsize{20}{24}\selectfont\textbf{INDEX}}
+    \vspace{0.5cm}
+\end{center}
+
+\renewcommand{\arraystretch}{1.5}
+\noindent\begin{tabularx}{\textwidth}{|C{0.8cm}|Z|C{2.5cm}|C{2.5cm}|}
+\hline
+\textbf{S.N.} & \centering\textbf{Experiment / Lab Task} & \textbf{Date} & \textbf{Signature} \\ \hline
+1 & Five Types of Constructor in C\# & 2081/09/06 & \\ \hline
+2 & Auto Property and Read-Only Property & 2081/09/06 & \\ \hline
+3 & Jagged Array & 2081/09/06 & \\ \hline
+4 & Indexer in C\# & 2081/09/06 & \\ \hline
+5 & Base Keyword Usage & 2081/09/06 & \\ \hline
+6 & Method Overriding and Hiding & 2081/09/06 & \\ \hline
+7 & Abstract Class and Interface & 2081/09/06 & \\ \hline
+8 & Structure, Enumeration, Partial Class & 2081/09/06 & \\ \hline
+9 & Delegate and Event in C\# & 2081/09/06 & \\ \hline
+10 & Generic and Non-Generic Collections & 2081/09/06 & \\ \hline
+11 & Generic Class Implementation & 2081/09/06 & \\ \hline
+12 & File I/O Operations & 2081/09/06 & \\ \hline
+13 & LINQ Demonstration & 2081/09/06 & \\ \hline
+14 & Lambda Expressions & 2081/09/06 & \\ \hline
+15 & Exception Handling & 2081/09/06 & \\ \hline
+16 & Built-in and Custom Attributes & 2081/09/06 & \\ \hline
+17 & Asynchronous Programming & 2081/09/06 & \\ \hline
+18 & ASP.NET Core MVC Project & 2081/09/06 & \\ \hline
+19 & Dependency Injection & 2081/09/06 & \\ \hline
+20 & Database CRUD (Console App) & 2081/09/06 & \\ \hline
+21 & CRUD using ADO.NET & 2081/09/06 & \\ \hline
+22 & EF Core Code First & 2081/09/06 & \\ \hline
+23 & EF Core Database First & 2081/09/06 & \\ \hline
+24 & Web API with Swagger & 2081/09/06 & \\ \hline
+25 & State Management & 2081/09/06 & \\ \hline
+26 & Client-Side Development & 2081/09/06 & \\ \hline
+27 & Authentication and Authorization & 2081/09/06 & \\ \hline
+28 & Hosting ASP.NET Core Application & 2081/09/06 & \\ \hline
+\end{tabularx}
+
+\vfill
+\begin{center}
+    \textit{Department of Computer Science and Information Technology}
+\end{center}
+
+\end{document}

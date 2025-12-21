@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4>Sign In</h4>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <strong>Error:</strong> @ViewBag.Error
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required autofocus>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me for 30 days</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Login</button>
+                    </form>
+
+                    <hr>
+                    <p class="text-center">Don't have an account? <a href="/Auth/Register">Register here</a></p>
+
+                    <div class="alert alert-info mt-3" role="alert">
+                        <strong>Demo Logins:</strong><br>
+                        admin@lab27.com / Admin@123<br>
+                        teacher@lab27.com / Teacher@123<br>
+                        student@lab27.com / Student@123
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
