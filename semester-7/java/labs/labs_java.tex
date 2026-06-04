@@ -1,0 +1,1260 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+% Code listing settings - compact version
+\lstset{
+    language=Java,
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=2,
+    numbers=none,
+    frame=none,
+    morekeywords={public, private, protected, static, final, class, interface, extends, implements, new, this, super, void, int, String, double, boolean, try, catch, finally, throw, throws, synchronized, volatile}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\columnsep}{20pt}
+
+\title{\textbf{Advanced Java Programming Laboratory (CSIT-7th Semester)}}
+\author{Samir Paudel (Roll No: 114-079/D)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ======================== LAB 1 ========================
+\section*{Lab 1: Box Class with Static Methods}
+
+\textbf{Title:} Create a static Box class with volume calculation
+
+\subsection*{Theory}
+Static classes and static methods belong to the class itself, not to instances. They can be called without creating an object. Static members are shared across all instances and loaded into memory once. The `new` keyword cannot be used with static classes.
+
+Use Cases:
+\begin{itemize}
+    \item Utility methods (Math.sqrt(), Integer.parseInt())
+    \item Factory methods for object creation
+    \item Storing shared constants and global state
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab1_BoxClass {
+    static class Box {
+        static double length;
+        static double breadth;
+        static double height;
+        
+        static void printValues() {
+            System.out.println("Length: " + length);
+            System.out.println("Breadth: " + breadth);
+            System.out.println("Height: " + height);
+        }
+        
+        static void printVolume() {
+            double volume = length * breadth * height;
+            System.out.println("Volume: " + volume);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Box.length = 5.0;
+        Box.breadth = 12.0;
+        Box.height = 1.0;
+        
+        Box.printValues();
+        Box.printVolume();
+        
+        Box.length = 10.0;
+        Box.breadth = 20.0;
+        Box.height = 2.4;
+        
+        Box.printValues();
+        Box.printVolume();
+        
+        System.out.println("Lab No.: 1");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Output}
+\begin{verbatim}
+Length: 5.0
+Breadth: 12.0
+Height: 1.0
+Volume: 60.0
+Length: 10.0
+Breadth: 20.0
+Height: 2.4
+Volume: 480.0
+Lab No.: 1
+Name: Samir Paudel
+Roll No./Section: 114-079/D
+\end{verbatim}
+
+\newpage
+
+% ======================== LAB 2 ========================
+\section*{Lab 2: Matrix and Jagged Array}
+
+\textbf{Title:} Read matrix, display diagonals and jagged array
+
+\subsection*{Theory}
+\textbf{Multidimensional Arrays:} A 2D array has rows and columns. Matrix operations include reading input, displaying elements, and extracting diagonals (main diagonal and anti-diagonal).
+
+\textbf{Jagged Array:} An array of arrays where each row can have different lengths. Memory efficient for irregular data structures. Declared as `type[][]`.
+
+Key Differences:
+\begin{itemize}
+    \item Rectangular array: all rows same length
+    \item Jagged array: rows can have different lengths
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.util.Scanner;
+
+public class Lab2_MatrixAndJaggedArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int[][] matrix = new int[3][3];
+        
+        System.out.println("Enter 3x3 matrix:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Matrix:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        System.out.println("Main Diagonal:");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(matrix[i][i] + " ");
+        }
+        
+        System.out.println("\nAnti-Diagonal:");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(matrix[i][2-i] + " ");
+        }
+        
+        System.out.println("\nJagged Array Demo:");
+        int[][] jagged = new int[3][];
+        jagged[0] = new int[2];
+        jagged[1] = new int[3];
+        jagged[2] = new int[4];
+        
+        int value = 1;
+        for (int i = 0; i < jagged.length; i++) {
+            for (int j = 0; j < jagged[i].length; j++) {
+                jagged[i][j] = value++;
+            }
+        }
+        
+        for (int i = 0; i < jagged.length; i++) {
+            for (int j = 0; j < jagged[i].length; j++) {
+                System.out.print(jagged[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        System.out.println("\nLab No.: 2");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 3 ========================
+\section*{Lab 3: Static and Final Keywords}
+
+\textbf{Title:} Demonstrate static variables, methods, blocks, and final keyword
+
+\subsection*{Theory}
+\textbf{Static Variables:} Shared across all instances of a class. Initialized once, not recreated for each object.
+
+\textbf{Static Methods:} Can be called without object creation. Cannot access non-static members directly.
+
+\textbf{Static Block:} Executed once when class loads. Used for static initialization.
+
+\textbf{Final Keyword:} Applied to variables (constant), methods (cannot override), classes (cannot extend).
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab3_StaticAndFinal {
+    static int count = 0;
+    static final String COMPANY = "TechCorp";
+    final String empName;
+    
+    static {
+        System.out.println("Static block executing");
+        count = 100;
+    }
+    
+    Lab3_StaticAndFinal(String name) {
+        empName = name;
+        count++;
+    }
+    
+    static void displayCount() {
+        System.out.println("Total objects created: " + count);
+    }
+    
+    static void displayCompany() {
+        System.out.println("Company: " + COMPANY);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Creating first object");
+        Lab3_StaticAndFinal emp1 = 
+            new Lab3_StaticAndFinal("Alice");
+        
+        System.out.println("Creating second object");
+        Lab3_StaticAndFinal emp2 = 
+            new Lab3_StaticAndFinal("Bob");
+        
+        displayCount();
+        displayCompany();
+        
+        System.out.println("Lab No.: 3");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 4 ========================
+\section*{Lab 4: Inheritance - Student Hierarchy}
+
+\textbf{Title:} Three-level inheritance: Student $\rightarrow$ Test $\rightarrow$ Result
+
+\subsection*{Theory}
+\textbf{Inheritance:} Mechanism to acquire properties and methods from a parent class. Creates hierarchical relationships using `extends` keyword.
+
+\textbf{Single Inheritance:} A class extends one parent class.
+
+\textbf{Multilevel Inheritance:} Chain of inheritance - A extends B, B extends C.
+
+Key Features:
+\begin{itemize}
+    \item Code reusability
+    \item Method and property inheritance
+    \item Constructor chaining with `super()`
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab4_StudentHierarchy {
+    
+    static class Student {
+        int roll_no;
+        
+        void getNumber(int n) {
+            roll_no = n;
+        }
+        
+        void printNumber() {
+            System.out.println("Roll No: " + roll_no);
+        }
+    }
+    
+    static class Test extends Student {
+        int mark1, mark2;
+        
+        void getMarks(int m1, int m2) {
+            mark1 = m1;
+            mark2 = m2;
+        }
+        
+        void printMarks() {
+            System.out.println("Mark1: " + mark1);
+            System.out.println("Mark2: " + mark2);
+        }
+    }
+    
+    static class Result extends Test {
+        int total;
+        
+        void display() {
+            printNumber();
+            printMarks();
+            total = mark1 + mark2;
+            System.out.println("Total: " + total);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Result result = new Result();
+        result.getNumber(114);
+        result.getMarks(85, 90);
+        result.display();
+        
+        System.out.println("\nLab No.: 4");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 5 ========================
+\section*{Lab 5: Super Keyword and Multilevel Inheritance}
+
+\textbf{Title:} Demonstrate super keyword: constructor calls, accessing members
+
+\subsection*{Theory}
+\textbf{Super Keyword:} References the parent class object. Used to:
+\begin{itemize}
+    \item Call parent class constructor: `super()`
+    \item Access parent class method: `super.method()`
+    \item Access parent class variable: `super.variable`
+\end{itemize}
+
+\textbf{Constructor Chaining:} When a subclass is instantiated, parent constructors are called automatically (if not explicitly called, default constructor is invoked).
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab5_SuperKeyword {
+    
+    static class GrandParent {
+        String name = "GrandParent Name";
+        
+        GrandParent() {
+            System.out.println("GrandParent Constructor");
+        }
+        
+        void display() {
+            System.out.println("Name: " + name);
+        }
+    }
+    
+    static class Parent extends GrandParent {
+        String name = "Parent Name";
+        
+        Parent() {
+            super();
+            System.out.println("Parent Constructor");
+        }
+        
+        void display() {
+            System.out.println("Parent Name: " + name);
+            System.out.println("GrandParent Name: " + super.name);
+        }
+    }
+    
+    static class Child extends Parent {
+        String name = "Child Name";
+        
+        Child() {
+            super();
+            System.out.println("Child Constructor");
+        }
+        
+        void display() {
+            System.out.println("Child Name: " + name);
+            super.display();
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Creating Child object:\n");
+        Child child = new Child();
+        System.out.println();
+        child.display();
+        
+        System.out.println("\n\nLab No.: 5");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 6 ========================
+\section*{Lab 6: Method Overriding and Polymorphism}
+
+\textbf{Title:} Runtime polymorphism with geometric shapes
+
+\subsection*{Theory}
+\textbf{Method Overriding:} Subclass provides specific implementation for parent class method. Signature must be identical.
+
+\textbf{Runtime/Dynamic Polymorphism:} Method to call determined at runtime based on actual object type, not reference type.
+
+\textbf{Requirements for Overriding:}
+\begin{itemize}
+    \item Must be instance method (not static)
+    \item Same method name, parameters, return type
+    \item Access modifier should be same or more public
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab6_MethodOverriding {
+    
+    static class Shape {
+        protected String shapeName;
+        
+        Shape(String name) {
+            shapeName = name;
+        }
+        
+        void calculateArea() {
+            System.out.println(shapeName + 
+                " area calculation");
+        }
+    }
+    
+    static class Circle extends Shape {
+        double radius;
+        
+        Circle(double r) {
+            super("Circle");
+            radius = r;
+        }
+        
+        void calculateArea() {
+            double area = 3.14159 * radius * radius;
+            System.out.println(shapeName + 
+                " area: " + area);
+        }
+    }
+    
+    static class Rectangle extends Shape {
+        double length, width;
+        
+        Rectangle(double l, double w) {
+            super("Rectangle");
+            length = l;
+            width = w;
+        }
+        
+        void calculateArea() {
+            double area = length * width;
+            System.out.println(shapeName + 
+                " area: " + area);
+        }
+    }
+    
+    static class Triangle extends Shape {
+        double base, height;
+        
+        Triangle(double b, double h) {
+            super("Triangle");
+            base = b;
+            height = h;
+        }
+        
+        void calculateArea() {
+            double area = (base * height) / 2;
+            System.out.println(shapeName + 
+                " area: " + area);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Shape[] shapes = {
+            new Circle(5),
+            new Rectangle(10, 5),
+            new Triangle(10, 6)
+        };
+        
+        for (Shape shape : shapes) {
+            shape.calculateArea();
+        }
+        
+        System.out.println("\nLab No.: 6");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 7 ========================
+\section*{Lab 7: Nested Classes}
+
+\textbf{Title:} Static nested, inner, and local inner classes
+
+\subsection*{Theory}
+\textbf{Nested Class:} A class defined inside another class.
+
+\textbf{Types:}
+\begin{itemize}
+    \item \textbf{Static Nested Class:} Can be accessed without outer class instance
+    \item \textbf{Inner Class (Non-static):} Requires outer class instance. Can access outer class members
+    \item \textbf{Local Inner Class:} Defined inside a method. Scope limited to method
+    \item \textbf{Anonymous Inner Class:} Without explicit name, useful for interfaces/abstract classes
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab7_NestedClasses {
+    static int outerStatic = 100;
+    int outerInstance = 200;
+    
+    static class StaticNested {
+        void display() {
+            System.out.println("Static Nested: " + 
+                outerStatic);
+        }
+    }
+    
+    class InnerClass {
+        void display() {
+            System.out.println("Inner: " + 
+                outerStatic);
+            System.out.println("Inner: " + 
+                outerInstance);
+        }
+    }
+    
+    void methodWithLocal() {
+        final int localVar = 300;
+        
+        class LocalInner {
+            void display() {
+                System.out.println("Local Inner: " + 
+                    localVar);
+                System.out.println("Local Inner: " + 
+                    outerInstance);
+            }
+        }
+        
+        LocalInner local = new LocalInner();
+        local.display();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Static Nested:");
+        StaticNested staticNested = 
+            new StaticNested();
+        staticNested.display();
+        
+        System.out.println("\nInner Class:");
+        Lab7_NestedClasses outer = 
+            new Lab7_NestedClasses();
+        InnerClass inner = outer.new InnerClass();
+        inner.display();
+        
+        System.out.println("\nLocal Inner Class:");
+        outer.methodWithLocal();
+        
+        System.out.println("\nLab No.: 7");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 8 ========================
+\section*{Lab 8: Interface Implementation}
+
+\textbf{Title:} Interface with multiple implementations
+
+\subsection*{Theory}
+\textbf{Interface:} Contract specifying methods without implementation. Uses `interface` keyword.
+
+\textbf{Key Points:}
+\begin{itemize}
+    \item All methods are abstract and public by default
+    \item Cannot have instance variables (only constants)
+    \item Multiple inheritance possible through interfaces
+    \item Implements keyword used to inherit from interface
+\end{itemize}
+
+\textbf{Benefits:}
+\begin{itemize}
+    \item Loose coupling
+    \item Multiple inheritance
+    \item Polymorphic behavior
+\end{itemize}
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab8_InterfaceImplementation {
+    
+    interface Shape {
+        double calculateArea();
+        double calculatePerimeter();
+        void displayInfo();
+    }
+    
+    static class Rectangle implements Shape {
+        double length, width;
+        
+        Rectangle(double l, double w) {
+            length = l;
+            width = w;
+        }
+        
+        public double calculateArea() {
+            return length * width;
+        }
+        
+        public double calculatePerimeter() {
+            return 2 * (length + width);
+        }
+        
+        public void displayInfo() {
+            System.out.println("Rectangle");
+            System.out.println("Length: " + length);
+            System.out.println("Width: " + width);
+            System.out.println("Area: " + 
+                calculateArea());
+            System.out.println("Perimeter: " + 
+                calculatePerimeter());
+        }
+    }
+    
+    public static void main(String[] args) {
+        Shape rect = new Rectangle(5, 4);
+        rect.displayInfo();
+        
+        System.out.println("\nLab No.: 8");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 9 ========================
+\section*{Lab 9: Exception Handling}
+
+\textbf{Title:} All exception handling techniques
+
+\subsection*{Theory}
+\textbf{Exception:} Runtime error disrupting program flow.
+
+\textbf{Exception Handling Keywords:}
+\begin{itemize}
+    \item \textbf{try:} Contains code that may throw exception
+    \item \textbf{catch:} Handles specific exception types
+    \item \textbf{finally:} Executes regardless of exception
+    \item \textbf{throw:} Explicitly throws exception
+    \item \textbf{throws:} Declares that method may throw exception
+\end{itemize}
+
+\textbf{Exception Hierarchy:} Throwable $\rightarrow$ Exception $\rightarrow$ (checked exceptions, RuntimeException)
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab9_ExceptionHandling {
+    
+    static class CustomException 
+        extends Exception {
+        public CustomException(String message) {
+            super(message);
+        }
+    }
+    
+    static void divisionExample() 
+        throws ArithmeticException {
+        int a = 10, b = 0;
+        int result = a / b;
+    }
+    
+    static void customException() 
+        throws CustomException {
+        throw new CustomException(
+            "Custom error!");
+    }
+    
+    public static void main(String[] args) {
+        try {
+            int arr[] = {1, 2, 3};
+            System.out.println(arr[5]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndex: " + 
+                e.getMessage());
+        }
+        
+        try {
+            int num = Integer.parseInt("abc");
+        } catch (NumberFormatException e) {
+            System.out.println("Number: " + 
+                e.getMessage());
+        }
+        
+        try {
+            divisionExample();
+        } catch (ArithmeticException e) {
+            System.out.println("Division: " + 
+                e.getMessage());
+        } finally {
+            System.out.println("Finally executed");
+        }
+        
+        try {
+            customException();
+        } catch (CustomException e) {
+            System.out.println("Custom: " + 
+                e.getMessage());
+        }
+        
+        System.out.println("\nLab No.: 9");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 10 ========================
+\section*{Lab 10: Threading}
+
+\textbf{Title:} Thread creation, lifecycle, priorities, and synchronization
+
+\subsection*{Theory}
+\textbf{Thread:} Lightweight process running independently within a program.
+
+\textbf{Thread Creation:}
+\begin{itemize}
+    \item Extend Thread class
+    \item Implement Runnable interface (preferred)
+\end{itemize}
+
+\textbf{Thread Methods:}
+\begin{itemize}
+    \item \textbf{start():} Initiates thread execution
+    \item \textbf{run():} Contains thread code
+    \item \textbf{isAlive():} Checks if thread running
+    \item \textbf{join():} Waits for thread completion
+    \item \textbf{setPriority():} Sets thread priority (1-10)
+\end{itemize}
+
+\textbf{Synchronization:} Prevents concurrent access to shared resources using `synchronized` keyword.
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+public class Lab10_Threading {
+    
+    static class RunnableThread 
+        implements Runnable {
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(
+                    "Runnable Thread: " + i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {}
+            }
+        }
+    }
+    
+    static class ThreadClass extends Thread {
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(
+                    "Thread Class: " + i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {}
+            }
+        }
+    }
+    
+    public static void main(String[] args) 
+        throws InterruptedException {
+        
+        System.out.println("Starting threads");
+        
+        Thread t1 = new Thread(
+            new RunnableThread());
+        Thread t2 = new ThreadClass();
+        
+        t1.setPriority(Thread.MAX_PRIORITY);
+        t2.setPriority(Thread.MIN_PRIORITY);
+        
+        t1.start();
+        t2.start();
+        
+        System.out.println("t1 alive: " + 
+            t1.isAlive());
+        
+        t1.join();
+        t2.join();
+        
+        System.out.println("Both threads completed");
+        
+        System.out.println("\nLab No.: 10");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 11 ========================
+\section*{Lab 11: File I/O and Serialization}
+
+\textbf{Title:} RandomAccessFile, keyboard input, serialization/deserialization
+
+\subsection*{Theory}
+\textbf{File I/O Classes:}
+\begin{itemize}
+    \item \textbf{FileReader/FileWriter:} Character-based I/O
+    \item \textbf{BufferedReader/Writer:} Buffered I/O for efficiency
+    \item \textbf{RandomAccessFile:} Random access to file data
+\end{itemize}
+
+\textbf{Serialization:} Converting object to byte stream for storage/transmission.
+
+\textbf{Deserialization:} Reconstructing object from byte stream.
+
+Requirements: Class must implement `Serializable` interface, use `ObjectOutputStream`/`ObjectInputStream`.
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.io.*;
+
+public class Lab11_FileIO {
+    
+    static class Person 
+        implements Serializable {
+        static final long serialVersionUID = 1L;
+        
+        String name;
+        int age;
+        
+        Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+        
+        public String toString() {
+            return "Name: " + name + 
+                ", Age: " + age;
+        }
+    }
+    
+    public static void main(String[] args) 
+        throws IOException, ClassNotFoundException {
+        
+        String filename = "data.txt";
+        
+        try (RandomAccessFile raf = 
+            new RandomAccessFile(filename, "rw")) {
+            
+            raf.writeBytes("Line 1\n");
+            raf.writeBytes("Line 2\n");
+            raf.writeBytes("Line 3\n");
+            
+            raf.seek(0);
+            String line = raf.readLine();
+            System.out.println(line);
+        }
+        
+        try (ObjectOutputStream oos = 
+            new ObjectOutputStream(
+                new FileOutputStream("obj.ser"))) {
+            
+            Person p = new Person("Samir", 20);
+            oos.writeObject(p);
+            System.out.println("Serialized: " + p);
+        }
+        
+        try (ObjectInputStream ois = 
+            new ObjectInputStream(
+                new FileInputStream("obj.ser"))) {
+            
+            Person p = (Person) ois.readObject();
+            System.out.println("Deserialized: " + p);
+        }
+        
+        System.out.println("\nLab No.: 11");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 12 ========================
+\section*{Lab 12: Swing GUI - Color Buttons}
+
+\textbf{Title:} Three buttons that change color when clicked
+
+\subsection*{Theory}
+\textbf{Swing Components:}
+\begin{itemize}
+    \item \textbf{JFrame:} Top-level container
+    \item \textbf{JButton:} Button component
+    \item \textbf{ActionListener:} Handles button clicks
+\end{itemize}
+
+\textbf{Layout Managers:} FlowLayout, BorderLayout, GridLayout control component positioning.
+
+\textbf{Event Handling:} ActionListener interface with actionPerformed() method responds to button clicks.
+
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Lab12_SwingColorButtons 
+    extends JFrame 
+    implements ActionListener {
+    
+    JButton redBtn, blueBtn, greenBtn;
+    
+    Lab12_SwingColorButtons() {
+        setTitle("Color Buttons");
+        setSize(400, 200);
+        setDefaultCloseOperation(
+            JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        
+        redBtn = new JButton("RED");
+        redBtn.addActionListener(this);
+        
+        blueBtn = new JButton("BLUE");
+        blueBtn.addActionListener(this);
+        
+        greenBtn = new JButton("GREEN");
+        greenBtn.addActionListener(this);
+        
+        add(redBtn);
+        add(blueBtn);
+        add(greenBtn);
+        
+        setVisible(true);
+    }
+    
+    public void actionPerformed(
+        ActionEvent e) {
+        if (e.getSource() == redBtn) {
+            getContentPane()
+                .setBackground(Color.RED);
+        } else if (e.getSource() == blueBtn) {
+            getContentPane()
+                .setBackground(Color.BLUE);
+        } else if (e.getSource() == greenBtn) {
+            getContentPane()
+                .setBackground(Color.GREEN);
+        }
+    }
+    
+    public static void main(String[] args) {
+        new Lab12_SwingColorButtons();
+        System.out.println("\nLab No.: 12");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+
+% ======================== LAB 13 ========================
+\section*{Lab 13: Simple GUI with Text Field}
+
+\textbf{Title:} Text field displaying "Hello World" with button
+
+\subsection*{Theory}
+\textbf{JTextField:} Text input/display component. Can be set non-editable with `setEditable(false)`.
+
+\textbf{JOptionPane:} Dialog boxes for user interaction (showMessageDialog, showInputDialog, showConfirmDialog).
+
+\textbf{Commonly Used Swing Components:}
+\begin{itemize}
+    \item JLabel, JTextField, JTextArea
+    \item JButton, JCheckBox, JRadioButton
+    \item JMenu, JMenuBar
+    \item JDialog, JOptionPane
+\end{itemize}
+
+\newpage
+
+% ======================== LAB 14 ========================
+\section*{Lab 14: Text Area with File Operations}
+
+\textbf{Title:} JTextArea with Read/Write buttons for files
+
+\subsection*{Theory}
+\textbf{JTextArea:} Multi-line text component, scroll-friendly.
+
+\textbf{File Operations in GUI:} Read files into text area, write text area content to files.
+
+Common pattern: FileReader/Writer with BufferedReader/Writer for efficient I/O.
+
+\newpage
+
+% ======================== LAB 15 ========================
+\section*{Lab 15: Menu Bar}
+
+\textbf{Title:} JFrame with File menu (New, Save, Exit)
+
+\subsection*{Theory}
+\textbf{JMenuBar:} Container for menus.
+
+\textbf{JMenu:} Dropdown menu with JMenuItems.
+
+\textbf{JMenuItem:} Individual menu items with ActionListener.
+
+Hierarchy: JFrame → JMenuBar → JMenu → JMenuItem
+
+\newpage
+
+% ======================== LAB 16 ========================
+\section*{Lab 16: JTextField with KeyListener}
+
+\textbf{Title:} Text field accepting only numeric digits (0-9)
+
+\subsection*{Theory}
+\textbf{KeyListener:} Captures keyboard events.
+
+Methods:
+\begin{itemize}
+    \item keyPressed(KeyEvent e): When key pressed
+    \item keyReleased(KeyEvent e): When key released
+    \item keyTyped(KeyEvent e): When character typed
+\end{itemize}
+
+\textbf{Event Filtering:} Consume events to prevent default behavior using `e.consume()`.
+
+\newpage
+
+% ======================== LAB 17 ========================
+\section*{Lab 17: CheckBox and RadioButtons}
+
+\textbf{Title:} CheckBox enabling/disabling RadioButtons
+
+\subsection*{Theory}
+\textbf{JCheckBox:} Allows multiple selections.
+
+\textbf{JRadioButton:} Mutually exclusive selections (use ButtonGroup).
+
+\textbf{ButtonGroup:} Groups radio buttons for exclusive selection.
+
+\textbf{ItemListener:} Responds to selection changes via itemStateChanged() method.
+
+\newpage
+
+% ======================== LAB 18 ========================
+\section*{Lab 18: JDBC Movie Table with JOIN}
+
+\textbf{Title:} Real JDBC with SQL JOIN between MOVIE and DIRECTOR tables
+
+\subsection*{Theory}
+\textbf{JDBC:} Java Database Connectivity API for database operations.
+
+\textbf{Connection String:} `jdbc:mysql://host:port/database`
+
+\textbf{PreparedStatement:} Prevents SQL injection with parameterized queries using `?`.
+
+\textbf{SQL JOIN:} Combines rows from multiple tables based on related columns.
+
+\textbf{Foreign Key:} Relationship constraint between tables.
+
+\subsection*{Requirements}
+\begin{itemize}
+    \item MySQL Server installed and running
+    \item mysql-connector-java JAR in classpath
+    \item Database `java\_lab` created
+\end{itemize}
+
+\newpage
+
+% ======================== LAB 19 ========================
+\section*{Lab 19: Scrollable ResultSet}
+
+\textbf{Title:} Navigate scrollable ResultSet to specific rows
+
+\subsection*{Theory}
+\textbf{ResultSet Types:}
+\begin{itemize}
+    \item TYPE\_FORWARD\_ONLY: Default, sequential
+    \item TYPE\_SCROLL\_INSENSITIVE: Scrollable, not sensitive to changes
+    \item TYPE\_SCROLL\_SENSITIVE: Scrollable, reflects changes
+\end{itemize}
+
+\textbf{Navigation Methods:}
+\begin{itemize}
+    \item rs.first(): Move to first row
+    \item rs.last(): Move to last row
+    \item rs.absolute(n): Move to row n
+    \item rs.relative(n): Move n positions forward/backward
+\end{itemize}
+
+\newpage
+
+% ======================== LAB 20 ========================
+\section*{Lab 20: Updatable ResultSet}
+
+\textbf{Title:} Update records using CONCUR\_UPDATABLE
+
+\subsection*{Theory}
+\textbf{Updatable ResultSet:} Allows in-place updates using ResultSet methods.
+
+\textbf{Concurrency Types:}
+\begin{itemize}
+    \item CONCUR\_READ\_ONLY: Default, read-only
+    \item CONCUR\_UPDATABLE: Allows updates
+\end{itemize}
+
+\textbf{Update Methods:}
+\begin{itemize}
+    \item updateString(columnName, value)
+    \item updateInt(columnName, value)
+    \item updateRow(): Persist changes to database
+\end{itemize}
+
+\newpage
+
+% ======================== LAB 21 ========================
+\section*{Lab 21: TCP Socket Programming}
+
+\textbf{Title:} TCP server-client communication
+
+\subsection*{Theory}
+\textbf{TCP (Transmission Control Protocol):} Connection-oriented, reliable delivery.
+
+\textbf{Socket Classes:}
+\begin{itemize}
+    \item ServerSocket: Listens for connections
+    \item Socket: Represents connection
+    \item PrintWriter/BufferedReader: Send/receive data
+\end{itemize}
+
+\textbf{Connection Process:}
+\begin{itemize}
+    \item Server: Create ServerSocket, accept connection
+    \item Client: Create Socket to server
+    \item Data exchange through streams
+    \item Close connections
+\end{itemize}
+
+\newpage
+
+% ======================== LAB 22 ========================
+\section*{Lab 22: UDP Echo Server}
+
+\textbf{Title:} UDP datagram echo service
+
+\subsection*{Theory}
+\textbf{UDP (User Datagram Protocol):} Connectionless, faster but unreliable.
+
+\textbf{DatagramSocket:} UDP socket for sending/receiving datagrams.
+
+\textbf{DatagramPacket:} Encapsulates UDP data with sender address.
+
+\textbf{UDP Echo:} Server receives packet and sends identical data back.
+
+\newpage
+
+% ======================== LAB 23 ========================
+\section*{Lab 23: URL Object Handling}
+
+\textbf{Title:} Parse and extract URL components
+
+\subsection*{Theory}
+\textbf{URL (Uniform Resource Locator):} Web address structure.
+
+Components:
+\begin{itemize}
+    \item Protocol: http, https, ftp
+    \item Host: www.example.com
+    \item Port: 80 (http), 443 (https)
+    \item Path: /index.html
+    \item Query: user=test
+\end{itemize}
+
+\textbf{java.net.URL:} Class for URL handling and parsing.
+
+\newpage
+
+% ======================== LAB 24 ========================
+\section*{Lab 24: Send Email Using JavaMail API}
+
+\textbf{Title:} Real SMTP email transmission
+
+\subsection*{Theory}
+\textbf{JavaMail API:} Email sending/receiving library.
+
+\textbf{SMTP (Simple Mail Transfer Protocol):} Email transmission protocol.
+
+\textbf{Configuration:}
+\begin{itemize}
+    \item SMTP Host: smtp.gmail.com
+    \item SMTP Port: 587 (TLS), 465 (SSL)
+    \item Authentication: Email and password/app password
+    \item TLS Security: Encrypt communication
+\end{itemize}
+
+\textbf{JavaMail Components:}
+\begin{itemize}
+    \item Session: Email session configuration
+    \item Message/MimeMessage: Email message
+    \item Transport: Send email via SMTP
+    \item Authenticator: Handle credentials
+\end{itemize}
+
+\textbf{Requirements:}
+\begin{itemize}
+    \item mail.jar and activation.jar
+    \item Gmail: Generate App Password
+    \item Other SMTP servers: Valid credentials
+\end{itemize}
+
+\end{document}
