@@ -1,1 +1,11 @@
 semester-5/notes.zip
+
+# .NET build artifacts
+**/obj/
+**/bin/
+
+# Java compiled bytecode
+**/*.class
+
+# PDF documents (cheatsheets, notes, etc.)
+**/*.pdf
