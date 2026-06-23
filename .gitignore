@@ -9,3 +9,6 @@ semester-5/notes.zip
 
 # PDF documents (cheatsheets, notes, etc.)
 **/*.pdf
+
+# JavaFX SDK (large binaries, exceeds GitHub limit)
+**/javafx/sdk/
