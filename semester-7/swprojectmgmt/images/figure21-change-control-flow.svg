@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 200" font-family="Arial, sans-serif">
+  <rect width="750" height="200" fill="#fff" rx="8"/>
+  <text x="375" y="28" text-anchor="middle" fill="#333" font-size="15" font-weight="bold">Change Control Process</text>
+
+  <!-- Step 1: Submit -->
+  <rect x="15" y="60" width="120" height="70" rx="12" fill="#3498db"/>
+  <text x="75" y="87" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">1. Submit</text>
+  <text x="75" y="107" text-anchor="middle" fill="#d4e6f1" font-size="11">Change Request</text>
+  <text x="75" y="122" text-anchor="middle" fill="#d4e6f1" font-size="10">by stakeholder</text>
+
+  <!-- Arrow 1 -->
+  <line x1="135" y1="95" x2="168" y2="95" stroke="#333" stroke-width="2.5"/>
+  <polygon points="168,88 183,95 168,102" fill="#333"/>
+
+  <!-- Step 2: Review -->
+  <rect x="183" y="60" width="120" height="70" rx="12" fill="#e67e22"/>
+  <text x="243" y="87" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">2. Review</text>
+  <text x="243" y="107" text-anchor="middle" fill="#fdebd0" font-size="11">Impact Analysis</text>
+  <text x="243" y="122" text-anchor="middle" fill="#fdebd0" font-size="10">(scope, cost, risk)</text>
+
+  <!-- Arrow 2 -->
+  <line x1="303" y1="95" x2="336" y2="95" stroke="#333" stroke-width="2.5"/>
+  <polygon points="336,88 351,95 336,102" fill="#333"/>
+
+  <!-- Step 3: Decide -->
+  <rect x="351" y="60" width="120" height="70" rx="12" fill="#8e44ad"/>
+  <text x="411" y="83" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">3. Decide</text>
+  <text x="411" y="103" text-anchor="middle" fill="#e8daef" font-size="11">CCB Approves</text>
+  <text x="411" y="118" text-anchor="middle" fill="#e8daef" font-size="10">or Rejects</text>
+
+  <!-- Arrow 3 -->
+  <line x1="471" y1="95" x2="504" y2="95" stroke="#333" stroke-width="2.5"/>
+  <polygon points="504,88 519,95 504,102" fill="#333"/>
+
+  <!-- Step 4: Implement -->
+  <rect x="519" y="60" width="120" height="70" rx="12" fill="#27ae60"/>
+  <text x="579" y="87" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">4. Implement</text>
+  <text x="579" y="107" text-anchor="middle" fill="#d5f5e3" font-size="11">Update Plans</text>
+  <text x="579" y="122" text-anchor="middle" fill="#d5f5e3" font-size="10">&amp; Execute</text>
+
+  <!-- Arrow 4 -->
+  <line x1="639" y1="95" x2="672" y2="95" stroke="#333" stroke-width="2.5"/>
+  <polygon points="672,88 687,95 672,102" fill="#333"/>
+
+  <!-- Step 5: Communicate -->
+  <rect x="687" y="60" width="120" height="70" rx="12" fill="#e74c3c"/>
+  <text x="747" y="87" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5. Communicate</text>
+  <text x="747" y="107" text-anchor="middle" fill="#fadbd8" font-size="11">Inform All</text>
+  <text x="747" y="122" text-anchor="middle" fill="#fadbd8" font-size="10">Stakeholders</text>
+
+  <!-- Bottom note -->
+  <text x="375" y="170" text-anchor="middle" fill="#888" font-size="11">No change shall be implemented without formal approval and impact analysis</text>
+
+  <!-- Reject loop arrow -->
+  <path d="M 411,130 Q 411,155 243,155 Q 75,155 75,130" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+  <text x="243" y="180" text-anchor="middle" fill="#e74c3c" font-size="10" font-style="italic">Rejected: return with feedback</text>
+
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c"/>
+    </marker>
+  </defs>
+</svg>

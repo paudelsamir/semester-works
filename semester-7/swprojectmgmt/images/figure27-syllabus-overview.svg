@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780" font-family="Arial, sans-serif">
+  <rect width="900" height="780" fill="#fafbfc" rx="12"/>
+  <rect x="15" y="15" width="870" height="750" fill="none" stroke="#e0e4e8" stroke-width="2" rx="10"/>
+
+  <!-- Title -->
+  <text x="450" y="50" text-anchor="middle" fill="#2c3e50" font-size="20" font-weight="bold">SPM Syllabus — Complete Unit Mapping</text>
+  <text x="450" y="68" text-anchor="middle" fill="#7f8c8d" font-size="12">How each unit maps to the software project lifecycle</text>
+
+  <!-- ========== UNIT 1 (Foundation / Top) ========== -->
+  <rect x="200" y="85" width="500" height="40" rx="20" fill="#2c3e50"/>
+  <text x="450" y="110" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 1 — Introduction to SPM (Foundation)</text>
+
+  <!-- Sub-tags for Unit 1 -->
+  <rect x="210" y="130" width="90" height="22" rx="11" fill="#34495e"/>
+  <text x="255" y="145" text-anchor="middle" fill="#ddd" font-size="9">SP Attributes</text>
+  <rect x="310" y="130" width="90" height="22" rx="11" fill="#34495e"/>
+  <text x="355" y="145" text-anchor="middle" fill="#ddd" font-size="9">SP vs Physical</text>
+  <rect x="410" y="130" width="100" height="22" rx="11" fill="#34495e"/>
+  <text x="460" y="145" text-anchor="middle" fill="#ddd" font-size="9">SPM Framework</text>
+  <rect x="520" y="130" width="90" height="22" rx="11" fill="#34495e"/>
+  <text x="565" y="145" text-anchor="middle" fill="#ddd" font-size="9">Plan Types</text>
+  <rect x="620" y="130" width="70" height="22" rx="11" fill="#34495e"/>
+  <text x="655" y="145" text-anchor="middle" fill="#ddd" font-size="9">Mgmt Cycle</text>
+
+  <!-- Arrow from Unit 1 to pipeline -->
+  <line x1="450" y1="152" x2="450" y2="178" stroke="#2c3e50" stroke-width="2.5"/>
+  <polygon points="443,178 450,190 457,178" fill="#2c3e50"/>
+  <text x="460" y="170" fill="#2c3e50" font-size="9" font-style="italic">sets context</text>
+
+  <!-- ========== LEFT COLUMN: Core Lifecycle Pipeline ========== -->
+  <!-- Pipeline background -->
+  <rect x="60" y="190" width="480" height="490" rx="15" fill="#eef2f7" stroke="#d5dce6" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- UNIT 2 -->
+  <rect x="80" y="208" width="440" height="90" rx="10" fill="#2980b9"/>
+  <text x="300" y="232" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 2 — Project Analysis</text>
+  <rect x="100" y="244" width="120" height="20" rx="10" fill="#1a5276"/>
+  <text x="160" y="258" text-anchor="middle" fill="#aed6f1" font-size="9">Strategic Assessment</text>
+  <rect x="230" y="244" width="120" height="20" rx="10" fill="#1a5276"/>
+  <text x="290" y="258" text-anchor="middle" fill="#aed6f1" font-size="9">Technical Assessment</text>
+  <rect x="360" y="244" width="140" height="20" rx="10" fill="#1a5276"/>
+  <text x="430" y="258" text-anchor="middle" fill="#aed6f1" font-size="9">Economic Analysis</text>
+  <rect x="100" y="268" width="400" height="22" rx="6" fill="#1a5276" opacity="0.6"/>
+  <text x="300" y="283" text-anchor="middle" fill="#aed6f1" font-size="9">PW, FW, AW, IRR, BCR, Gradient Cash Flow, Mutually Exclusive Alternatives</text>
+
+  <!-- Arrow -->
+  <line x1="300" y1="298" x2="300" y2="318" stroke="#2980b9" stroke-width="2.5"/>
+  <polygon points="293,318 300,328 307,318" fill="#2980b9"/>
+
+  <!-- UNIT 3 -->
+  <rect x="80" y="328" width="440" height="90" rx="10" fill="#27ae60"/>
+  <text x="300" y="352" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 3 — Activity Planning &amp; Scheduling</text>
+  <rect x="100" y="364" width="80" height="20" rx="10" fill="#1e8449"/>
+  <text x="140" y="378" text-anchor="middle" fill="#d5f5e3" font-size="9">WBS</text>
+  <rect x="190" y="364" width="80" height="20" rx="10" fill="#1e8449"/>
+  <text x="230" y="378" text-anchor="middle" fill="#d5f5e3" font-size="9">Bar/Gantt</text>
+  <rect x="280" y="364" width="80" height="20" rx="10" fill="#1e8449"/>
+  <text x="320" y="378" text-anchor="middle" fill="#d5f5e3" font-size="9">CPM</text>
+  <rect x="370" y="364" width="60" height="20" rx="10" fill="#1e8449"/>
+  <text x="400" y="378" text-anchor="middle" fill="#d5f5e3" font-size="9">PERT</text>
+  <rect x="440" y="364" width="60" height="20" rx="10" fill="#1e8449"/>
+  <text x="470" y="378" text-anchor="middle" fill="#d5f5e3" font-size="9">PDM</text>
+  <rect x="100" y="388" width="400" height="22" rx="6" fill="#1e8449" opacity="0.6"/>
+  <text x="300" y="403" text-anchor="middle" fill="#d5f5e3" font-size="9">Critical Path, Float, Shortening Duration, Identifying Critical Activities</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="418" x2="300" y2="438" stroke="#27ae60" stroke-width="2.5"/>
+  <polygon points="293,438 300,448 307,438" fill="#27ae60"/>
+
+  <!-- UNIT 5 -->
+  <rect x="80" y="448" width="440" height="70" rx="10" fill="#f39c12"/>
+  <text x="300" y="472" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 5 — Resource Allocation</text>
+  <rect x="100" y="484" width="130" height="20" rx="10" fill="#d68910"/>
+  <text x="165" y="498" text-anchor="middle" fill="#fef9e7" font-size="9">Resource Requirements</text>
+  <rect x="240" y="484" width="100" height="20" rx="10" fill="#d68910"/>
+  <text x="290" y="498" text-anchor="middle" fill="#fef9e7" font-size="9">Smoothening</text>
+  <rect x="350" y="484" width="100" height="20" rx="10" fill="#d68910"/>
+  <text x="400" y="498" text-anchor="middle" fill="#fef9e7" font-size="9">Resource Balancing</text>
+
+  <!-- Arrow -->
+  <line x1="300" y1="518" x2="300" y2="538" stroke="#f39c12" stroke-width="2.5"/>
+  <polygon points="293,538 300,548 307,538" fill="#f39c12"/>
+
+  <!-- UNIT 6 -->
+  <rect x="80" y="548" width="440" height="100" rx="10" fill="#e74c3c"/>
+  <text x="300" y="572" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 6 — Monitoring &amp; Control</text>
+  <rect x="100" y="584" width="100" height="20" rx="10" fill="#b03a2e"/>
+  <text x="150" y="598" text-anchor="middle" fill="#f5b7b1" font-size="9">Data Collection</text>
+  <rect x="210" y="584" width="100" height="20" rx="10" fill="#b03a2e"/>
+  <text x="260" y="598" text-anchor="middle" fill="#f5b7b1" font-size="9">Visualize Progress</text>
+  <rect x="320" y="584" width="90" height="20" rx="10" fill="#b03a2e"/>
+  <text x="365" y="598" text-anchor="middle" fill="#f5b7b1" font-size="9">Cost Monitor</text>
+  <rect x="420" y="584" width="80" height="20" rx="10" fill="#b03a2e"/>
+  <text x="460" y="598" text-anchor="middle" fill="#f5b7b1" font-size="9">EVA</text>
+  <rect x="100" y="608" width="400" height="22" rx="6" fill="#b03a2e" opacity="0.6"/>
+  <text x="300" y="623" text-anchor="middle" fill="#f5b7b1" font-size="9">PV, EV, AC, SV, CV, SPI, CPI, EAC, ETC, TCPI, Project Control (Crashing, Fast-tracking, CCB)</text>
+
+  <!-- ========== RIGHT COLUMN: Supporting Units ========== -->
+  <rect x="570" y="190" width="310" height="500" rx="15" fill="#fef9f0" stroke="#f0dcc0" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="725" y="212" text-anchor="middle" fill="#8b6914" font-size="11" font-weight="bold">SUPPORTING &amp; CROSS-CUTTING UNITS</text>
+
+  <!-- UNIT 4 - connected to all -->
+  <rect x="585" y="225" width="280" height="90" rx="10" fill="#e67e22"/>
+  <text x="725" y="249" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 4 — Risk Management</text>
+  <rect x="605" y="260" width="80" height="20" rx="10" fill="#ca6f1e"/>
+  <text x="645" y="274" text-anchor="middle" fill="#fdebd0" font-size="9">Identification</text>
+  <rect x="695" y="260" width="60" height="20" rx="10" fill="#ca6f1e"/>
+  <text x="725" y="274" text-anchor="middle" fill="#fdebd0" font-size="9">Analysis</text>
+  <rect x="765" y="260" width="80" height="20" rx="10" fill="#ca6f1e"/>
+  <text x="805" y="274" text-anchor="middle" fill="#fdebd0" font-size="9">Z-Value Eval</text>
+  <rect x="605" y="284" width="240" height="22" rx="6" fill="#ca6f1e" opacity="0.6"/>
+  <text x="725" y="299" text-anchor="middle" fill="#fdebd0" font-size="9">Risk Register → PERT-based schedule risk</text>
+  <!-- Connection lines: Unit 4 to pipeline -->
+  <line x1="585" y1="250" x2="525" y2="250" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="585" y1="270" x2="525" y2="370" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="585" y1="290" x2="525" y2="490" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="585" y1="300" x2="525" y2="590" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="555" y="310" fill="#e67e22" font-size="8" transform="rotate(-90,555,310)">spans all phases</text>
+
+  <!-- UNIT 7 -->
+  <rect x="585" y="330" width="280" height="105" rx="10" fill="#8e44ad"/>
+  <text x="725" y="354" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 7 — Contracts &amp; People</text>
+  <text x="725" y="372" text-anchor="middle" fill="#d2b4de" font-size="10" font-weight="bold">Part A: Contracts</text>
+  <rect x="605" y="382" width="80" height="18" rx="9" fill="#6c3483"/>
+  <text x="645" y="394" text-anchor="middle" fill="#d2b4de" font-size="8">Fixed Price</text>
+  <rect x="695" y="382" width="80" height="18" rx="9" fill="#6c3483"/>
+  <text x="735" y="394" text-anchor="middle" fill="#d2b4de" font-size="8">Time &amp; Materials</text>
+  <rect x="785" y="382" width="60" height="18" rx="9" fill="#6c3483"/>
+  <text x="815" y="394" text-anchor="middle" fill="#d2b4de" font-size="8">Per-Unit</text>
+  <text x="725" y="410" text-anchor="middle" fill="#d2b4de" font-size="10" font-weight="bold">Part B: People</text>
+  <rect x="605" y="418" width="240" height="12" rx="6" fill="#6c3483" opacity="0.6"/>
+  <text x="725" y="427" text-anchor="middle" fill="#d2b4de" font-size="8">Motivation, Teams, Leadership, Org Structures</text>
+  <!-- Connection -->
+  <line x1="585" y1="370" x2="525" y2="230" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="555" y="240" fill="#8e44ad" font-size="8" transform="rotate(-90,555,240)">management &amp; org</text>
+
+  <!-- UNIT 8 -->
+  <rect x="585" y="450" width="280" height="105" rx="10" fill="#1abc9c"/>
+  <text x="725" y="474" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 8 — SQA &amp; Testing</text>
+  <rect x="605" y="486" width="80" height="18" rx="9" fill="#148f77"/>
+  <text x="645" y="498" text-anchor="middle" fill="#d1f2eb" font-size="8">Test Plan</text>
+  <rect x="695" y="486" width="80" height="18" rx="9" fill="#148f77"/>
+  <text x="735" y="498" text-anchor="middle" fill="#d1f2eb" font-size="8">Types &amp; Levels</text>
+  <rect x="785" y="486" width="60" height="18" rx="9" fill="#148f77"/>
+  <text x="815" y="498" text-anchor="middle" fill="#d1f2eb" font-size="8">V&amp;V</text>
+  <rect x="605" y="508" width="240" height="18" rx="9" fill="#148f77"/>
+  <text x="725" y="520" text-anchor="middle" fill="#d1f2eb" font-size="9">SEI-CMM → SQA Activities → QA Org Structure</text>
+  <rect x="605" y="530" width="240" height="18" rx="6" fill="#148f77" opacity="0.6"/>
+  <text x="725" y="543" text-anchor="middle" fill="#d1f2eb" font-size="8">Testing Strategies, SQA Plan</text>
+  <!-- Connection -->
+  <line x1="585" y1="500" x2="525" y2="500" stroke="#1abc9c" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="555" y="498" fill="#1abc9c" font-size="8" transform="rotate(-90,555,498)">quality throughout</text>
+
+  <!-- UNIT 9 -->
+  <rect x="585" y="570" width="280" height="75" rx="10" fill="#3498db"/>
+  <text x="725" y="594" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">UNIT 9 — SCM</text>
+  <rect x="605" y="606" width="80" height="18" rx="9" fill="#2176ae"/>
+  <text x="645" y="618" text-anchor="middle" fill="#d4e6f1" font-size="8">Baselines</text>
+  <rect x="695" y="606" width="80" height="18" rx="9" fill="#2176ae"/>
+  <text x="735" y="618" text-anchor="middle" fill="#d4e6f1" font-size="8">Change Control</text>
+  <rect x="785" y="606" width="60" height="18" rx="9" fill="#2176ae"/>
+  <text x="815" y="618" text-anchor="middle" fill="#d4e6f1" font-size="8">Audits</text>
+  <!-- Connection -->
+  <line x1="585" y1="610" x2="525" y2="610" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="555" y="608" fill="#3498db" font-size="8" transform="rotate(-90,555,608)">version mgmt</text>
+
+  <!-- Legend / Time arrow -->
+  <rect x="80" y="690" width="440" height="55" rx="10" fill="#f7f9fa" stroke="#d5dce6" stroke-width="1"/>
+  <text x="300" y="710" text-anchor="middle" fill="#555" font-size="11">Project Timeline →</text>
+  <line x1="120" y1="722" x2="480" y2="722" stroke="#bdc3c7" stroke-width="2"/>
+  <circle cx="120" cy="722" r="4" fill="#2980b9"/>
+  <circle cx="220" cy="722" r="4" fill="#27ae60"/>
+  <circle cx="320" cy="722" r="4" fill="#f39c12"/>
+  <circle cx="420" cy="722" r="4" fill="#e74c3c"/>
+  <text x="120" y="740" text-anchor="middle" fill="#2980b9" font-size="8">Analysis</text>
+  <text x="220" y="740" text-anchor="middle" fill="#27ae60" font-size="8">Planning</text>
+  <text x="320" y="740" text-anchor="middle" fill="#f39c12" font-size="8">Allocate</text>
+  <text x="420" y="740" text-anchor="middle" fill="#e74c3c" font-size="8">Execute</text>
+
+  <!-- Hours -->
+  <rect x="600" y="690" width="240" height="55" rx="10" fill="#f7f9fa" stroke="#e0e4e8" stroke-width="1"/>
+  <text x="720" y="710" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">Contact Hours</text>
+  <text x="720" y="730" text-anchor="middle" fill="#7f8c8d" font-size="10">U1(5) + U2(8) + U3(7) + U4(4) + U5(4) + U6(4) + U7(5) + U8(5) + U9(3) = 45 Hrs</text>
+</svg>

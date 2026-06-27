@@ -1,0 +1,3282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body {
+ font-family: 'DejaVu Serif', 'Noto Serif', Georgia, serif;
+ font-size: 10pt;
+ line-height: 1.6;
+ color: #1e1e2e;
+ max-width: 870px;
+ margin: 0 auto;
+ padding: 1.8em 2.2em;
+}
+h2 {
+ font-family: 'DejaVu Sans', 'Noto Sans', Helvetica, sans-serif;
+ font-size: 12.5pt;
+ font-weight: 700;
+ color: #0b1a2a;
+ border-bottom: 2pt solid #1e4a6a;
+ padding-bottom: 3pt;
+ margin: 26pt 0 12pt;
+ page-break-before: always;
+ page-break-after: avoid;
+ letter-spacing: 0.02em;
+}
+h2:first-of-type { page-break-before: avoid; }
+h3 {
+ font-family: 'DejaVu Sans', 'Noto Sans', Helvetica, sans-serif;
+ font-size: 10.5pt;
+ font-weight: 700;
+ color: #1e4a6a;
+ margin: 16pt 0 6pt;
+ page-break-after: avoid;
+}
+h4 {
+ font-size: 10pt;
+ font-weight: 700;
+ color: #2a5f6b;
+ margin: 10pt 0 4pt;
+ page-break-after: avoid;
+}
+h5, h6 {
+ font-size: 9.5pt;
+ font-weight: 600;
+ color: #3a6a7a;
+ margin: 8pt 0 3pt;
+}
+p { margin: 4pt 0 6pt; }
+strong { color: #1e1e2e; font-weight: 700; }
+em { color: #1e6a4a; font-style: italic; }
+hr {
+ border: none;
+ border-top: 0.4pt solid #d0d5dd;
+ margin: 8pt 0;
+}
+ul, ol { margin: 3pt 0 5pt; padding-left: 20pt; }
+li { margin-bottom: 2pt; }
+li p { margin: 1pt 0; }
+table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 6pt 0;
+ font-size: 8.5pt;
+ page-break-inside: avoid;
+}
+th {
+ background: #1e4a6a;
+ color: #fff;
+ font-weight: 600;
+ padding: 4pt 7pt;
+ text-align: left;
+ border: 0.4pt solid #1e4a6a;
+}
+td {
+ padding: 3pt 7pt;
+ border: 0.4pt solid #c5ccd4;
+ vertical-align: top;
+}
+tr:nth-child(even) td { background: #f7f9fb; }
+table ul, table ol { margin: 0; padding-left: 14pt; }
+img {
+ max-width: 65%;
+ max-height: 7cm;
+ height: auto;
+ display: block;
+ margin: 6px auto;
+ page-break-inside: avoid;
+}
+p img { margin: 2px auto; }
+code {
+ font-family: 'DejaVu Sans Mono', 'Noto Sans Mono', Consolas, monospace;
+ font-size: 7.5pt;
+ background: #edf2f7;
+ padding: 1pt 5pt;
+ border-radius: 2pt;
+ color: #1e4a6a;
+}
+pre {
+ background: #f5f7fa;
+ border: 0.5pt solid #d0d5dd;
+ border-radius: 3pt;
+ padding: 7pt 11pt;
+ font-size: 7.5pt;
+ line-height: 1.35;
+ font-family: 'DejaVu Sans Mono', 'Noto Sans Mono', monospace;
+ page-break-inside: avoid;
+}
+pre code { background: none; padding: 0; border-radius: 0; color: inherit; }
+blockquote {
+ margin: 5pt 0 5pt 10pt;
+ padding: 4pt 12pt;
+ border-left: 2.5pt solid #1e4a6a;
+ background: #f0f4f8;
+ color: #2c3e50;
+ font-style: italic;
+ border-radius: 0 3pt 3pt 0;
+}
+blockquote p { margin: 0; }
+.formula-block {
+ text-align: center;
+ margin: 9pt 0;
+ padding: 5pt 0;
+ font-family: 'DejaVu Serif', 'Noto Serif', serif;
+ font-size: 9.5pt;
+ line-height: 1.5;
+ page-break-inside: avoid;
+}
+.formula-inline {
+ font-family: 'DejaVu Serif', 'Noto Serif', serif;
+ font-size: 9pt;
+}
+.f-text { font-family: 'DejaVu Sans', 'Noto Sans', sans-serif; }
+.formula-block sup, .formula-block sub,
+.formula-inline sup, .formula-inline sub { font-size: 0.7em; }
+figure { text-align: center; margin: 10pt 0; page-break-inside: avoid; }
+figcaption { font-size: 8pt; font-weight: 600; color: #4a5a6a; margin-top: 3pt; }
+.review-questions {
+ background: #f8fafc;
+ border: 1pt solid #d0d7de;
+ border-radius: 3pt;
+ padding: 8pt 14pt;
+ margin: 10pt 0;
+ page-break-inside: avoid;
+}
+.review-questions h3 {
+ margin: 0 0 5pt 0;
+ color: #1e4a6a;
+ font-size: 10pt;
+ border-bottom: 1.5pt solid #b8ccda;
+ padding-bottom: 3pt;
+}
+.review-questions ol { padding-left: 24pt; }
+.review-questions li { margin-bottom: 4pt; line-height: 1.5; }
+.review-questions table { font-size: 8pt; }
+@media print {
+ body { padding: 0; max-width: none; font-size: 9.5pt; }
+ h2 { page-break-before: always; }
+ h2:first-of-type { page-break-before: avoid; }
+ img { max-width: 60%; max-height: 6cm; }
+ .review-questions { break-inside: auto; }
+}
+</style>
+</head>
+<body>
+<h2 id="unit-1-introduction-to-software-project-management"><strong>UNIT 1: INTRODUCTION TO SOFTWARE PROJECT MANAGEMENT</strong></h2>
+<figure><img src="images/figure27-syllabus-overview.svg" alt="Syllabus Overview">
+<figcaption>Figure: Syllabus Overview — Where Each Unit Fits</figcaption></figure>
+<hr>
+<h3 id="1-software-engineering-problem-and-software-product-software-product-attributes"><strong>1. Software Engineering Problem and Software Product, Software Product Attributes</strong></h3>
+<p><strong>Software Engineering Problem</strong></p>
+<p>The core difficulty: software is invisible, highly complex, must conform to changing human rules, and is very easy to alter. These flow directly from the product's attributes.</p>
+<p><strong>Software Product Attributes → Problems</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Resulting Problem</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Invisibility</strong></td>
+<td>Progress and structure cannot be seen. <em>(e.g., you can’t “see” a code module’s completion % like you see a bridge pillar)</em></td>
+<td>→ Poor estimates, unrealistic deadlines.</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Thousands of interacting logic paths per unit cost. <em>(e.g., even a small tax app has hundreds of rule combinations)</em></td>
+<td>→ Incomplete specs, role confusion, hard quality measurement.</td>
+</tr>
+<tr>
+<td><strong>Conformity</strong></td>
+<td>Must fit volatile human rules and laws. <em>(e.g., payroll tax slabs change every budget year)</em></td>
+<td>→ Moving targets, incorrect success criteria.</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Change is cheap and easy. <em>(e.g., adding a “dark mode” toggle in a day)</em></td>
+<td>→ Scope creep, outdated docs, baseline instability.</td>
+</tr>
+<tr>
+<td><strong>Abstractness</strong></td>
+<td>Pure thought‑stuff; no physical existence.</td>
+<td>→ Miscommunication, knowledge loss when staff leave.</td>
+</tr>
+<tr>
+<td><strong>Intangibility of Process</strong></td>
+<td>Development knowledge lives in people’s minds.</td>
+<td>→ Poor training, remote management gaps.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="2-definition-of-a-software-project-sp"><strong>2. Definition of a Software Project (SP)</strong></h3>
+<p><strong>Project</strong> – A planned activity with:</p>
+<p>Non-routine tasks, specific objectives, fixed time span, done for a client, multiple specialisms, phased execution, constrained resources, large/complex.</p>
+<p><em>Short contrast</em>:</p>
+<ul>
+<li><strong>Routine</strong> → weekly server restart (not a project)</li>
+<li><strong>Project</strong> → migrating the entire server to cloud in 3 months</li>
+</ul>
+<p><strong>Software Project</strong></p>
+<p>The whole lifecycle from early investigation to final implementation and maintenance, integrating all components (code, docs, training).</p>
+<hr>
+<h3 id="3-software-project-vs-other-types-of-projects"><strong>3. Software Project Vs. Other Types of Projects</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Physical Project (e.g., road bridge)</strong></th>
+<th><strong>Software Project (e.g., hospital management system)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visibility</strong></td>
+<td>Progress visible (pillars rising).</td>
+<td>Progress invisible (code completion not tangible).</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Governed by fixed physical laws.</td>
+<td>Much higher logical complexity; no natural bounds.</td>
+</tr>
+<tr>
+<td><strong>Conformity</strong></td>
+<td>Must follow stable building codes.</td>
+<td>Must follow changing laws, insurance rules, etc.</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Changes are expensive.</td>
+<td>Changes are easy → frequent modifications.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="4-activities-covered-by-spm"><strong>4. Activities Covered by SPM</strong></h3>
+<figure><img src="images/figure01-feasibility-cycle.png" alt="Feasibility-Plan-Execution Cycle">
+<figcaption>Figure 1: Feasibility – Plan – Execution Cycle</figcaption></figure>
+<p><strong>A. Feasibility Study</strong> – Use <strong>T‑O-E-S-L-i-P</strong></p>
+<ul>
+<li>
+<p><strong>T</strong>echnical – hardware/software available?</p>
+</li>
+<li>
+<p><strong>E</strong>conomical – benefits &gt; costs?</p>
+</li>
+<li>
+<p><strong>L</strong>egal – data protection, licenses?</p>
+</li>
+<li>
+<p><strong>O</strong>perational – will users accept it?</p>
+</li>
+<li>
+<p><strong>S</strong>chedule – can it be done in time?</p>
+<p><em>Short example</em>: For a food delivery app, ask: can servers handle 10,000 orders? Will revenue recover development cost within 2 years?</p>
+</li>
+</ul>
+<p><strong>B. Planning</strong></p>
+<ul>
+<li>
+<p>Outline plan for the whole project; detailed plan only for immediate next stage.</p>
+</li>
+<li>
+<p>Later stages planned when closer (rolling wave).</p>
+<p><em>Short example</em>: Phase‑1 (ordering) planned in detail now; Phase‑2 (loyalty points) detailed later, with better data.</p>
+</li>
+</ul>
+<p><strong>C. Project Execution</strong></p>
+<p>Two sub‑phases:</p>
+<ul>
+<li><strong>Design</strong> → UI, architecture, database.</li>
+<li><strong>Implementation</strong> → real coding, integration.</li>
+</ul>
+<figure><img src="images/figure15-sdlc-lifecycle-flow.png" alt="SDLC Lifecycle Flow">
+<figcaption>Full Lifecycle Flow</figcaption></figure>
+<ul>
+<li>Maintenance types: Corrective (bugs), Adaptive (new platforms), Perfective (new features).</li>
+</ul>
+<hr>
+<h3 id="5-categorising-software-projects"><strong>5. Categorising Software Projects</strong></h3>
+<p><strong>A. Information Systems vs. Embedded Systems</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Information System</strong></th>
+<th><strong>Embedded System</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interfaces with an <strong>organisation</strong>.</td>
+<td>Interfaces with a <strong>machine</strong>.</td>
+</tr>
+<tr>
+<td>Business logic focus.</td>
+<td>Real‑time control focus.</td>
+</tr>
+<tr>
+<td><em>Example</em>: Payroll system, hotel reservation.</td>
+<td><em>Example</em>: Car anti‑lock braking software, AC temperature controller.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B. Objectives‑Driven vs. Product‑Driven</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Objectives‑Driven</strong></th>
+<th><strong>Product‑Driven</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aim is a <strong>goal</strong>.</td>
+<td>Aim is a <strong>specified product</strong>.</td>
+</tr>
+<tr>
+<td>Alternative solutions allowed.</td>
+<td>Exact deliverable must be built.</td>
+</tr>
+<tr>
+<td><em>Example</em>: Brightmouth College – goal is cheaper payroll; if in‑house package isn’t cheaper, they can outsource.</td>
+<td><em>Example</em>: A custom passport‑issuing system with exact biometric specs.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="6-project-management-cycle-and-spm-framework"><strong>6. Project Management Cycle and SPM Framework</strong></h3>
+<p><strong>A. The 8 Management Activities (SPM Framework)</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Activity</strong></th>
+<th><strong>Meaning (short illustration)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Planning</strong></td>
+<td>Decide what to do <em>(e.g., create sprint schedule)</em></td>
+</tr>
+<tr>
+<td><strong>Organising</strong></td>
+<td>Make arrangements <em>(e.g., book test environment)</em></td>
+</tr>
+<tr>
+<td><strong>Staffing</strong></td>
+<td>Select right people <em>(e.g., hire a UI designer)</em></td>
+</tr>
+<tr>
+<td><strong>Directing</strong></td>
+<td>Lead and instruct <em>(e.g., explain module requirements to a junior dev)</em></td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Check progress <em>(e.g., daily stand‑up)</em></td>
+</tr>
+<tr>
+<td><strong>Controlling</strong></td>
+<td>Correct deviations <em>(e.g., add devs to a delayed module)</em></td>
+</tr>
+<tr>
+<td><strong>Innovating</strong></td>
+<td>Find new solutions <em>(e.g., use a new caching library to fix performance)</em></td>
+</tr>
+<tr>
+<td><strong>Representing</strong></td>
+<td>Liaise with clients/management <em>(e.g., present status to steering committee)</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>B. Project Control Cycle</strong></p>
+<p>text</p>
+<pre class="hljs"><code><div>Real World (actual work) → Data collection → Data Processing (information) → Modelling → Decisions/Plans → Implementation → (back to Real World)
+</div></code></pre>
+<p><em>Simple memory</em>: Measure → Compare → Decide → Act → Repeat.</p>
+<p><em>Short example</em>: Collect sprint hours, see delay, move one feature to next sprint, implement decision, remeasure.</p>
+<figure><img src="images/figure26-stepwise-planning.svg" alt="Stepwise Planning Framework">
+<figcaption>Figure: Stepwise Project Planning Framework</figcaption></figure>
+<hr>
+<h3 id="7-types-of-project-plan"><strong>7. Types of Project Plan</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Plan Type</strong></th>
+<th><strong>Description <em>(short example in parentheses)</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quality Plan</strong></td>
+<td>Quality standards, reviews, tests <em>(e.g., 95% unit test coverage required)</em></td>
+</tr>
+<tr>
+<td><strong>Validation Plan</strong></td>
+<td>Approach for testing and acceptance <em>(e.g., UAT in March with real hospital staff)</em></td>
+</tr>
+<tr>
+<td><strong>Configuration Management Plan</strong></td>
+<td>Version control, change control <em>(e.g., Git for code; signed form to change requirements)</em></td>
+</tr>
+<tr>
+<td><strong>Maintenance Plan</strong></td>
+<td>Post‑delivery effort &amp; cost <em>(e.g., 2 devs for 6 months to handle tax updates)</em></td>
+</tr>
+<tr>
+<td><strong>Staff Development Plan</strong></td>
+<td>Team skill improvement <em>(e.g., junior devs attend a cloud workshop)</em></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Explain different categories of software projects. Why do you think categorization of software projects is necessary? <em>(2082)</em> [10]</li>
+ <li>Explain different types of project plan. <em>(2081)</em> [5]</li>
+ <li>Explain SPM framework. <em>(2080)</em> [5]</li>
+ <li>Explain project management cycle. <em>(2079)</em> [5]</li>
+ <li>Why software project management is a challenging activity? <em>(2078)</em> [5]</li>
+ <li>Differentiate between programme management and portfolio management. Define Payback period. How can it be used as an evaluation technique? What are its advantages and disadvantages? <em>(2078)</em> [10]</li>
+</ol>
+</section>
+<h2 id="unit-2-project-analysis-final-revision-notes"><strong>UNIT 2: PROJECT ANALYSIS (Final Revision Notes)</strong></h2>
+<hr>
+<h3 id="1-introduction-to-project-analysis"><strong>1. INTRODUCTION TO PROJECT ANALYSIS</strong></h3>
+<p>Project analysis is the process of examining every aspect of a proposed project <em>before</em> committing resources. It answers one core question: <strong>&quot;Is this project worth doing?&quot;</strong></p>
+<p>It sits inside the <strong>Feasibility Study</strong> (from Unit 1) and breaks down into three assessments:</p>
+<figure style="text-align:center;margin:10pt 0"><img src="images/figure16-project-analysis-tree.svg" alt="Project Analysis Tree"></figure>
+<h3 id="2-strategic-assessment"><strong>2. STRATEGIC ASSESSMENT</strong></h3>
+<p>Strategic assessment evaluates whether the project aligns with the organisation's long-term goals. A project can be technically brilliant and financially profitable, but still wrong for the company.</p>
+<p><strong>Key Questions:</strong></p>
+<ul>
+<li>Does this project support our business strategy?</li>
+<li>Does it provide competitive advantage?</li>
+<li>Is it the right time for this project?</li>
+<li>What happens if we <em>don't</em> do it?</li>
+</ul>
+<p><strong>Link from old notes (the bit that fits here):</strong></p>
+<ul>
+<li>Step 1.2 of project planning: &quot;Establish a project authority&quot; → ensures unity of purpose.</li>
+<li>Step 1.3: &quot;Identify all stakeholders and their interests&quot; → a strategic project must serve stakeholder goals.</li>
+<li>Step 2.1: &quot;Identify relationship between project and strategic planning&quot; → where does this project fit among all other projects in the organisation?</li>
+</ul>
+<p><strong>Simple example</strong>: A small college wants to build an AI-powered student counselling chatbot. Technically possible, financially cheap, but strategically misaligned — their real priority is fixing the broken enrolment system. Project fails strategic assessment.</p>
+<hr>
+<h3 id="3-technical-assessment"><strong>3. TECHNICAL ASSESSMENT</strong></h3>
+<p>Technical assessment asks: <strong>&quot;Do we have the capability to build and run this system?&quot;</strong></p>
+<p><strong>Areas assessed:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Area</strong></th>
+<th><strong>Key Question</strong></th>
+<th><strong>Risk if Not Checked</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hardware</strong></td>
+<td>Are servers, network, devices available?</td>
+<td>System cannot be deployed.</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td>Do we have the required development tools, databases, licenses?</td>
+<td>Development stalls.</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Does the team have the right expertise?</td>
+<td>Poor quality product.</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td>Does the existing IT environment support the new system?</td>
+<td>Integration failure.</td>
+</tr>
+<tr>
+<td><strong>Operational fit</strong></td>
+<td>Will the organisation be able to use and maintain it?</td>
+<td>System goes unused.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simple example</strong>: A project to build a mobile banking app fails technical assessment because the bank's legacy mainframe cannot expose APIs that the app needs to consume.</p>
+<p><strong>Link from old notes</strong>: Step 2.2 &quot;Identify installation standards and procedures&quot; → ensures technical standards are followed. Step 3.5 &quot;Select general lifecycle approach&quot; → technical constraints may dictate waterfall vs agile.</p>
+<hr>
+<h3 id="4-economic-analysis-the-main-focus"><strong>4. ECONOMIC ANALYSIS (The main focus)</strong></h3>
+<p>This is the financial mathematics part. Every method here compares <strong>cash inflows (benefits)</strong> vs <strong>cash outflows (costs)</strong> over time, accounting for the <strong>time value of money</strong>.</p>
+<blockquote>
+<p><strong>Core concept</strong>: Money today is worth more than money tomorrow (because today's money can earn interest).</p>
+</blockquote>
+<p><strong>Glossary of symbols you'll use throughout:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Symbol</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P</strong></td>
+<td>Present worth (value at time = 0)</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>Future worth (value at time = n)</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Annual worth (equal amount recurring each period)</td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td>Uniform gradient (amount increasing by constant G each period)</td>
+</tr>
+<tr>
+<td><strong>i</strong></td>
+<td>Interest rate per period (decimal form, e.g., 10% = 0.10)</td>
+</tr>
+<tr>
+<td><strong>n</strong></td>
+<td>Number of periods (usually years)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="41-present-worth-pw-analysis"><strong>4.1 Present Worth (PW) Analysis</strong></h3>
+<p><strong>Concept</strong>: Convert all future cash flows (inflows and outflows) to their equivalent value <em>right now</em> (time zero). The sum is the Net Present Worth (NPW) or Net Present Value (NPV).</p>
+<p><strong>Formula</strong>:</p>
+<div class="formula-block"><i>P</i> = <i>F</i>(1+<i>i</i>)<sup>-<i>n</i></sup>   <span class="f-text">(Single future amount → Present)</span></div><div class="formula-block"><i>P</i> = <i>A</i> · ((1+<i>i</i>)<sup>n</sup> - 1)/(<i>i</i>(1+<i>i</i>)<sup>n</sup>)   <span class="f-text">(Annual series → Present)</span></div><p><strong>Decision Rule</strong>:</p>
+<ul>
+<li><strong>NPW &gt; 0</strong> → Project is financially acceptable (earns more than minimum required return).</li>
+<li><strong>NPW &lt; 0</strong> → Reject.</li>
+<li>For comparing alternatives → choose the one with <strong>highest positive NPW</strong>.</li>
+</ul>
+<figure><img src="images/figure02-cash-flow-present-worth.svg" alt="Cash Flow Diagram Present Worth">
+<figcaption>Figure: Cash Flow Diagram for Present Worth</figcaption></figure>
+<p><strong>Simple example</strong>: Invest Rs 1,00,000 now (P). Get Rs 40,000 per year for 3 years (A). Interest rate 10%.</p>
+<ul>
+<li>PW of inflows = 40,000 × [(1.1³ – 1) / (0.1 × 1.1³)] = 40,000 × 2.487 = Rs 99,480</li>
+<li>NPW = 99,480 – 1,00,000 = <strong>– Rs 520</strong> → Reject (just below zero).</li>
+</ul>
+<hr>
+<h3 id="42-future-worth-fw-analysis"><strong>4.2 Future Worth (FW) Analysis</strong></h3>
+<p><strong>Concept</strong>: Convert all cash flows to their equivalent value at the <em>end</em> of the project's life (time n). Then compare.</p>
+<p><strong>Formula</strong>:</p>
+<div class="formula-block"><i>F</i> = <i>P</i>(1+<i>i</i>)<sup>n</sup>   <span class="f-text">(Single present amount → Future)</span></div><div class="formula-block"><i>F</i> = <i>A</i> · ((1+<i>i</i>)<sup>n</sup> - 1)/(<i>i</i>)   <span class="f-text">(Annual series → Future)</span></div><p><strong>Decision Rule</strong>:</p>
+<ul>
+<li>If FW of benefits &gt; FW of costs → Accept.</li>
+<li>For comparing alternatives → choose the one with <strong>highest net future worth</strong>.</li>
+</ul>
+<p><strong>Simple example</strong>: Same project as above. Find F worth of the Rs 1,00,000 investment after 3 years at 10%.</p>
+<ul>
+<li>F of investment = 1,00,000 × (1.1)³ = 1,33,100</li>
+<li>F of inflows = 40,000 × [(1.1³ – 1) / 0.1] = 40,000 × 3.31 = 1,32,400</li>
+<li>Net FW = 1,32,400 – 1,33,100 = <strong>– Rs 700</strong> → Reject. (Same decision as PW, just at a different point in time.)</li>
+</ul>
+<hr>
+<h3 id="43-annual-worth-aw-analysis"><strong>4.3 Annual Worth (AW) Analysis</strong></h3>
+<p><strong>Concept</strong>: Spread all cash flows (lumpy investments and returns) into an equivalent <strong>equal annual amount</strong> over the project life. This makes comparison easy, especially for projects with different lifetimes.</p>
+<p><strong>Formula</strong>:</p>
+<div class="formula-block"><i>A</i> = <i>P</i> · (<i>i</i>(1+<i>i</i>)<sup>n</sup>)/((1+<i>i</i>)<sup>n</sup> - 1)   <span class="f-text">(Present worth → Annual series)</span></div><div class="formula-block"><i>A</i> = <i>F</i> · (<i>i</i>)/((1+<i>i</i>)<sup>n</sup> - 1)   <span class="f-text">(Future worth → Annual series)</span></div><p><strong>Decision Rule</strong>:</p>
+<ul>
+<li>If Net Annual Worth &gt; 0 → Accept.</li>
+<li>For comparing alternatives → choose the one with <strong>highest equivalent annual worth</strong>.</li>
+</ul>
+<p><strong>Simple example</strong>: A machine costs Rs 5,00,000 today (P), lasts 5 years, has annual maintenance cost of Rs 20,000. Interest 12%.</p>
+<ul>
+<li>
+<p>Annual cost of initial investment = 5,00,000 × [ (0.12 × 1.12⁵) / (1.12⁵ – 1) ] = 5,00,000 × 0.2774 = Rs 1,38,700</p>
+</li>
+<li>
+<p>Total annual cost = 1,38,700 + 20,000 = <strong>Rs 1,58,700 per year</strong>.</p>
+<p>This is the uniform annual cost of owning and operating the machine.</p>
+</li>
+</ul>
+<hr>
+<h3 id="44-internal-rate-of-return-irr-method"><strong>4.4 Internal Rate of Return (IRR) Method</strong></h3>
+<p><strong>Concept</strong>: The IRR is the discount rate (i) at which the <strong>Net Present Worth becomes exactly zero</strong>. It represents the project's actual rate of return.</p>
+<p><strong>Formula (conceptual)</strong>:</p>
+<p>Solve for i where:</p>
+<div class="formula-block"><span class="f-text">PW</span><sub><span class="f-text">inflows</span></sub> - <span class="f-text">PW</span><sub><span class="f-text">outflows</span></sub> = 0</div><p>This usually requires trial-and-error or interpolation:</p>
+<div class="formula-block">IRR = <i>i</i>_1 + (NPW_1)/(NPW_1 - NPW_2) × (<i>i</i>_2 - <i>i</i>_1)</div><p>Where: i₁ = lower rate giving positive NPW; i₂ = higher rate giving negative NPW.</p>
+<p><strong>Decision Rule</strong>:</p>
+<ul>
+<li><strong>IRR &gt; Minimum Acceptable Rate of Return (MARR)</strong> → Accept.</li>
+<li><strong>IRR &lt; MARR</strong> → Reject.</li>
+</ul>
+<p><strong>Simple example</strong>: Invest Rs 10,000 now. Get Rs 12,000 after 2 years.</p>
+<ul>
+<li>Try i = 9%: PW = –10,000 + 12,000 / (1.09)² = –10,000 + 10,100 = +100 (positive)</li>
+<li>Try i = 10%: PW = –10,000 + 12,000 / (1.10)² = –10,000 + 9,917 = –83 (negative)</li>
+<li>IRR ≈ 9% + [100 / (100 + 83)] × 1% = 9.55% → If MARR is 8%, accept.</li>
+</ul>
+<hr>
+<h3 id="45-benefit-cost-ratio-bcr-analysis"><strong>4.5 Benefit-Cost Ratio (BCR) Analysis</strong></h3>
+<p><strong>Concept</strong>: Ratio of all discounted benefits to all discounted costs.</p>
+<p><strong>Formula</strong>:</p>
+<div class="formula-block">BCR = (<span class="f-text">PW of Benefits</span>)/(<span class="f-text">PW of Costs</span>)</div><p>Or equivalently:</p>
+<div class="formula-block">BCR = (<span class="f-text">Equivalent Annual Benefits</span>)/(<span class="f-text">Equivalent Annual Costs</span>)</div><p><strong>Decision Rule</strong>:</p>
+<ul>
+<li><strong>BCR &gt; 1</strong> → Benefits exceed costs → Accept.</li>
+<li><strong>BCR = 1</strong> → Break even.</li>
+<li><strong>BCR &lt; 1</strong> → Reject.</li>
+<li>For comparing alternatives → higher BCR is generally better, but care needed when project scales differ.</li>
+</ul>
+<p><strong>Simple example</strong>: A road project costs Rs 50 crore today. Benefits over 10 years have a PW of Rs 70 crore.</p>
+<ul>
+<li>BCR = 70 / 50 = <strong>1.4</strong> → Accept. For every Rs 1 spent, society gains Rs 1.40 in value.</li>
+</ul>
+<hr>
+<h3 id="46-uniform-gradient-cash-flow"><strong>4.6 Uniform Gradient Cash Flow</strong></h3>
+<p><strong>Concept</strong>: Not all recurring cash flows are equal. Some increase or decrease by a <strong>constant amount (G)</strong> each period. For example, maintenance costs that rise by Rs 5,000 every year.</p>
+<figure><img src="images/figure03-uniform-gradient-cashflow.png" alt="Uniform Gradient Cash Flow">
+<figcaption>Figure: Uniform Gradient Cash Flow</figcaption></figure>
+<p><strong>Conversion formulas</strong> (gradient to present, then to annual):</p>
+<div class="formula-block"><i>P</i> = <i>G</i> · ((1+<i>i</i>)<sup>n</sup> - <i>i</i> <i>n</i> - 1)/(<i>i</i><sup>2</sup>(1+<i>i</i>)<sup>n</sup>)   <span class="f-text">(Gradient series → Present Worth)</span></div><div class="formula-block"><i>A</i> = <i>G</i> · ( (1)/(<i>i</i>) - (<i>n</i>)/((1+<i>i</i>)<sup>n</sup> - 1) )   <span class="f-text">(Gradient series → Annual Worth)</span></div><p><strong>Decision Use</strong>: Use these formulas to convert a gradient series into an equivalent P or A, then plug into the PW, AW, or BCR method as needed.</p>
+<p><strong>Simple example</strong>: Maintenance cost is Rs 10,000 in Year 1, increasing by Rs 2,000 each year for 5 years (G = 2,000). Interest = 10%.</p>
+<ul>
+<li>Convert the gradient to equivalent annual cost:</li>
+<li>A = 2,000 × [ 1/0.1 – 5 / (1.1⁵ – 1) ] = 2,000 × [ 10 – 5/0.6105 ] = 2,000 × [ 10 – 8.19 ] = 2,000 × 1.81 = Rs 3,620</li>
+<li>Total equivalent annual cost = Base 10,000 + Gradient equivalent 3,620 = <strong>Rs 13,620 per year</strong>.</li>
+</ul>
+<hr>
+<h3 id="47-comparison-of-mutually-exclusive-alternatives"><strong>4.7 Comparison of Mutually Exclusive Alternatives</strong></h3>
+<p>When you must choose <strong>only one</strong> from several options (e.g., selecting one vendor, one machine, one location), you compare them on equal footing.</p>
+<p><strong>Key principle</strong>: Compare using the <strong>same method</strong> and the <strong>same time horizon</strong>.</p>
+<p><strong>Methods for comparison (in order of reliability)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>How to Apply</strong></th>
+<th><strong>Watch Out For</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Net PW</strong></td>
+<td>Compute NPW for each alternative. Choose the one with <strong>highest positive NPW</strong>.</td>
+<td>Must use same number of periods. If lives differ, use least common multiple (LCM) or AW instead.</td>
+</tr>
+<tr>
+<td><strong>Annual Worth</strong></td>
+<td>Compute AW for each alternative. Choose the one with <strong>best AW</strong> (highest for benefits, lowest for costs).</td>
+<td>This is the cleanest method when alternatives have different lives — no need for LCM.</td>
+</tr>
+<tr>
+<td><strong>IRR</strong></td>
+<td>Compute IRR for each. The one with highest IRR may not be the best NPW choice. Use <strong>Incremental IRR</strong> analysis: compare the difference between two projects.</td>
+<td>Never rank by IRR alone. Always do incremental analysis.</td>
+</tr>
+<tr>
+<td><strong>BCR</strong></td>
+<td>Compute BCR for each. Higher is better, but scale matters.</td>
+<td>A tiny project can have a huge BCR but tiny absolute benefit. Use alongside NPW.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step-by-step: Incremental IRR (when two projects have different IRRs)</strong></p>
+<ol>
+<li>Order alternatives from lowest to highest initial cost.</li>
+<li>Compute IRR of the cheaper one. If IRR &gt; MARR, it qualifies as baseline.</li>
+<li>Compute the <strong>incremental cash flows</strong>: (Costlier – Cheaper) for each year.</li>
+<li>Compute IRR of the incremental cash flows.</li>
+<li>If <strong>Incremental IRR &gt; MARR</strong> → choose the costlier one (extra investment is justified).</li>
+<li>If <strong>Incremental IRR &lt; MARR</strong> → choose the cheaper one.</li>
+</ol>
+<p><strong>Simple example</strong>: Two machines, MARR = 10%.</p>
+<ul>
+<li>Machine A: Cost 1,00,000; Annual saving 20,000; Life 5 years.</li>
+<li>Machine B: Cost 1,50,000; Annual saving 32,000; Life 5 years.</li>
+<li>Incremental cost: 50,000; Incremental saving: 12,000/year.</li>
+<li>Find IRR of incremental: Try i = 20%: PW = –50,000 + 12,000 × [(1.2⁵–1)/(0.2×1.2⁵)] = –50,000 + 12,000 × 2.99 = –50,000 + 35,880 = –14,120 (negative). Try i = 6%: PW = –50,000 + 12,000 × 4.212 = +544 (positive).</li>
+<li>Incremental IRR ≈ 6.5%. Since 6.5% &lt; MARR (10%), the extra investment in B is NOT justified → <strong>Choose Machine A</strong>.</li>
+</ul>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Explain the importance of performing strategic assessment and technical assessment. <em>(2082, 2080)</em> [5]</li>
+ <li>Define Break Even Point and Internal Rate of Return. Calculate payback period and ROI for the following project. <em>(2082)</em> [10]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-50000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>25000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>30000</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>Suppose the cost price of 1 piece of USB drive is Rs. 1000. You bought 1000 pieces and also paid Rs 2000 as a delivery charge. Calculate ROI if you would sell those USB drives for Rs. 1500 per piece. <em>(2081)</em> [5]</li>
+ <li>Why do you think economic analysis is an important activity? Explain the terms present worth, future worth and annual worth. Illustrate on uniform gradient cash flow. <em>(2081)</em> [10]</li>
+ <li>Elaborate on the issues and questions to be considered during strategic assessment. List the categories of direct cost and benefits and provide two examples of each. <em>(2080)</em> [10]</li>
+ <li>Write short notes on: Future worth, Bubble chart. <em>(2080)</em> [5]</li>
+ <li>Perform Earned Value Analysis of the given project. <em>(2080)</em> [10]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (days)</th>
+<th>Precedence</th>
+<th>Cost/day (Rs.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>----------------</td>
+<td>------------</td>
+<td>----------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>6</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr>
+<td>B</td>
+<td>6</td>
+<td>A</td>
+<td>100</td>
+</tr>
+<tr>
+<td>C</td>
+<td>8</td>
+<td>B</td>
+<td>200</td>
+</tr>
+<tr>
+<td>D</td>
+<td>4</td>
+<td>B</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p>Progress after end of 16th day:</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>% Completion</th>
+<th>Incurred Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-------------</td>
+<td>---------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>100</td>
+<td>800</td>
+</tr>
+<tr>
+<td>B</td>
+<td>100</td>
+<td>400</td>
+</tr>
+<tr>
+<td>C</td>
+<td>25</td>
+<td>500</td>
+</tr>
+<tr>
+<td>D</td>
+<td>50</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate SV, SPI, CV and CPI respectively.</p>
+<ol>
+ <li>Calculate discounted payback period for the following project. <em>(2080)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>–200,000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>50,000</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>Explain why discounted cash flow techniques provide better criteria for project selection than net profit or return on investment. Highlight on the applicability of IRR with respect to NPV. How can it be calculated manually? <em>(2079)</em> [10]</li>
+ <li>Which project would you choose from the following projects and why? <em>(2079)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Project A</th>
+<th>Project B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>------</td>
+<td>-----------</td>
+<td>-----------</td>
+</tr>
+<tr>
+<td>0</td>
+<td>-40,000</td>
+<td>-80,000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5,000</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15,000</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5,000</td>
+<td>70,000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>40,000</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>50,000</td>
+<td>50,000</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>Calculate ROI for the following project. <em>(2078)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-50000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>20,000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>40,000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>50,000</td>
+</tr>
+</tbody>
+</table>
+</section>
+<h2 id="unit-3-activity-planning-and-scheduling"><strong>UNIT 3: ACTIVITY PLANNING AND SCHEDULING</strong></h2>
+<hr>
+<h3 id="1-objectives-of-activity-planning"><strong>1. OBJECTIVES OF ACTIVITY PLANNING</strong></h3>
+<p>Activity planning tells you <strong>what to do, when to do it, and in what order</strong>. The main objectives are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Objective</strong></th>
+<th><strong>What it means</strong></th>
+<th><strong>Simple example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Feasibility assessment</strong></td>
+<td>Is the project possible within the given time and resource limits?</td>
+<td>Can we deliver the library management system before the new academic session?</td>
+</tr>
+<tr>
+<td><strong>Resource allocation</strong></td>
+<td>What resources (people, equipment) are needed and when?</td>
+<td>Need two Java developers in Phase 2, not from day one.</td>
+</tr>
+<tr>
+<td><strong>Detailed costing</strong></td>
+<td>How much will the project cost, and when will we spend the money?</td>
+<td>Pay licences in Month 1, pay testers in Month 4.</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>Clear targets with deadlines motivate the team, especially if they helped set those targets.</td>
+<td>Developer commits to finishing the login module by Friday.</td>
+</tr>
+<tr>
+<td><strong>Co-ordination</strong></td>
+<td>When do different teams or departments need to be available and when can they leave?</td>
+<td>Database team needed from Week 2 to Week 5; then they move to another project.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key idea</strong>: Planning is not a one-time event. It is an ongoing process — you refine the plan as you get more information.</p>
+</blockquote>
+<hr>
+<h3 id="2-work-breakdown-structure-wbs"><strong>2. WORK BREAKDOWN STRUCTURE (WBS)</strong></h3>
+<p><strong>Definition</strong>: A hierarchical decomposition of the entire project scope into smaller, manageable pieces. The lowest level is called a <strong>work package</strong> — small enough to assign to a single person or small team.</p>
+<p><strong>Structure</strong> (IBM’s 5-level approach, from old notes):</p>
+<figure><img src="images/figure17-wbs-hierarchy.svg" alt="WBS Hierarchy"></figure>
+<p><em>Simple example – Payroll Project:</em></p>
+<ul>
+<li>Level 1: Payroll System
+<ul>
+<li>Level 2: Software, User Manual, Training Material
+<ul>
+<li>Level 3 (Software): Employee Module, Salary Calculation Module, Report Module
+<ul>
+<li>Level 4 (Employee Module): Database design, Input screens, CRUD operations
+<ul>
+<li>Level 5: &quot;Create employee table&quot;, &quot;Build add-employee form&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Why WBS is essential</strong>:</p>
+<ul>
+<li>It identifies <em>all</em> activities needed (nothing is forgotten).</li>
+<li>It helps estimate effort, assign responsibilities, and track progress.</li>
+<li>It is the foundation for building the schedule and network model.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: Activity planning can also start from a Product Breakdown Structure (PBS) and Product Flow Diagram (PFD), but WBS is the most common and the one your syllabus explicitly names. Think of WBS as the skeleton of your plan.</p>
+</blockquote>
+<hr>
+<h3 id="3-bar-chart-gantt-chart"><strong>3. BAR CHART (GANTT CHART)</strong></h3>
+<p>A bar chart is a simple visual schedule. Activities are listed down the left, a time scale runs across the top, and horizontal bars show the start and end of each activity.</p>
+<figure><img src="images/figure04-basic-gantt-chart.png" alt="Basic Bar Chart Gantt">
+<figcaption>Figure: Basic Bar Chart (Gantt Chart)</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>Activity | Week 1 | Week 2 | Week 3 | Week 4 | Week 5 |
+---------------|--------|--------|--------|--------|--------|
+A: Requirements|████████| | | | |
+B: Design | |████████| | | |
+C: Coding | | |████████|████ | |
+D: Testing | | | | ██████|████ |
+</div></code></pre>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Very easy to understand.</li>
+<li>Good for communicating the schedule to stakeholders.</li>
+<li>Shows start, end, and duration at a glance.</li>
+</ul>
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Does <strong>not</strong> clearly show dependencies between activities (e.g., B depends on A).</li>
+<li>Does not show which activities are critical.</li>
+</ul>
+<p>That is why we move to network models.</p>
+<hr>
+<h3 id="4-network-planning-models"><strong>4. NETWORK PLANNING MODELS</strong></h3>
+<p>Network models represent activities and their dependencies as a graph. They allow us to calculate timings and find the <strong>critical path</strong>.</p>
+<p>The three models you must know:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Model</strong></th>
+<th><strong>Key Characteristic</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CPM</strong> (Critical Path Method)</td>
+<td>Deterministic – activity durations are known, single values.</td>
+</tr>
+<tr>
+<td><strong>PERT</strong> (Program Evaluation &amp; Review Technique)</td>
+<td>Probabilistic – activity durations are uncertain, use three time estimates.</td>
+</tr>
+<tr>
+<td><strong>PDM</strong> (Precedence Diagramming Method)</td>
+<td>Uses nodes for activities and allows <strong>four types of dependencies</strong> with lags.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="41-critical-path-method-cpm"><strong>4.1 Critical Path Method (CPM)</strong></h3>
+<p><strong>When to use</strong>: Routine projects where activity times are known from past experience.</p>
+<p><strong>Key terms for each activity</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Symbol</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Obtained by</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ES</strong></td>
+<td>Earliest Start</td>
+<td>Forward Pass</td>
+</tr>
+<tr>
+<td><strong>EF</strong></td>
+<td>Earliest Finish</td>
+<td>ES + Duration</td>
+</tr>
+<tr>
+<td><strong>LS</strong></td>
+<td>Latest Start</td>
+<td>Backward Pass</td>
+</tr>
+<tr>
+<td><strong>LF</strong></td>
+<td>Latest Finish</td>
+<td>LS + Duration</td>
+</tr>
+<tr>
+<td><strong>Float (Slack)</strong></td>
+<td>Amount of delay allowed without delaying the project</td>
+<td>LS - ES (or LF - EF)</td>
+</tr>
+<tr>
+<td><strong>Critical Path</strong></td>
+<td>The path through the network where <strong>Float = 0</strong> for all activities</td>
+<td>After forward &amp; backward pass</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Steps to apply CPM</strong>:</p>
+<ol>
+<li>List all activities and their durations.</li>
+<li>Draw the network diagram (Activity-on-Node or Activity-on-Arrow). For simplicity, we use <strong>Activity-on-Node</strong> (each node is an activity, arrows show dependencies).</li>
+<li><strong>Forward Pass</strong> – Calculate ES and EF for every activity.
+<ul>
+<li>ES of first activity = 0.</li>
+<li>EF = ES + Duration.</li>
+<li>For a successor: ES = maximum EF of all its predecessors.</li>
+</ul>
+</li>
+<li><strong>Backward Pass</strong> – Calculate LF and LS.
+<ul>
+<li>LF of last activity = its EF (or project deadline).</li>
+<li>LS = LF – Duration.</li>
+<li>For a predecessor: LF = minimum LS of all its successors.</li>
+</ul>
+</li>
+<li>Compute Float = LS – ES for each activity.</li>
+<li>Identify the Critical Path: all activities with Float = 0.</li>
+</ol>
+<figure><img src="images/figure05-simple-cpm-network.svg" alt="Simple CPM Network">
+<figcaption>Figure: Simple CPM Network (Activity-on-Node)</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div> [A] [C]
+ (2 days) (3 days)
+ / \
+Start -- &gt;-- End
+ \ /
+ [B] [D]
+ (4 days) (2 days)
+</div></code></pre>
+<p><em>Precedence</em>: A must finish before C; B must finish before D; C and D finish the project.</p>
+<p><strong>Example Calculation</strong>:</p>
+<p>Activity durations: A=2, B=4, C=3, D=2.</p>
+<ul>
+<li>Forward pass:
+<ul>
+<li>A: ES=0, EF=2</li>
+<li>B: ES=0, EF=4</li>
+<li>C: ES=EF(A)=2, EF=2+3=5</li>
+<li>D: ES=EF(B)=4, EF=4+2=6</li>
+<li>Project EF = max(5,6) = 6 days.</li>
+</ul>
+</li>
+<li>Backward pass (project LF=6):
+<ul>
+<li>D: LF=6, LS=6-2=4</li>
+<li>C: LF=6, LS=6-3=3</li>
+<li>B: LF=LS(D)=4, LS=4-4=0</li>
+<li>A: LF=LS(C)=3, LS=3-2=1</li>
+</ul>
+</li>
+<li>Float: A: 1-0=1 (non-critical). B: 0-0=0 (critical). C: 3-2=1 (non-critical). D: 4-4=0 (critical).</li>
+<li><strong>Critical Path</strong>: <strong>B → D</strong>. Project duration = 6 days.</li>
+</ul>
+<hr>
+<h3 id="42-program-evaluation-and-review-technique-pert"><strong>4.2 Program Evaluation and Review Technique (PERT)</strong></h3>
+<p><strong>When to use</strong>: Projects with uncertainty, where activity durations are hard to predict (e.g., R&amp;D projects).</p>
+<p><strong>Three time estimates per activity</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Estimate</strong></th>
+<th><strong>Symbol</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimistic</td>
+<td>O</td>
+<td>Best-case scenario, everything goes right.</td>
+</tr>
+<tr>
+<td>Most Likely</td>
+<td>M</td>
+<td>Normal conditions, most realistic.</td>
+</tr>
+<tr>
+<td>Pessimistic</td>
+<td>P</td>
+<td>Worst-case scenario, everything goes wrong.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formulas</strong>:</p>
+<div class="formula-block">TE = (<i>O</i> + 4<i>M</i> + <i>P</i>)/(6)   <span class="f-text">(Expected Time)</span></div><div class="formula-block">σ = (<i>P</i> - <i>O</i>)/(6)   <span class="f-text">(Standard Deviation)</span></div><div class="formula-block">σ<sup>2</sup> = ((<i>P</i> - <i>O</i>)/(6))<sup>2</sup>   <span class="f-text">(Variance)</span></div><p><strong>Project duration and probability</strong>:</p>
+<ul>
+<li>Project expected time = Sum of TE along the critical path.</li>
+<li>Project variance = Sum of variances along the critical path.</li>
+<li>To find probability of finishing within a target deadline T:</li>
+</ul>
+<div class="formula-block"><i>Z</i> = {<i>T</i> - TE<sub><span class="f-text">project</span></sub>}{{σ<sup>2</sup><sub><span class="f-text">project</span></sub>}}</div><p>Look up Z in the standard normal distribution table. A Z=1.0 means ~84% probability; Z=0 means 50%.</p>
+<p><strong>Simple example</strong>: Activity X: O=3, M=5, P=13</p>
+<ul>
+<li>TE = (3 + 4×5 + 13)/6 = (3+20+13)/6 = 36/6 = 6 days.</li>
+<li>σ = (13-3)/6 = 10/6 ≈ 1.67 days.</li>
+<li>If X is the only critical activity, probability of finishing in 7 days: Z = (7-6)/1.67 ≈ 0.6 → ~73%.</li>
+</ul>
+<blockquote>
+<p><strong>Exam tip</strong>: CPM is deterministic (single duration), PERT is probabilistic (three estimates). Use CPM when past data exists, PERT when there is high uncertainty.</p>
+</blockquote>
+<hr>
+<h3 id="43-precedence-diagramming-method-pdm"><strong>4.3 Precedence Diagramming Method (PDM)</strong></h3>
+<p>PDM is a more flexible network model used by modern scheduling software (e.g., MS Project). It uses <strong>Activity-on-Node</strong> representation and allows <strong>four types of dependencies</strong> (relationships) with <strong>lags</strong>.</p>
+<p><strong>Four Dependency Types</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Abbreviation</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Finish-to-Start</strong></td>
+<td>FS</td>
+<td>Successor cannot start until predecessor finishes (standard CPM relationship).</td>
+<td>Testing (B) cannot start until coding (A) finishes.</td>
+</tr>
+<tr>
+<td><strong>Start-to-Start</strong></td>
+<td>SS</td>
+<td>Successor cannot start until predecessor has started (with possible lag).</td>
+<td>Design documentation (B) can start 2 days after design (A) has started.</td>
+</tr>
+<tr>
+<td><strong>Finish-to-Finish</strong></td>
+<td>FF</td>
+<td>Successor cannot finish until predecessor finishes (with possible lag).</td>
+<td>System integration (B) cannot finish until module testing (A) finishes + 1 day for final checks.</td>
+</tr>
+<tr>
+<td><strong>Start-to-Finish</strong></td>
+<td>SF</td>
+<td>Successor cannot finish until predecessor starts (rare).</td>
+<td>Security guard duty (B) cannot finish until night shift (A) starts.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lags</strong>: A positive or negative time offset applied to a dependency.</p>
+<ul>
+<li><strong>+ Lag</strong>: A delay (e.g., “start B 3 days after A finishes”).</li>
+<li><strong>– Lag (lead)</strong>: An overlap (e.g., “start B 2 days before A finishes”).</li>
+</ul>
+<figure><img src="images/figure06-pdm-ss-lag.png" alt="PDM SS Lag">
+<figcaption>Figure: PDM with SS + Lag</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>[A: Design] ----(SS + 2 days)----&gt; [B: Write User Manual]
+</div></code></pre>
+<p>Meaning: B (manual writing) can start 2 days after A (design) has started.</p>
+<p><strong>Why PDM is important</strong>:</p>
+<ul>
+<li>Reflects real-world overlaps (e.g., coding can start before design is 100% complete).</li>
+<li>Much more realistic than simple Finish-to-Start only.</li>
+<li>Used in almost all professional project scheduling tools today.</li>
+</ul>
+<hr>
+<h3 id="5-identifying-critical-activities"><strong>5. IDENTIFYING CRITICAL ACTIVITIES</strong></h3>
+<p><strong>Critical activities</strong> are those that <strong>directly affect the project end date</strong>. Any delay in a critical activity delays the whole project.</p>
+<p><strong>How to identify</strong>:</p>
+<ol>
+<li>Perform forward and backward pass (CPM or PERT) for each activity.</li>
+<li>Calculate <strong>Total Float</strong> = LS – ES.</li>
+<li>Activities with <strong>Total Float = 0</strong> are critical.</li>
+<li>The sequence of critical activities forms the <strong>Critical Path</strong>.</li>
+</ol>
+<p><em>From the CPM example earlier</em>:</p>
+<ul>
+<li>A: Float = 1 → not critical.</li>
+<li>B: Float = 0 → <strong>critical</strong>.</li>
+<li>C: Float = 1 → not critical.</li>
+<li>D: Float = 0 → <strong>critical</strong>.</li>
+<li>Critical path: B → D.</li>
+</ul>
+<p><strong>Why this matters</strong>:</p>
+<ul>
+<li>You know exactly where to focus management attention.</li>
+<li>If you need to shorten the project, you must shorten critical activities first.</li>
+<li>Non-critical activities have some slack — they can be delayed without harming the project end date (within their float).</li>
+</ul>
+<hr>
+<h3 id="6-shortening-project-duration"><strong>6. SHORTENING PROJECT DURATION</strong></h3>
+<p>When the calculated project end date is too late, you must compress the schedule. Two main methods:</p>
+<p><strong>A. Crashing</strong></p>
+<ul>
+<li>Add extra resources to critical activities to reduce their duration.</li>
+<li><strong>Cost increases</strong>, but time decreases.</li>
+<li>Works only for activities that can be sped up by adding people/equipment (not all activities are &quot;crashable&quot; — e.g., &quot;waiting for concrete to cure&quot;).</li>
+<li>Always recalculate the critical path after crashing, because a new path may become critical.</li>
+</ul>
+<p><em>Simple example</em>: A critical coding activity takes 10 days with 1 developer. Adding a second developer might reduce it to 6 days, but at extra cost.</p>
+<p><strong>B. Fast-Tracking</strong></p>
+<ul>
+<li>Overlap activities that were originally planned in sequence (i.e., start a successor before the predecessor finishes).</li>
+<li><strong>Risk increases</strong> (rework may be needed if predecessor changes), but time decreases.</li>
+<li>Often implemented using PDM with negative lags or SS dependencies.</li>
+</ul>
+<p><em>Simple example</em>: Start testing modules while the remaining modules are still being coded, instead of waiting for all coding to finish.</p>
+<p><strong>General process</strong>:</p>
+<ol>
+<li>Identify the critical path.</li>
+<li>Examine which critical activities can be crashed or overlapped.</li>
+<li>Pick the most cost-effective and risk-manageable option.</li>
+<li>Update the network and repeat if necessary.</li>
+</ol>
+<hr>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Draw precedence network diagram for the following activities and find the critical path. Indicate the process for shortening the project duration. <em>(2081)</em> [10]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (Week)</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>----------------</td>
+<td>------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1</td>
+<td>–</td>
+</tr>
+<tr>
+<td>B</td>
+<td>2</td>
+<td>A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>5</td>
+<td>A</td>
+</tr>
+<tr>
+<td>D</td>
+<td>2</td>
+<td>–</td>
+</tr>
+<tr>
+<td>E</td>
+<td>4</td>
+<td>C, D</td>
+</tr>
+<tr>
+<td>F</td>
+<td>3</td>
+<td>–</td>
+</tr>
+<tr>
+<td>G</td>
+<td>4</td>
+<td>B, E, F</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>What are the objectives that activity planning aims to achieve? <em>(2080)</em> [5]</li>
+ <li>Draw precedence network diagram for the following and identify the critical path. <em>(2080)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (weeks)</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-----------------</td>
+<td>------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>B</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>C</td>
+<td>4</td>
+<td>A</td>
+</tr>
+<tr>
+<td>D</td>
+<td>2</td>
+<td>B</td>
+</tr>
+<tr>
+<td>E</td>
+<td>4</td>
+<td>B, D</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>Draw CPM network diagram for the following and identify the critical path. <em>(2079)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (weeks)</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-----------------</td>
+<td>------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>B</td>
+<td>4</td>
+<td>A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>A</td>
+</tr>
+<tr>
+<td>D</td>
+<td>6</td>
+<td>B, C</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>Draw precedence network diagram for the following and identify the critical path. <em>(2078)</em> [5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (Weeks)</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-----------------</td>
+<td>------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>-</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3</td>
+<td>A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>5</td>
+<td>A</td>
+</tr>
+<tr>
+<td>D</td>
+<td>10</td>
+<td>B, C</td>
+</tr>
+</tbody>
+</table>
+<ol>
+ <li>What are different stages required to create a project schedule? <em>(2079)</em> [5]</li>
+ <li>Differentiate between activity-based approach and hybrid-based approach for identifying activities. <em>(2078)</em> [5]</li>
+</ol>
+</section>
+<h2 id="unit-4-risk-management"><strong>UNIT 4: RISK MANAGEMENT</strong></h2>
+<hr>
+<h3 id="1-introduction-to-risk-management"><strong>1. INTRODUCTION TO RISK MANAGEMENT</strong></h3>
+<p><strong>Risk</strong> – The possibility that something will happen that harms the project’s objectives (time, cost, quality).</p>
+<p><strong>Risk Management</strong> – A systematic process of identifying, analysing, and controlling risks before they become problems.</p>
+<p>It answers three core questions:</p>
+<ul>
+<li>What can go wrong?</li>
+<li>How likely is it, and how bad will it be?</li>
+<li>What can we do about it?</li>
+</ul>
+<hr>
+<h3 id="2-nature-of-risk"><strong>2. NATURE OF RISK</strong></h3>
+<p>Understanding the nature of risk helps you categorise and respond to it correctly.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Explanation</strong></th>
+<th><strong>Simple Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Risk vs. Uncertainty</strong></td>
+<td>Risk = you can predict probability and impact. Uncertainty = you cannot even guess.</td>
+<td>Risk: 30% chance a key developer leaves (known event). Uncertainty: a new technology might appear next year and make your project obsolete.</td>
+</tr>
+<tr>
+<td><strong>Negative vs. Positive Risk</strong></td>
+<td>Most risks are threats (negative). Some are opportunities (positive).</td>
+<td>Threat: server delivery delayed. Opportunity: a new tool could reduce testing time.</td>
+</tr>
+<tr>
+<td><strong>Known vs. Unknown Risks</strong></td>
+<td>Known = identified in advance. Unknown = emerge unexpectedly.</td>
+<td>Known: integration bugs. Unknown: sudden regulatory change.</td>
+</tr>
+<tr>
+<td><strong>Business vs. Project Risk</strong></td>
+<td>Business: risk to the organisation’s benefit. Project: risk to project delivery.</td>
+<td>Business: product may not sell. Project: missing a deadline.</td>
+</tr>
+<tr>
+<td><strong>Common Software Project Risks</strong></td>
+<td>High-level categories: personnel, technology, requirements, estimation, organisational.</td>
+<td>New tech stack causing delays, client keeps changing requirements.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3-identification-of-risk"><strong>3. IDENTIFICATION OF RISK</strong></h3>
+<p>This is the first practical step: find as many potential risks as possible.</p>
+<p><strong>Common Identification Techniques</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Technique</strong></th>
+<th><strong>How It Works</strong></th>
+<th><strong>Simple Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brainstorming</strong></td>
+<td>Team generates risks freely, no criticism.</td>
+<td>Team lists everything that could go wrong with the new payroll system.</td>
+</tr>
+<tr>
+<td><strong>Checklists</strong></td>
+<td>Use a standard list of common software project risks.</td>
+<td>Checklist item: &quot;Are requirements stable?&quot;</td>
+</tr>
+<tr>
+<td><strong>Interviews</strong></td>
+<td>Talk to experts, stakeholders, and experienced project managers.</td>
+<td>Ask a senior architect about technical risks.</td>
+</tr>
+<tr>
+<td><strong>SWOT Analysis</strong></td>
+<td>Identify Strengths, Weaknesses, Opportunities, Threats.</td>
+<td>Weakness: team inexperienced with cloud tech → risk.</td>
+</tr>
+<tr>
+<td><strong>Assumption Analysis</strong></td>
+<td>List all project assumptions and check what happens if they are wrong.</td>
+<td>Assumption: third-party API will be ready by March. If not → delay.</td>
+</tr>
+<tr>
+<td><strong>Diagramming</strong></td>
+<td>Cause-and-effect (fishbone) diagrams to trace root causes.</td>
+<td>Effect: project late. Causes: unclear specs, sick developer, slow hardware.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Risk Register (Output of Identification)</strong></p>
+<p>A document listing every identified risk, its description, probability, impact, owner, and planned response. It is a living document updated throughout the project.</p>
+<p><em>Simple example entry:</em></p>
+<p>text</p>
+<pre class="hljs"><code><div>Risk ID: R01
+Description: Lead developer may leave in the middle of coding.
+Probability: Medium
+Impact: High
+Owner: Project Manager
+Response: Cross-train another developer; maintain documentation.
+</div></code></pre>
+<hr>
+<h3 id="4-risk-analysis"><strong>4. RISK ANALYSIS</strong></h3>
+<p>After identification, we analyse each risk to prioritise it: <strong>Probability × Impact</strong>.</p>
+<p><strong>A. Qualitative Risk Analysis</strong></p>
+<p>Subjective, quick, uses descriptive scales.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Probability Scale</strong></th>
+<th><strong>Impact Scale</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low – Medium – High</td>
+<td>Low – Medium – High</td>
+</tr>
+<tr>
+<td>Very Low, Low, Moderate, High, Very High (1-5)</td>
+<td>Same levels</td>
+</tr>
+</tbody>
+</table>
+<figure><img src="images/figure12-probability-impact-matrix.svg" alt="Probability Impact Matrix">
+<figcaption>Probability-Impact Matrix</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div> Impact
+ Low Medium High
+Probability
+High Medium High Critical
+Medium Low Medium High
+Low Very Low Low Medium
+</div></code></pre>
+<ul>
+<li><strong>Critical/High</strong>: Must act immediately.</li>
+<li><strong>Medium</strong>: Monitor and plan response.</li>
+<li><strong>Low</strong>: Accept or watch.</li>
+</ul>
+<p><strong>B. Quantitative Risk Analysis</strong></p>
+<p>Uses numbers. Tools include:</p>
+<ul>
+<li><strong>Expected Monetary Value (EMV)</strong>: EMV = Probability × Impact Cost.
+<ul>
+<li>Example: 20% chance of a Rs 5,00,000 loss → EMV = 0.2 × 500,000 = Rs 1,00,000.</li>
+</ul>
+</li>
+<li><strong>Decision Trees</strong>: Map different scenarios and their payoffs.</li>
+<li><strong>Schedule risk analysis using Z-values</strong> (next section).</li>
+</ul>
+<hr>
+<h3 id="5-evaluation-of-risk-to-the-schedule-using-z-values"><strong>5. EVALUATION OF RISK TO THE SCHEDULE USING Z-VALUES</strong></h3>
+<p>This is a quantitative technique to answer: <strong>&quot;What is the probability that the project will miss its target deadline?&quot;</strong></p>
+<p>It comes directly from the <strong>PERT</strong> method (Unit 3). Instead of just one deterministic schedule, PERT gives us the project’s expected time (TE) and its variance. We can then use the <strong>Z-value</strong> to find the probability of finishing by any given deadline.</p>
+<p><strong>Step-by-Step Process</strong>:</p>
+<ol>
+<li>
+<p>For each activity on the critical path, have the three PERT estimates: Optimistic (O), Most Likely (M), Pessimistic (P).</p>
+</li>
+<li>
+<p>Calculate <strong>Expected Time (TE)</strong> and <strong>Variance (σ²)</strong> for each critical activity:</p>
+<div class="formula-block">TE = (<i>O</i> + 4<i>M</i> + <i>P</i>)/(6)</div><div class="formula-block">σ<sup>2</sup> = ((<i>P</i> - <i>O</i>)/(6))<sup>2</sup></div></li>
+<li>
+<p>Calculate the <strong>Project TE</strong> = sum of TE of all critical activities.</p>
+</li>
+<li>
+<p>Calculate the <strong>Project Variance</strong> = sum of σ² of all critical activities.</p>
+</li>
+<li>
+<p>Compute the <strong>Project Standard Deviation</strong> = √(Project Variance).</p>
+</li>
+<li>
+<p>For a target deadline <strong>T</strong>, calculate the <strong>Z-value</strong>:</p>
+<div class="formula-block"><i>Z</i> = {<i>T</i> - TE<sub><span class="f-text">project</span></sub>}{σ<sub><span class="f-text">project</span></sub>}</div></li>
+<li>
+<p>Interpret Z using the standard normal distribution table (or remember key thresholds):</p>
+<ul>
+<li>Z = 0 → 50% chance of finishing by T.</li>
+<li>Z &gt; 0 → more than 50% chance (project ahead or on time relative to target).</li>
+<li>Z &lt; 0 → less than 50% chance (project behind).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Simple Example</strong>:</p>
+<p>A project has only two critical activities with the following estimates:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Activity</strong></th>
+<th><strong>O</strong></th>
+<th><strong>M</strong></th>
+<th><strong>P</strong></th>
+<th><strong>TE</strong></th>
+<th><strong>σ²</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>10</td>
+<td>15</td>
+<td>10</td>
+<td>((15-5)/6)² = (10/6)² ≈ 2.78</td>
+</tr>
+<tr>
+<td>B</td>
+<td>8</td>
+<td>12</td>
+<td>22</td>
+<td>13</td>
+<td>((22-8)/6)² = (14/6)² ≈ 5.44</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Project TE = 10 + 13 = 23 days.</li>
+<li>Project Variance = 2.78 + 5.44 = 8.22</li>
+<li>Project Standard Deviation = √8.22 ≈ 2.87 days.</li>
+</ul>
+<p>The client demands completion in 25 days. What is the risk of exceeding 25 days?</p>
+<p>text</p>
+<pre class="hljs"><code><div>Z = (25 - 23) / 2.87 ≈ 0.70
+</div></code></pre>
+<p>From normal table, Z=0.70 → ~75.8% probability of finishing <strong>on or before</strong> 25 days.</p>
+<p>So the risk of <strong>exceeding</strong> 25 days = 100% – 75.8% ≈ <strong>24.2%</strong>.</p>
+<p>If the target was 20 days:</p>
+<p>text</p>
+<pre class="hljs"><code><div>Z = (20 - 23) / 2.87 ≈ -1.04 → ~15% probability of meeting deadline, 85% risk of delay.
+</div></code></pre>
+<p><strong>Why This Matters for Risk Management</strong>:</p>
+<ul>
+<li>It turns schedule uncertainty into a numeric risk statement.</li>
+<li>You can decide if the probability of meeting a deadline is acceptable.</li>
+<li>If not acceptable, you must reduce risk (add resources, change scope, etc.).</li>
+</ul>
+<p><strong>Exam Tip</strong>: The Z-value method is the bridge between Unit 3 (PERT) and Unit 4 (Risk). You will likely have a numerical problem linking both</p>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Define risk. How can risk be handled? <em>(2082)</em> [5]</li>
+ <li>What are the significance of using PERT chart? Explain estimated time, standard deviation and Z-value with respect to PERT chart. <em>(2082, 2079, 2078)</em> [5]</li>
+ <li>Explain the process of risk analysis. <em>(2081)</em> [5]</li>
+ <li>What are the practical implications of Risk Exposure? <em>(2080)</em> [5]</li>
+ <li>Suppose you have been assigned to develop online voting system. List four risks that might affect the success of the system. Rank the risks based on Risk exposure. Develop contingency plan for the highest ranked risk. <em>(2078)</em> [10]</li>
+</ol>
+</section>
+<h2 id="unit-5-resource-allocation"><strong>UNIT 5: RESOURCE ALLOCATION</strong></h2>
+<hr>
+<h3 id="1-identifying-resource-requirements"><strong>1. IDENTIFYING RESOURCE REQUIREMENTS</strong></h3>
+<p>Before you can allocate resources, you must identify <strong>what</strong> you need, <strong>when</strong>, and at <strong>what level</strong>.</p>
+<p><strong>What is a Resource?</strong></p>
+<p>Anything required to carry out project activities:</p>
+<ul>
+<li><strong>People</strong> (developers, testers, designers, managers)</li>
+<li><strong>Equipment</strong> (servers, laptops, software licences)</li>
+<li><strong>Materials</strong> (cloud credits, test data)</li>
+<li><strong>Facilities</strong> (office space, test lab)</li>
+</ul>
+<p><strong>How to Identify Resource Requirements (Per Activity)</strong></p>
+<p>For each activity in the WBS, specify:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Simple Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Work amount</strong></td>
+<td>How much work (person-days, units)</td>
+<td>5 person-days to code login module</td>
+</tr>
+<tr>
+<td><strong>Skill/experience level</strong></td>
+<td>Minimum capability needed</td>
+<td>Mid-level Java developer</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>How difficult the task is (scale 1-5)</td>
+<td>Complexity: 3</td>
+</tr>
+<tr>
+<td><strong>Task category</strong></td>
+<td>Unskilled / Skilled / Expert / Leadership / Management</td>
+<td>Category: Skilled</td>
+</tr>
+<tr>
+<td><strong>Timing</strong></td>
+<td>When the resource is needed (driven by activity ES/LS dates)</td>
+<td>Needed in Week 3-4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Who Does This?</strong></p>
+<p>The <strong>Project Manager</strong> is responsible. Priority is given to resources that are <strong>scarce or hard to find</strong> (e.g., senior developers) — these must be planned far in advance.</p>
+<hr>
+<h3 id="2-resource-allocation"><strong>2. RESOURCE ALLOCATION</strong></h3>
+<p>Resource allocation is the process of <strong>assigning identified resources to project activities</strong> in a way that respects both activity dependencies and resource constraints.</p>
+<p><strong>Key Inputs</strong>:</p>
+<ul>
+<li>Activity list with durations (from CPM/PERT)</li>
+<li>Resource requirements per activity</li>
+<li>Resource availability (who is free and when)</li>
+</ul>
+<p><strong>Key Outputs (Three Schedules)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Schedule</strong></th>
+<th><strong>Contents</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Activity Schedule</strong></td>
+<td>Planned start and finish date for each activity</td>
+</tr>
+<tr>
+<td><strong>Resource Schedule</strong></td>
+<td>Dates on which each resource is needed, and at what level</td>
+</tr>
+<tr>
+<td><strong>Cost Schedule</strong></td>
+<td>Planned cumulative expenditure over time</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prioritisation Techniques (Which activity gets the resource first?)</strong></p>
+<p>When resources are limited, you must decide which activity gets priority.</p>
+<p><strong>A. Total Float Priority</strong></p>
+<ul>
+<li>Activities with the <strong>smallest total float</strong> get resources first.</li>
+<li>Float = LS – ES (from CPM).</li>
+<li>Critical activities (float = 0) get highest priority.</li>
+<li><em>Logic</em>: The least flexible activities must be protected.</li>
+</ul>
+<p><strong>B. Ordered List Priority (Burman's Priority List)</strong></p>
+<ul>
+<li>Order of allocation:
+<ol>
+<li>Shortest critical activity</li>
+<li>Other critical activities</li>
+<li>Shortest non-critical activity</li>
+<li>Non-critical activity with least float</li>
+<li>Remaining non-critical activities</li>
+</ol>
+</li>
+</ul>
+<p><strong>Important Consideration: Resource Allocation Can Change the Critical Path</strong></p>
+<ul>
+<li>Delaying an activity because a resource is unavailable eats up its float.</li>
+<li>Once float becomes zero, a new critical path can form.</li>
+<li>This is called a <strong>resource-constrained critical path</strong>.</li>
+</ul>
+<figure><img src="images/figure07-resource-histogram.svg" alt="Resource Histogram">
+<figcaption>Figure: Resource Histogram</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>People
+ |
+ 5 | ████████
+ 4 | ████ ████
+ 3 | ████ ████
+ 2 |███ ████
+ 1 | ██
+ |____________________________________ Week
+ 1 2 3 4 5 6 7
+</div></code></pre>
+<p>A resource histogram shows <strong>how many people (or units of a resource) are needed each week</strong>. White bars = scheduled work; shaded bars = float period.</p>
+<hr>
+<h3 id="3-resource-smoothening"><strong>3. RESOURCE SMOOTHENING</strong></h3>
+<p><strong>Definition</strong>: Adjusting the start dates of non-critical activities (within their float) to <strong>reduce peaks and troughs</strong> in resource demand — <strong>without</strong> changing the project end date.</p>
+<p><strong>Goal</strong>: Achieve a more even, predictable resource usage profile.</p>
+<p><strong>What you do</strong>:</p>
+<ul>
+<li>Move a non-critical activity later (or earlier) within its available float.</li>
+<li>This shifts its resource demand to a less busy period.</li>
+</ul>
+<p><strong>Simple Example</strong>:</p>
+<p>text</p>
+<pre class="hljs"><code><div>Before smoothening: After smoothening:
+Week 2: 3 devs (peak) Week 2: 2 devs
+Week 3: 1 dev Week 3: 2 devs
+Week 4: 1 dev Week 4: 2 devs
+</div></code></pre>
+<p>Activity B has 2 weeks of float. It was scheduled in Week 2, but we delay it to Week 3. The peak drops from 3 to 2.</p>
+<p><strong>Key Points</strong>:</p>
+<ul>
+<li>Uses <strong>only float</strong> — the critical path and project end date remain unchanged.</li>
+<li>Ideal for situations where hiring/firing is expensive or you want stable team sizes.</li>
+<li>The resource histogram becomes flatter.</li>
+</ul>
+<hr>
+<h3 id="4-resource-balancing-resource-levelling"><strong>4. RESOURCE BALANCING (RESOURCE LEVELLING)</strong></h3>
+<p><strong>Definition</strong>: When resource supply is <strong>strictly limited</strong>, you may need to delay activities <strong>beyond their float</strong> to stay within the resource limit. This <strong>can</strong> extend the project end date.</p>
+<p><strong>Goal</strong>: Ensure resource demand never exceeds available supply.</p>
+<p><strong>What you do</strong>:</p>
+<ul>
+<li>If two activities need the same scarce resource at the same time, and both are critical or have no float left, you must delay one — even if it means the project takes longer.</li>
+</ul>
+<p><strong>Simple Example</strong>:</p>
+<p>text</p>
+<pre class="hljs"><code><div>Available: 2 Java developers maximum.
+Week 3 demand: Activity P needs 1 dev, Activity Q needs 1 dev, Activity R needs 1 dev → 3 devs required.
+Activity R has zero float (critical). You must delay one activity beyond its float.
+Result: Project end date shifts by the delay.
+</div></code></pre>
+<p><strong>Resource Smoothing vs. Resource Balancing</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Resource Smoothing</strong></th>
+<th><strong>Resource Balancing</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Uses float</strong></td>
+<td>Yes, only within available float</td>
+<td>No, may exceed float</td>
+</tr>
+<tr>
+<td><strong>Project end date</strong></td>
+<td>Unchanged</td>
+<td>May be extended</td>
+</tr>
+<tr>
+<td><strong>Constraint</strong></td>
+<td>Flatten resource usage</td>
+<td>Hard limit on resource availability</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Aesthetic/efficiency</td>
+<td>Feasibility — must stay within resource cap</td>
+</tr>
+<tr>
+<td><strong>When to use</strong></td>
+<td>Resources flexible, want stability</td>
+<td>Resources fixed, project must fit them</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="5-additional-points-from-old-notes-still-relevant"><strong>5. ADDITIONAL POINTS (FROM OLD NOTES, STILL RELEVANT)</strong></h3>
+<p><strong>Human Resource Scheduling Issues</strong></p>
+<p>When scheduling people, account for:</p>
+<ul>
+<li>Planned leave, public holidays</li>
+<li>Possible sick leave (unpredictable)</li>
+<li>Motivation and enthusiasm for the task (affects output)</li>
+<li>Workload and stress levels</li>
+<li>Stress outside work</li>
+</ul>
+<p><strong>Resource Allocation Principles (Being Specific)</strong></p>
+<ul>
+<li><strong>Availability</strong> – Is the person free when needed?</li>
+<li><strong>Criticality</strong> – Assign experienced staff to critical path activities (reduces overrun risk).</li>
+<li><strong>Risk</strong> – Assign best staff to highest-risk activities.</li>
+<li><strong>Training</strong> – Assign junior staff to non-critical activities with slack, so they can learn.</li>
+<li><strong>Team Building</strong> – Consider how individuals will work together as a team.</li>
+</ul>
+<p><strong>Cost Categories</strong></p>
+<ul>
+<li><strong>Staff costs</strong>: Salaries, social security, pension, holiday pay.</li>
+<li><strong>Overheads</strong>: Office space, interest, travel, insurance.</li>
+<li><strong>Usage charges</strong>: External contractors, leased equipment.</li>
+</ul>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Explain different categories of resources. <em>(2082, 2080)</em> [5]</li>
+ <li>Why do you think resource smoothening and resource balancing is required? Explain how it is carried out? <em>(2081)</em> [5]</li>
+ <li>Explain about different categories of resources? Highlight on the process of resource histogram equalization. Why do you think it is a crucial activity? <em>(2080)</em> [10]</li>
+</ol>
+</section>
+<h2 id="unit-6-monitoring-and-control"><strong>UNIT 6: MONITORING AND CONTROL</strong></h2>
+<hr>
+<h3 id="1-introduction"><strong>1. INTRODUCTION</strong></h3>
+<p>Once the project is underway, the focus shifts from planning to <strong>ensuring progress</strong>.</p>
+<p>Monitoring and control is a continuous cycle:</p>
+<figure><img src="images/figure08-project-control-cycle.svg" alt="Project Control Cycle">
+<figcaption>Figure: Project Control Cycle</figcaption></figure>
+<p><strong>Simpler memory</strong>: Measure → Compare → Decide → Act → Repeat.</p>
+<p><strong>Purpose</strong>:</p>
+<ul>
+<li>Track actual progress against the plan.</li>
+<li>Identify deviations early.</li>
+<li>Take corrective action to bring the project back on track.</li>
+</ul>
+<p><strong>Checkpoints</strong>: Essential to set review points in the activity plan.</p>
+<ul>
+<li><strong>Regular</strong> (e.g., monthly review)</li>
+<li><strong>Event-driven</strong> (e.g., upon completion of a key deliverable like a design document)</li>
+</ul>
+<hr>
+<h3 id="2-collecting-data"><strong>2. COLLECTING DATA</strong></h3>
+<p>Good control needs reliable, timely data.</p>
+<p><strong>What to collect</strong>:</p>
+<ul>
+<li>Actual start and finish dates of activities.</li>
+<li>Effort expended (person-hours/days).</li>
+<li>Estimate of remaining work (how much is left?).</li>
+<li>Issues and risks encountered.</li>
+</ul>
+<p><strong>How to collect</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Simple Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weekly time sheets</strong></td>
+<td>Staff record hours spent on each activity.</td>
+<td>Developer logs 8 hours on module coding.</td>
+</tr>
+<tr>
+<td><strong>Progress meetings</strong></td>
+<td>Short, regular team meetings (e.g., Monday morning) to review what was done and what's next.</td>
+<td>Each member reports: &quot;Login module coding done, testing module starting.&quot;</td>
+</tr>
+<tr>
+<td><strong>Partial completion reporting</strong></td>
+<td>For long tasks, break into measurable sub-products and count completed items.</td>
+<td>Number of screen layouts finished out of total 20.</td>
+</tr>
+<tr>
+<td><strong>Traffic Light (RAG) reporting</strong></td>
+<td>Instead of guessing % complete, team members give a colour status.</td>
+<td>Green: on target. Amber: delayed but recoverable. Red: seriously off track, needs help.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Traffic Light Method Steps</strong>:</p>
+<ol>
+<li>Identify key (first-level) elements of work.</li>
+<li>Break each into second-level constituent elements.</li>
+<li>Assess each second-level element: Green / Amber / Red.</li>
+<li>Review to arrive at first-level and overall assessment.</li>
+</ol>
+<p><em>Why use Traffic Light?</em> It avoids the false precision of &quot;90% complete&quot; and highlights problems early.</p>
+<p><strong>Priority for Monitoring</strong>: You cannot monitor everything equally. Prioritise:</p>
+<ul>
+<li><strong>Critical path activities</strong> (delay = project delay)</li>
+<li><strong>Activities with no free float</strong> (delay disrupts resource schedule)</li>
+<li><strong>High-risk activities</strong> (most likely to overrun)</li>
+<li><strong>Activities using critical (scarce/expensive) resources</strong></li>
+</ul>
+<hr>
+<h3 id="3-visualizing-progress"><strong>3. VISUALIZING PROGRESS</strong></h3>
+<p>Raw data is hard to interpret. Visual tools make progress clear.</p>
+<p><strong>A. Gantt Chart (Updated)</strong></p>
+<ul>
+<li>Original Gantt bars show planned dates.</li>
+<li>Add a second bar (or fill) to show actual progress.</li>
+<li>A &quot;today&quot; marker indicates current status.</li>
+</ul>
+<p><strong>B. Slip Chart</strong></p>
+<ul>
+<li>A more striking variant of Gantt.</li>
+<li>As activities slip, the bar bends or extends to the right.</li>
+<li>The <strong>more the slip line bends</strong>, the greater the variation from the plan.</li>
+</ul>
+<figure><img src="images/figure09-slip-chart.gif" alt="Slip Chart Concept">
+<figcaption>Figure: Slip Chart Concept</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>Activity A: Planned |████████████|
+ Actual |██████████████░░░░| (slipped by 2 weeks)
+</div></code></pre>
+<p><strong>C. Ball Chart</strong></p>
+<ul>
+<li>A very visual way of showing target vs. actual dates.</li>
+<li>Each activity has a circle containing:
+<ul>
+<li>Original schedule date</li>
+<li>Revised target date (if any) or actual date when completed</li>
+</ul>
+</li>
+<li>Only two dates ever appear: original + most recent target, or original + actual.</li>
+<li>Colour or shading indicates status (e.g., filled circle = completed).</li>
+</ul>
+<p><em>Simple example</em>:</p>
+<p>text</p>
+<pre class="hljs"><code><div>Circle for &quot;Design&quot; shows: &quot;10 Mar / 15 Mar&quot; (original / revised target)
+Once completed, it shows: &quot;10 Mar / 17 Mar&quot; (original / actual)
+</div></code></pre>
+<hr>
+<h3 id="4-cost-monitoring"><strong>4. COST MONITORING</strong></h3>
+<p>Tracking what you are spending versus what you planned to spend.</p>
+<p><strong>Components of cost</strong>:</p>
+<ul>
+<li>Staff costs (salaries, benefits)</li>
+<li>Overheads (office, utilities, insurance)</li>
+<li>Usage charges (external contractors, rented equipment)</li>
+</ul>
+<p><strong>Approach</strong>:</p>
+<ul>
+<li>Record <strong>actual expenditure</strong> per time period (weekly/monthly).</li>
+<li>Compare against the <strong>planned cumulative cost curve</strong> (baseline).</li>
+<li>If actual spending is above the planned line, investigate why (overspending or work ahead of schedule?).</li>
+</ul>
+<p><strong>Cost monitoring is not enough alone</strong>: You could be under budget but behind schedule. That is why we need <strong>Earned Value Analysis</strong>.</p>
+<hr>
+<h3 id="5-earned-value-analysis-eva"><strong>5. EARNED VALUE ANALYSIS (EVA)</strong></h3>
+<p>EVA integrates <strong>scope, schedule, and cost</strong> into a single monitoring system. It tells you not just &quot;how much did I spend?&quot; but &quot;how much value did I get for that spend?&quot;</p>
+<p><strong>Core Three Metrics</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Full Name</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Simple Analogy</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PV</strong></td>
+<td>Planned Value</td>
+<td>The budgeted cost of work that was <strong>planned</strong> to be done by now.</td>
+<td>The road should have been 10 km by today (costing Rs 10 lakh).</td>
+</tr>
+<tr>
+<td><strong>EV</strong></td>
+<td>Earned Value</td>
+<td>The budgeted cost of work <strong>actually completed</strong> by now.</td>
+<td>The road is only 8 km, so value earned = 8 lakh.</td>
+</tr>
+<tr>
+<td><strong>AC</strong></td>
+<td>Actual Cost</td>
+<td>The money <strong>actually spent</strong> to achieve the completed work.</td>
+<td>You spent Rs 12 lakh to build that 8 km.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Derived Variances and Indices</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Interpretation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SV</strong> (Schedule Variance)</td>
+<td>EV - PV</td>
+<td>Are we ahead or behind schedule?</td>
+<td>+ good, – bad</td>
+</tr>
+<tr>
+<td><strong>CV</strong> (Cost Variance)</td>
+<td>EV - AC</td>
+<td>Are we under or over budget?</td>
+<td>+ good, – bad</td>
+</tr>
+<tr>
+<td><strong>SPI</strong> (Schedule Performance Index)</td>
+<td>EV / PV</td>
+<td>Schedule efficiency.</td>
+<td>&gt;1 ahead, &lt;1 behind</td>
+</tr>
+<tr>
+<td><strong>CPI</strong> (Cost Performance Index)</td>
+<td>EV / AC</td>
+<td>Cost efficiency.</td>
+<td>&gt;1 under budget, &lt;1 over</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simple Example</strong>:</p>
+<ul>
+<li>Planned: 4 modules in 4 weeks, budget Rs 4,00,000 (PV at Week 4 = 4,00,000).</li>
+<li>Actually completed: 3 modules (EV = 3,00,000).</li>
+<li>Actually spent: Rs 3,50,000 (AC = 3,50,000).</li>
+<li>SV = 3,00,000 – 4,00,000 = <strong>–1,00,000</strong> → behind schedule.</li>
+<li>CV = 3,00,000 – 3,50,000 = <strong>–50,000</strong> → over budget.</li>
+<li>SPI = 3/4 = 0.75 (&lt;1, slow).</li>
+<li>CPI = 3,00,000/3,50,000 ≈ 0.86 (&lt;1, spending more than earning).</li>
+</ul>
+<p><strong>Forecasting with EVA</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Forecast</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EAC</strong> (Estimate at Completion)</td>
+<td>BAC / CPI</td>
+<td>What will the total project cost if current cost performance continues?</td>
+</tr>
+<tr>
+<td><strong>ETC</strong> (Estimate to Complete)</td>
+<td>EAC - AC</td>
+<td>How much more money will be needed?</td>
+</tr>
+<tr>
+<td><strong>TCPI</strong> (To-Complete Performance Index)</td>
+<td>(BAC - EV) / (BAC - AC)</td>
+<td>What CPI must we achieve on remaining work to stay within budget?</td>
+</tr>
+</tbody>
+</table>
+<p><em>Where BAC = Budget at Completion (original total budget).</em></p>
+<p><em>Continuing the example</em>: BAC = 4,00,000</p>
+<ul>
+<li>EAC = 4,00,000 / 0.86 ≈ Rs 4,65,116 (project will overrun by ~65,000).</li>
+<li>ETC = 4,65,116 – 3,50,000 = Rs 1,15,116 needed to finish.</li>
+</ul>
+<figure><img src="images/figure20-evm-s-curve.svg" alt="EVM S-Curve">
+<figcaption>Figure: EVA S-Curve (PV, EV, AC over time)</figcaption></figure>
+<p><strong>Why EVA is Powerful</strong>:</p>
+<ul>
+<li>Early warning system: SPI and CPI tell you the health of the project long before the deadline.</li>
+<li>Combines time and cost in one view.</li>
+<li>Enables realistic forecasting of final cost and completion date.</li>
+</ul>
+<hr>
+<h3 id="6-project-control"><strong>6. PROJECT CONTROL</strong></h3>
+<p>Once monitoring reveals a deviation, <strong>control</strong> action is taken to bring the project back on target.</p>
+<p><strong>A. Shortening the Critical Path</strong></p>
+<p>If the project is behind schedule, focus on critical activities (non-critical ones have float).</p>
+<ul>
+<li><strong>Crashing</strong>: Add extra resources to critical tasks (cost increases, time reduces).</li>
+<li><strong>Fast-tracking</strong>: Overlap critical tasks that were originally sequential (risk increases).</li>
+</ul>
+<p><strong>B. Reconsider the Precedence Network</strong></p>
+<ul>
+<li>If shortening individual critical activities is not enough, re-examine dependencies.</li>
+<li>Can some Finish-to-Start constraints be relaxed? (e.g., start testing before all coding is complete).</li>
+<li>This is essentially revisiting the schedule logic.</li>
+</ul>
+<p><strong>C. Change Control</strong></p>
+<p>When requests for change come (and they will), a formal process prevents chaos.</p>
+<ol>
+<li><strong>Submit</strong> – Stakeholder requests a change.</li>
+<li><strong>Review</strong> – Project team assesses impact on scope, schedule, cost, and risk.</li>
+<li><strong>Decide</strong> – Change Control Board approves or rejects.</li>
+<li><strong>Implement</strong> – If approved, plans and schedules are updated, and the change is executed.</li>
+<li><strong>Communicate</strong> – All stakeholders are informed.</li>
+</ol>
+<figure><img src="images/figure21-change-control-flow.png" alt="Change Control Flow">
+<figcaption>Figure: Change Control Process Flow</figcaption></figure>
+<p><strong>Key Principle</strong>: No change should be implemented without formal approval and impact analysis.</p>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Explain three visualization techniques that can be implemented to monitor and control the project. <em>(2082, 2079)</em> [10]</li>
+ <li>Explain any two methods of visualizing progress of a project. <em>(2081)</em> [5]</li>
+ <li>Perform Earned Value Analysis of the given project. <em>(2079)</em> [10]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (days)</th>
+<th>Precedence</th>
+<th>Cost/day (Rs.)</th>
+<th>Total Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>----------------</td>
+<td>------------</td>
+<td>----------------</td>
+<td>------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>-</td>
+<td>200</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>5</td>
+<td>A</td>
+<td>200</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>C</td>
+<td>10</td>
+<td>A</td>
+<td>100</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>D</td>
+<td>5</td>
+<td>A, B</td>
+<td>200</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Progress after end of 10th day:</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>% Completion</th>
+<th>Incurred Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-------------</td>
+<td>---------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>100</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>B</td>
+<td>100</td>
+<td>800</td>
+</tr>
+<tr>
+<td>C</td>
+<td>40</td>
+<td>800</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate SV, SPI, CV and CPI respectively.</p>
+<ol>
+ <li>Perform Earned Value Analysis of the following project. <em>(2078)</em> [10]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Duration (days)</th>
+<th>Precedence</th>
+<th>Cost/day (Rs.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>----------------</td>
+<td>------------</td>
+<td>----------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>8</td>
+<td>-</td>
+<td>200</td>
+</tr>
+<tr>
+<td>B</td>
+<td>4</td>
+<td>-</td>
+<td>200</td>
+</tr>
+<tr>
+<td>C</td>
+<td>4</td>
+<td>A, B</td>
+<td>300</td>
+</tr>
+<tr>
+<td>D</td>
+<td>4</td>
+<td>B</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<p>Progress after end of 12th day:</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>% Completion</th>
+<th>Incurred Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>----------</td>
+<td>-------------</td>
+<td>---------------</td>
+</tr>
+<tr>
+<td>A</td>
+<td>100</td>
+<td>1400</td>
+</tr>
+<tr>
+<td>B</td>
+<td>100</td>
+<td>400</td>
+</tr>
+<tr>
+<td>C</td>
+<td>75</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>D</td>
+<td>50</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate SV, SPI, CV, and CPI respectively.</p>
+<ol>
+ <li>List techniques that are used for progress visualization and explain them. Why do you think project monitoring and control is very challenging? <em>(2079)</em> [10]</li>
+ <li>Differentiate between Gantt chart and slip chart. <em>(2078)</em> [5]</li>
+</ol>
+</section>
+<h2 id="unit-7-managing-contracts-and-people"><strong>UNIT 7: MANAGING CONTRACTS AND PEOPLE</strong></h2>
+<hr>
+<h3 id="part-a--managing-contracts"><strong>PART A – MANAGING CONTRACTS</strong></h3>
+<hr>
+<h3 id="1-introduction-1"><strong>1. Introduction</strong></h3>
+<p>Projects often acquire software from external suppliers. The software could be:</p>
+<ul>
+<li><strong>Tailored system</strong> – built specially for the customer</li>
+<li><strong>Off‑the‑shelf</strong> – bought ‘as is’</li>
+<li><strong>Customised off‑the‑shelf (COTS)</strong> – core system is modified to fit customer needs</li>
+</ul>
+<p>A contract legally binds both parties. The project manager must ensure the contract reflects the true requirements and expectations.</p>
+<hr>
+<h3 id="2-types-of-contract"><strong>2. Types of Contract</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Contract Type</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Advantages for Customer</strong></th>
+<th><strong>Disadvantages</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fixed Price</strong></td>
+<td>A single agreed price for the whole job.</td>
+<td>Known expenditure; supplier motivated to be cost‑effective.</td>
+<td>Supplier builds in contingency → price may be higher; difficult to change requirements; threat to quality.</td>
+</tr>
+<tr>
+<td><strong>Time and Materials</strong></td>
+<td>Customer pays for actual effort at agreed rates.</td>
+<td>Easy to change requirements; lack of price pressure can improve quality.</td>
+<td>Customer absorbs all risk of poorly defined/ changing requirements; no supplier incentive to be cost‑effective.</td>
+</tr>
+<tr>
+<td><strong>Fixed Price per Delivered Unit</strong></td>
+<td>Price is set per measurable unit (e.g., per function point, per screen).</td>
+<td>Transparent pricing; comparability; supplier still has cost‑effectiveness incentive.</td>
+<td>Difficulty in measuring software size; handling changed vs. new requirements can be messy.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: Often a <strong>licence to use</strong> software is bought, not the software itself.</p>
+</blockquote>
+<hr>
+<h3 id="3-stages-in-contract-placement"><strong>3. Stages in Contract Placement</strong></h3>
+<p>The tendering process moves through a sequence:</p>
+<figure><img src="images/figure10-contract-placement-flow.svg" alt="Contract Placement Flow">
+<figcaption>Figure: Contract Placement Flow</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>Requirements Analysis → Invitation to Tender (ITT) → Evaluation of Proposals → Contract Award
+</div></code></pre>
+<ul>
+<li><strong>Requirements document</strong> must clearly specify:
+<ul>
+<li>Functions, inputs/outputs, standards, compatibility, quality needs (e.g., response times)</li>
+<li>Mandatory vs. desirable features</li>
+<li>Deadlines</li>
+</ul>
+</li>
+<li><strong>Tendering approaches</strong>:
+<ul>
+<li><strong>Open tendering</strong> – any supplier can bid; all evaluated equally</li>
+<li><strong>Restricted tendering</strong> – only invited suppliers can bid; shortlist reduces as stages progress</li>
+<li><strong>Negotiated procedure</strong> – negotiate with one supplier (e.g., for extension of existing software)</li>
+</ul>
+</li>
+<li><strong>Evaluation plan</strong> is prepared beforehand to assess proposals objectively: reading proposals, interviews, demonstrations, site visits, practical tests. Focus is on <strong>value for money (VFM)</strong> – not just lowest price.</li>
+<li><strong>Memoranda of Agreement (MoA)</strong> may be used: customer first requests technical proposals → agree on technical solution in MoA → then request priced tenders based on that MoA. This separates technical and commercial evaluation.</li>
+</ul>
+<hr>
+<h3 id="4-typical-terms-of-a-contract-contract-checklist"><strong>4. Typical Terms of a Contract (Contract Checklist)</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>What it covers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definitions</strong></td>
+<td>Precise meaning of words like ‘supplier’, ‘user’, ‘application’.</td>
+</tr>
+<tr>
+<td><strong>Form of agreement</strong></td>
+<td>Is it a sale, lease, or licence? Can licence be transferred?</td>
+</tr>
+<tr>
+<td><strong>Goods and services</strong></td>
+<td>Detailed specification of what is to be supplied.</td>
+</tr>
+<tr>
+<td><strong>Timetable of activities</strong></td>
+<td>Delivery milestones and dates.</td>
+</tr>
+<tr>
+<td><strong>Payment arrangements</strong></td>
+<td>Payments tied to completion of specific tasks/milestones.</td>
+</tr>
+<tr>
+<td><strong>Ownership of software</strong></td>
+<td>Can client sell to others? Does supplier retain copyright? Escrow – source code deposited with third party in case supplier fails.</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Where equipment is installed, site preparation, electricity, etc.</td>
+</tr>
+<tr>
+<td><strong>Customer commitments</strong></td>
+<td>Access, information, staff time that the customer must provide.</td>
+</tr>
+<tr>
+<td><strong>Standards to be met</strong></td>
+<td>Quality standards, documentation standards, etc.</td>
+</tr>
+<tr>
+<td><strong>Acceptance criteria</strong></td>
+<td>How the customer will test and formally accept the deliverables.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="5-contract-management"><strong>5. Contract Management</strong></h3>
+<p>Ongoing management of the contract ensures both sides meet obligations. Key aspects:</p>
+<ul>
+<li><strong>Progress reporting</strong> – regular status reports from supplier</li>
+<li><strong>Decision points</strong> – linked to payments or phase approvals</li>
+<li><strong>Variations (changes)</strong> – how changes to requirements are handled (formal change control)</li>
+<li><strong>Quality reviews</strong> – joint review meetings</li>
+<li><strong>Acceptance</strong> – final sign‑off procedure, often after successful acceptance testing</li>
+</ul>
+<hr>
+<h3 id="part-b--managing-people-and-organizing-teams"><strong>PART B – MANAGING PEOPLE AND ORGANIZING TEAMS</strong></h3>
+<hr>
+<h3 id="1-introduction-2"><strong>1. Introduction</strong></h3>
+<p>People are an organisation’s most important asset. A manager’s activities around people include:</p>
+<ul>
+<li>Problem solving, motivating, planning, estimating, controlling, organising.</li>
+</ul>
+<hr>
+<h3 id="2-understanding-behaviour--organisational-behaviour-background"><strong>2. Understanding Behaviour – Organisational Behaviour Background</strong></h3>
+<figure><img src="images/figure13-maslow-hierarchy-pyramid.png" alt="Maslow Hierarchy Pyramid">
+<figcaption>A. Human Needs Hierarchy (Maslow)</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div> Self-
+ Realization
+ Esteem Needs
+ Social Needs
+Safety Needs
+Physiological Needs
+</div></code></pre>
+<ul>
+<li>People are motivated by unmet needs. Lower‑level needs (pay, safety) must be satisfied before higher‑level ones (esteem, growth) become motivating.</li>
+</ul>
+<p><strong>B. Personality Types</strong> – Three orientations that affect motivation:</p>
+<ul>
+<li><strong>Task‑oriented</strong> – motivated by the work itself; loves the challenge.</li>
+<li><strong>Self‑oriented</strong> – works to achieve personal goals (money, status, recognition).</li>
+<li><strong>Interaction‑oriented</strong> – motivated by being around colleagues; social workplace is key.</li>
+</ul>
+<p>A balanced team needs a mix of all three. An all‑task team may lack collaboration; an all‑self team may have power struggles; an all‑interaction team may chat more than work.</p>
+<hr>
+<h3 id="3-selecting-the-right-person-for-the-job"><strong>3. Selecting the Right Person for the Job</strong></h3>
+<p>Selection is based on:</p>
+<ul>
+<li><strong>CV/Resume</strong> – experience, education, skills</li>
+<li><strong>Interview</strong> – personal interaction, attitude, communication</li>
+<li><strong>References</strong> – past performance</li>
+<li>Sometimes <strong>psychological/aptitude tests</strong> (usefulness debated)</li>
+</ul>
+<p><strong>Key Staff Selection Factors</strong> (simplified from the table):</p>
+<table>
+<thead>
+<tr>
+<th><strong>Factor</strong></th>
+<th><strong>Importance</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application domain experience</strong></td>
+<td>Critical – developers must understand the business area.</td>
+</tr>
+<tr>
+<td><strong>Communication ability</strong></td>
+<td>Very important – must interact with team, managers, customers.</td>
+</tr>
+<tr>
+<td><strong>Adaptability / Attitude</strong></td>
+<td>Indicates ability to learn and positive approach.</td>
+</tr>
+<tr>
+<td><strong>Programming language/ Platform experience</strong></td>
+<td>Relevant mainly for short‑duration projects where there’s no time to learn.</td>
+</tr>
+<tr>
+<td><strong>Educational background</strong></td>
+<td>Shows fundamentals and learning ability; becomes less important with experience.</td>
+</tr>
+<tr>
+<td><strong>Personality</strong></td>
+<td>Must be compatible with team; no single type is “best”.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="4-instruction-in-the-best-methods"><strong>4. Instruction in the Best Methods</strong></h3>
+<p>This refers to ensuring that staff are trained in and follow <strong>the most effective work methods</strong>. In practice it means:</p>
+<ul>
+<li>Defining standard development processes (e.g., coding standards, review procedures)</li>
+<li>Providing training and mentoring so team members know <em>how</em> to do their tasks correctly</li>
+<li>Using frameworks like the <strong>People Capability Maturity Model (PCMM)</strong> to systematically improve workforce skills.</li>
+</ul>
+<p><strong>PCMM (5 levels)</strong> – a roadmap for improving people management:</p>
+<ol>
+<li><strong>Initial</strong> – ad‑hoc people practices</li>
+<li><strong>Repeatable</strong> – basic policies for skill development</li>
+<li><strong>Defined</strong> – standardised people management across the organisation</li>
+<li><strong>Managed</strong> – quantitative goals for people competencies</li>
+<li><strong>Optimising</strong> – continuous improvement of individual competence and motivation</li>
+</ol>
+<hr>
+<h3 id="5-motivation"><strong>5. Motivation</strong></h3>
+<p>A manager must actively motivate the team. Key motivators are linked to:</p>
+<ul>
+<li><strong>Basic needs</strong> (salary, job security)</li>
+<li><strong>Personal needs</strong> (respect, recognition, growth)</li>
+<li><strong>Social needs</strong> (belonging, teamwork)</li>
+</ul>
+<p><strong>Practical ways to motivate</strong>:</p>
+<ul>
+<li>Set clear, achievable targets</li>
+<li>Involve people in decision‑making</li>
+<li>Recognize and reward good work</li>
+<li>Provide opportunities to learn and advance</li>
+</ul>
+<hr>
+<h3 id="6-working-in-groups--becoming-a-team"><strong>6. Working in Groups → Becoming a Team</strong></h3>
+<p>Most software work is group‑based. Group effectiveness depends on:</p>
+<p><strong>A. Group Composition</strong></p>
+<ul>
+<li>Avoid groups where all members share the same personality type.</li>
+<li>An effective group balances task‑oriented, self‑oriented, and interaction‑oriented people.</li>
+</ul>
+<p><strong>B. Group Cohesiveness</strong></p>
+<ul>
+<li>A cohesive group values the group above individuals.</li>
+<li>Benefits: shared quality standards, reduced fear of asking questions, learning from each other, egoless programming (constructive peer reviews).</li>
+</ul>
+<p><strong>C. Group Communications</strong></p>
+<ul>
+<li>Good communication is essential for sharing design decisions and status.</li>
+<li>Factors that affect communication:
+<ul>
+<li><strong>Status differences</strong> – higher‑status members may dominate; must encourage open exchange.</li>
+<li><strong>Gender mix</strong> – mixed‑sex groups tend to communicate better.</li>
+<li><strong>Channels</strong> – avoid channelling all communication through a central person; encourage direct communication.</li>
+</ul>
+</li>
+</ul>
+<p><strong>D. Team Formation – Becoming a Team</strong></p>
+<p>Teams evolve through stages (Tuckman’s model – you can mention for context):</p>
+<ul>
+<li>Forming → Storming → Norming → Performing.</li>
+<li>The goal is to reach <strong>Performing</strong>, where the team works smoothly with high trust and productivity.</li>
+</ul>
+<hr>
+<h3 id="7-decision-making"><strong>7. Decision Making</strong></h3>
+<p>In a project environment, decisions are needed constantly – technical choices, priority calls, risk responses.</p>
+<p><strong>Decision‑making approaches</strong>:</p>
+<ul>
+<li><strong>Autocratic</strong> – manager decides alone; fast but may miss input.</li>
+<li><strong>Consultative</strong> – manager gathers input, then decides; balances speed and participation.</li>
+<li><strong>Consensus</strong> – the group discusses until everyone agrees; high buy‑in but time‑consuming.</li>
+<li><strong>Delegated</strong> – decision is pushed to the expert or sub‑team; good for technical matters.</li>
+</ul>
+<p><strong>Factors influencing choice</strong>: urgency, importance, team expertise, and impact on motivation. Involving the team in decisions that affect them improves commitment.</p>
+<hr>
+<h3 id="8-leadership"><strong>8. Leadership</strong></h3>
+<p>Leadership is based on <strong>respect, not just title</strong>. On a software project, two leadership roles often emerge:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Role</strong></th>
+<th><strong>Responsibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Technical leader</strong></td>
+<td>Guides architecture, design, coding standards; earns respect through competence.</td>
+</tr>
+<tr>
+<td><strong>Managerial leader</strong></td>
+<td>Handles planning, resources, communication with stakeholders.</td>
+</tr>
+</tbody>
+</table>
+<p>A healthy organisation supports a <strong>career path for technical competence</strong>, so good engineers don’t have to become managers to advance.</p>
+<p>Good leaders:</p>
+<ul>
+<li>Communicate a clear vision</li>
+<li>Empower team members</li>
+<li>Remove obstacles</li>
+<li>Act with integrity</li>
+</ul>
+<hr>
+<h3 id="9-organizational-structures"><strong>9. Organizational Structures</strong></h3>
+<p>How project teams and authority are arranged.</p>
+<p><strong>A. Team Structures</strong> (from lecture notes)</p>
+<ul>
+<li><strong>Small informal teams</strong> (&lt; 8 members) – democratic, everyone contributes; suitable for small projects.</li>
+<li><strong>Chief programmer team</strong> – a highly skilled chief programmer designs and codes the critical parts; supported by specialists (librarian, tester). Works well for technically complex projects.</li>
+<li><strong>Break large projects</strong> into multiple small teams, each responsible for a subsystem.</li>
+</ul>
+<p><strong>B. Broader Organizational Structures</strong> (briefly added for completeness)</p>
+<ul>
+<li><strong>Functional</strong> – staff grouped by speciality (development, testing, design). Project manager borrows members.</li>
+<li><strong>Project‑based</strong> – dedicated team assigned full‑time to the project; project manager has full authority.</li>
+<li><strong>Matrix</strong> – staff report to both a functional manager and a project manager. Balances resource utilisation and project focus, but can cause dual‑command conflicts.</li>
+</ul>
+<hr>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Explain any one method of motivation model that motivates people to work. <em>(2082)</em> [5]</li>
+ <li>What are different stages in contract? Explain. <em>(2081)</em> [5]</li>
+ <li>How can Software Configuration Management aid in change control and version control? <em>(2080)</em> [5]</li>
+ <li>Highlight on different types of contracts. <em>(2080)</em> [5]</li>
+ <li>Highlight on different types of leadership styles. <em>(2079)</em> [5]</li>
+ <li>Explain Maslow's hierarchy of needs. <em>(2078)</em> [5]</li>
+</ol>
+</section>
+<h2 id="unit-8-software-quality-assurance-and-testing"><strong>UNIT 8: SOFTWARE QUALITY ASSURANCE AND TESTING</strong></h2>
+<hr>
+<h3 id="1-testing-principles-and-objectives"><strong>1. TESTING PRINCIPLES AND OBJECTIVES</strong></h3>
+<p><strong>What is Testing?</strong></p>
+<ul>
+<li>An iterative process carried out in conjunction with implementation.</li>
+<li>An investigation to provide stakeholders with information about product quality.</li>
+<li>The most common way to check that software meets its specification and customer needs.</li>
+<li>A critical element of software quality assurance — the ultimate review of specification, design, and code.</li>
+</ul>
+<p><strong>Why Testing?</strong></p>
+<ul>
+<li>To improve quality</li>
+<li>To verify and validate</li>
+<li>For reliability estimation</li>
+</ul>
+<p><strong>Objectives of Testing</strong></p>
+<ol>
+<li>To demonstrate to the developer and customer that the software meets its requirements.</li>
+<li>To discover faults or defects where the software behaves incorrectly, undesirably, or not according to its specification.</li>
+</ol>
+<p><strong>Key Testing Principles</strong> (you should know these)</p>
+<table>
+<thead>
+<tr>
+<th><strong>Principle</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Traceability to requirements</strong></td>
+<td>Every test should be traceable back to a specific customer requirement.</td>
+</tr>
+<tr>
+<td><strong>Plan tests early</strong></td>
+<td>Test planning should begin long before testing execution starts.</td>
+</tr>
+<tr>
+<td><strong>Pareto principle</strong></td>
+<td>80% of all errors are likely to be traceable to 20% of program components. Focus on those suspect components.</td>
+</tr>
+<tr>
+<td><strong>Start small, then integrate</strong></td>
+<td>Testing begins at the unit level and progresses outward towards the integrated system.</td>
+</tr>
+<tr>
+<td><strong>Exhaustive testing is impossible</strong></td>
+<td>It’s impossible to test every combination of inputs. Use risk and priorities to select test cases.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="2-test-plan"><strong>2. TEST PLAN</strong></h3>
+<p>A <strong>test plan</strong> is a document detailing a systematic approach to testing a system. It documents the strategy to verify that a product meets its design specifications and requirements. Usually prepared by or with significant input from Test Engineers.</p>
+<p><strong>A test plan includes:</strong></p>
+<ul>
+<li>Introduction</li>
+<li>Assumptions</li>
+<li>List of test cases</li>
+<li>Features to be tested (and not tested)</li>
+<li>Testing approach (strategy)</li>
+<li>Deliverables to be tested</li>
+<li>Resources allocated</li>
+<li>Risks during testing</li>
+<li>Schedule of tasks and milestones</li>
+</ul>
+<p>A test case is a set of conditions/variables under which a tester determines whether the system works correctly. A <strong>test oracle</strong> is the mechanism to decide pass/fail.</p>
+<hr>
+<h3 id="3-types-and-levels-of-testing"><strong>3. TYPES AND LEVELS OF TESTING</strong></h3>
+<p><strong>A. Types of Testing (by execution method)</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manual Testing</strong></td>
+<td>Tester executes test cases manually without automation tools, acting as an end user to identify unexpected behaviour.</td>
+</tr>
+<tr>
+<td><strong>Automation Testing</strong></td>
+<td>Tester writes scripts and uses software tools to re-run test scenarios quickly and repeatedly.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B. Testing Methods (by knowledge of internals)</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Black‑box</strong></td>
+<td>Testing without any knowledge of internal workings. Focus on inputs and outputs.</td>
+<td>User enters a value, checks the calculated output, but doesn't know the formula inside.</td>
+</tr>
+<tr>
+<td><strong>White‑box (glass/clear)</strong></td>
+<td>Testing with full knowledge of internal logic and code structure.</td>
+<td>Tester checks specific loops, conditions, and paths in the source code.</td>
+</tr>
+<tr>
+<td><strong>Grey‑box</strong></td>
+<td>Testing with limited knowledge of internal workings.</td>
+<td>Tester knows some database schema but not full code.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>C. Levels of Testing</strong></p>
+<p>Two main categories: <strong>Functional</strong> and <strong>Non‑Functional</strong>.</p>
+<p><strong>Functional Testing</strong>: based on specifications; tested by providing inputs and examining outputs.</p>
+<ol>
+<li><strong>Unit Testing</strong>
+<ul>
+<li>Performed by developers on individual units (functions, classes) of source code.</li>
+<li>Goal: isolate each part and show that individual parts are correct.</li>
+<li>Uses test data separate from QA team's data.</li>
+</ul>
+</li>
+<li><strong>Integration Testing</strong>
+<ul>
+<li>Testing combined parts of an application to see if they function correctly together.</li>
+<li>Two approaches:
+<ul>
+<li><strong>Bottom‑up</strong>: Start with unit tests, then progressively combine modules.</li>
+<li><strong>Top‑down</strong>: Test highest‑level modules first, then progressively add lower‑level modules.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>System Testing</strong>
+<ul>
+<li>Tests the complete, integrated system as a whole against quality standards.</li>
+<li>Performed by a specialized testing team in an environment similar to production.</li>
+<li>Verifies and validates both business requirements and application architecture.</li>
+</ul>
+</li>
+<li><strong>Acceptance Testing</strong>
+<ul>
+<li>Conducted by QA team / client to gauge whether the application meets intended specs and client requirements.</li>
+<li>Two types:
+<ul>
+<li><strong>Alpha testing</strong>: Performed internally (developer + QA teams) combining unit, integration, system tests. Checks for spelling, broken links, performance on low‑spec machines.</li>
+<li><strong>Beta testing</strong>: A sample of intended users tests the application before release. Feedback on crashes, confusing flows, etc., is used to fix issues.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Non‑Functional Testing</strong>: tests attributes like performance, security, usability, portability.</p>
+<ul>
+<li>Performance Testing</li>
+<li>Usability Testing</li>
+<li>Security Testing</li>
+<li>Portability Testing</li>
+</ul>
+<hr>
+<h3 id="4-test-strategies"><strong>4. TEST STRATEGIES</strong></h3>
+<p>A strategy integrates low‑level tests (verifying small code segments) and high‑level tests (validating major system functions against customer requirements).</p>
+<p><strong>Strategic Approach:</strong></p>
+<ul>
+<li>Testing begins at the component level and moves outward toward the integrated system.</li>
+<li>Different testing techniques are appropriate at different points in time.</li>
+<li>The developer conducts testing, possibly assisted by an independent test group to avoid conflict of interest (builder testing own product).</li>
+<li>Testing and debugging are different activities; debugging must be accommodated in the strategy.</li>
+<li>Distinction between <strong>verification</strong> and <strong>validation</strong> is essential.</li>
+</ul>
+<p>A good strategy provides <strong>guidance</strong> for practitioners and <strong>milestones</strong> for managers, with progress that is measurable even under deadline pressure.</p>
+<hr>
+<h3 id="5-program-verification-and-validation-vv"><strong>5. PROGRAM VERIFICATION AND VALIDATION (V&amp;V)</strong></h3>
+<p><strong>Definitions</strong>:</p>
+<ul>
+<li><strong>Verification</strong>: &quot;Are we building the product right?&quot; – ensuring software correctly implements a specific function.</li>
+<li><strong>Validation</strong>: &quot;Are we building the right product?&quot; – ensuring the built software is traceable to customer requirements.</li>
+</ul>
+<p><strong>V&amp;V Process</strong>:</p>
+<ul>
+<li>A whole‑life‑cycle process applied at every stage of software development.</li>
+<li><strong>Two principal objectives</strong>:
+<ol>
+<li>Discovery of defects in the system.</li>
+<li>Assessment of whether the system is useful and usable in an operational situation.</li>
+</ol>
+</li>
+</ul>
+<p><strong>V&amp;V Goals</strong>:</p>
+<ul>
+<li>Establish confidence that the software is <strong>fit for purpose</strong>.</li>
+<li>This does NOT mean completely free of defects – it must be <strong>good enough</strong> for its intended use. The type of use determines the degree of confidence needed.</li>
+</ul>
+<p><strong>V&amp;V encompasses many SQA activities</strong> (formal technical reviews, quality and configuration audits, performance monitoring, simulation, feasibility study, documentation review, algorithm analysis, development testing, qualification testing, installation testing, etc.).</p>
+<hr>
+<h3 id="6-software-quality"><strong>6. SOFTWARE QUALITY</strong></h3>
+<p><strong>Defining Software Quality</strong> (based on lecture quotes):</p>
+<ul>
+<li>The difficulty is translating future user needs into measurable characteristics, so a product gives satisfaction at a price the user will pay (Shewhart/Deming).</li>
+<li>Quality reflects:
+<ul>
+<li><strong>Conformance to functional requirements</strong> (compliance with design/ specs).</li>
+<li><strong>Meeting non‑functional requirements</strong> (robustness, maintainability, reliability) – the degree to which software was produced correctly.</li>
+</ul>
+</li>
+<li>Software quality measurement quantifies how well a product rates along dimensions like functionality, reliability, usability, efficiency, maintainability, portability (ISO 9126 idea, can be mentioned briefly).</li>
+</ul>
+<hr>
+<h3 id="7-seicmm-capability-maturity-model"><strong>7. SEI‑CMM (Capability Maturity Model)</strong></h3>
+<p><strong>SEI</strong> (Software Engineering Institute) at Carnegie Mellon developed CMM to improve software development processes.</p>
+<p><strong>CMM Structure</strong>:</p>
+<ul>
+<li><strong>Maturity Levels</strong>: 5‑level continuum from ad‑hoc to optimized.</li>
+<li><strong>Key Process Areas</strong>: clusters of related activities that achieve a set of goals.</li>
+<li><strong>Goals</strong>: summarize the states that must exist for a key process area to be effective.</li>
+<li><strong>Common Features</strong>: practices to implement and institutionalize a key process area (commitment, ability, activities, measurement, verification).</li>
+<li><strong>Key Practices</strong>: describe infrastructure and practice elements.</li>
+</ul>
+<figure><img src="images/figure18-cmm-pyramid.png" alt="CMM Pyramid">
+<figcaption>The Five Maturity Levels</figcaption></figure>
+<ul>
+<li><strong>Level 1 – Initial</strong>: Ad‑hoc processes; success depends on individual efforts.</li>
+<li><strong>Level 2 – Repeatable</strong>: Software project tracking, requirements management, realistic planning, configuration management in place; successful practices can be repeated.</li>
+<li><strong>Level 3 – Defined</strong>: Standard software development and maintenance processes are integrated organization‑wide; a Software Engineering Process Group oversees processes; training programs ensure compliance.</li>
+<li><strong>Level 4 – Managed</strong>: Metrics used to track productivity, processes, and products; performance is predictable, quality consistently high.</li>
+<li><strong>Level 5 – Optimising</strong>: Focus on continuous process improvement; impact of new processes/technologies can be predicted and effectively implemented.</li>
+</ul>
+<hr>
+<h3 id="8-sqa-activities"><strong>8. SQA ACTIVITIES</strong></h3>
+<p>Software Quality Assurance (SQA) is the process of evaluating product quality and enforcing adherence to standards and procedures. It encompasses the entire development process (requirements, design, coding, code reviews, change management, configuration management, testing, release management, product integration).</p>
+<p><strong>Key SQA Activities</strong> (list):</p>
+<ol>
+<li>Formulating a quality management plan</li>
+<li>Applying software engineering techniques</li>
+<li>Conducting formal technical reviews</li>
+<li>Applying a multi‑tiered testing strategy</li>
+<li>Enforcing process adherence</li>
+<li>Controlling change</li>
+<li>Measuring impact of change</li>
+<li>Performing SQA audits</li>
+<li>Keeping records and reporting</li>
+</ol>
+<p>SQA is organized into goals, commitments, abilities, activities, measurements, and verifications.</p>
+<hr>
+<h3 id="9-qa-organization-structure"><strong>9. QA ORGANIZATION STRUCTURE</strong></h3>
+<p>The QA organizational structure must provide the QA manager with <strong>direct organizational paths into every department</strong>.</p>
+<ul>
+<li><strong>Small businesses</strong>: assign QA responsibilities to someone in management, giving them authority to manage QA matters company‑wide and a reporting path to the executive level.</li>
+<li>Employees continue to report to their department manager for disciplinary and non‑QA matters, but report to the QA person on quality questions.</li>
+</ul>
+<figure><img src="images/figure14-qa-organization-structure.png" alt="QA Organization Structure">
+<figcaption>Diagram: QA Organization Structure</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div> Executive
+ |
+ ┌─────────────┼─────────────┐
+ | | |
+ Dept. Mgr QA Manager Dept. Mgr
+ (staff) (authority) (staff)
+ | | |
+ Employees ←── QA reporting ──→ Employees
+</div></code></pre>
+<p>QA manager has a direct line into each department for quality matters, independent of regular departmental hierarchy.</p>
+<hr>
+<h3 id="10-sqa-plan"><strong>10. SQA PLAN</strong></h3>
+<p>The SQA plan describes how quality assurance will be performed throughout the project. It includes:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Section</strong></th>
+<th><strong>Contents</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Management</strong></td>
+<td>Place of SQA in the organization structure</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Each work product produced as part of the software process</td>
+</tr>
+<tr>
+<td><strong>Standards, practices, conventions</strong></td>
+<td>All applicable standards/practices and metrics to be collected</td>
+</tr>
+<tr>
+<td><strong>Reviews and audits</strong></td>
+<td>Overview of how reviews and audits will be conducted</td>
+</tr>
+<tr>
+<td><strong>Problem reporting and corrective action</strong></td>
+<td>Procedures for reporting, tracking, and resolving errors/defects; organizational responsibilities</td>
+</tr>
+<tr>
+<td><strong>Test</strong></td>
+<td>References test plan/procedure and defines test record keeping requirements</td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td>Tools, SQA methods, change control, record keeping, training, risk managemen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>Write short notes on: Critical path. <em>(2082)</em> [5]</li>
+ <li>Why software quality assurance is carried out? Explain QA organization structure. <em>(2082)</em> [5]</li>
+ <li>Explain different levels of testing. <em>(2082)</em> [5]</li>
+ <li>What is SEI-CMM? Explain its importance. <em>(2081, 2082)</em> [5]</li>
+ <li>What are testing principles? List different test strategies. Explain SQA plan. <em>(2081, 2079)</em> [10]</li>
+ <li>Explain capability process model. <em>(2080)</em> [5]</li>
+ <li>Differentiate between verification and validation. List testing principles. <em>(2079)</em> [5]</li>
+ <li>Briefly explain different quality factors. <em>(2078)</em> [5]</li>
+</ol>
+</section>
+<h2 id="unit-9-software-configuration-management-scm"><strong>UNIT 9: SOFTWARE CONFIGURATION MANAGEMENT (SCM)</strong></h2>
+<hr>
+<h3 id="1-introduction-to-scm"><strong>1. INTRODUCTION TO SCM</strong></h3>
+<p><strong>What is Software Configuration Management?</strong></p>
+<p>SCM is the discipline of <strong>identifying, organizing, and controlling</strong> changes to software products throughout the project lifecycle. It ensures that everyone works with the correct versions of all project artifacts and that changes are managed systematically.</p>
+<p><strong>Think of SCM as the &quot;librarian&quot; of the project</strong> — it knows where everything is, who changed what, when, and why.</p>
+<p><strong>Key Goal</strong>: Maintain the <strong>integrity</strong> and <strong>traceability</strong> of the software product as it evolves.</p>
+<p><strong>What is a Configuration?</strong></p>
+<p>The complete set of software products (code, documents, test data, manuals, etc.) at a specific point in time, along with their relationships.</p>
+<hr>
+<h3 id="2-need-for-scm"><strong>2. NEED FOR SCM</strong></h3>
+<p>Why is SCM essential in a software project?</p>
+<table>
+<thead>
+<tr>
+<th><strong>Problem SCM Solves</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multiple developers changing the same code</strong></td>
+<td>Without control, changes overwrite each other, causing lost work and bugs.</td>
+</tr>
+<tr>
+<td><strong>Inability to revert to a stable version</strong></td>
+<td>If a change breaks the system, you must be able to go back to the last working state.</td>
+</tr>
+<tr>
+<td><strong>Confusion over which version is &quot;current&quot;</strong></td>
+<td>Stakeholders need to know exactly which build is being tested, delivered, or deployed.</td>
+</tr>
+<tr>
+<td><strong>Uncontrolled changes (scope creep)</strong></td>
+<td>Changes made without authorization or impact analysis can derail the project.</td>
+</tr>
+<tr>
+<td><strong>Parallel development (branching)</strong></td>
+<td>Different versions (e.g., maintenance release vs. new feature development) must be managed simultaneously.</td>
+</tr>
+<tr>
+<td><strong>Audit and accountability</strong></td>
+<td>You need to know who made what change and why, for reviews and compliance.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Without SCM, a project can quickly descend into chaos</strong> — duplicate effort, lost code, broken builds, and angry customers.</p>
+<hr>
+<h3 id="3-basic-configuration-concepts"><strong>3. BASIC CONFIGURATION CONCEPTS</strong></h3>
+<p><strong>A. Configuration Item (CI)</strong></p>
+<p>A CI is any work product that is placed under configuration control. Examples:</p>
+<ul>
+<li>Source code files</li>
+<li>Requirements specifications</li>
+<li>Design documents</li>
+<li>Test plans and test cases</li>
+<li>User manuals</li>
+<li>Build scripts and configuration files</li>
+</ul>
+<p><strong>B. Baseline</strong></p>
+<p>A baseline is a <strong>formally reviewed and agreed-upon set of CIs</strong> that serves as a fixed reference point for further development. Once baselined, changes can only be made through a formal change control process.</p>
+<figure><img src="images/figure11-baselines-lifecycle.png" alt="Baselines Lifecycle">
+<figcaption>Figure: Baselines through the lifecycle</figcaption></figure>
+<p>text</p>
+<pre class="hljs"><code><div>Requirements ── Baseline 1 ── Design ── Baseline 2 ── Coding ── Baseline 3 ── Testing ── Baseline 4 (Release)
+</div></code></pre>
+<ul>
+<li><strong>Baseline 1</strong>: Requirements specification approved.</li>
+<li><strong>Baseline 2</strong>: Design documents approved.</li>
+<li><strong>Baseline 3</strong>: Code frozen for testing.</li>
+<li><strong>Baseline 4</strong>: Final tested product released.</li>
+</ul>
+<p><strong>C. Version vs. Revision vs. Release</strong></p>
+<ul>
+<li><strong>Version</strong>: A specific instance of a CI at a given point in time (e.g., v1.0, v1.1).</li>
+<li><strong>Revision</strong>: A minor change to a version (e.g., bug fix).</li>
+<li><strong>Release</strong>: A version distributed to customers.</li>
+</ul>
+<p><strong>D. Repository (or Library)</strong></p>
+<p>A central database that stores all CIs and their change history. Developers &quot;check out&quot; items, modify them, and &quot;check in&quot; the updated versions. Tools: Git, SVN, etc.</p>
+<p><strong>E. Branching and Merging</strong></p>
+<ul>
+<li><strong>Branch</strong>: A separate line of development (e.g., a feature branch, a bug-fix branch).</li>
+<li><strong>Merge</strong>: Combining changes from one branch back into another (e.g., merging a completed feature into the main line).</li>
+</ul>
+<hr>
+<h3 id="4-management-responsibilities-in-scm"><strong>4. MANAGEMENT RESPONSIBILITIES IN SCM</strong></h3>
+<p>SCM involves four main activities that form a continuous cycle:</p>
+<figure><img src="images/figure19-scm-cycle.png" alt="SCM Configuration Management Cycle"></figure>
+<p><strong>1. Configuration Identification</strong></p>
+<ul>
+<li>Define what CIs are under SCM.</li>
+<li>Establish naming conventions and version numbering schemes.</li>
+<li>Define baselines.</li>
+<li>Identify the structure of the product (e.g., using a Product Breakdown Structure).</li>
+</ul>
+<p><strong>2. Configuration Control (Change Control)</strong></p>
+<ul>
+<li>Evaluate, approve, and track all changes to baselined CIs.</li>
+<li>Use a <strong>Change Control Board (CCB)</strong> to review change requests.</li>
+<li>A formal change request goes through:
+<ul>
+<li>Submission → Impact analysis → CCB decision (approve/reject/defer) → Implementation → Verification → Update records.</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Configuration Status Accounting</strong></p>
+<ul>
+<li>Record and report the current status of each CI (e.g., &quot;checked out&quot;, &quot;in review&quot;, &quot;approved&quot;, &quot;baselined&quot;).</li>
+<li>Provide traceability: who changed what, when, and why.</li>
+<li>Generate reports for management on the state of the configuration.</li>
+</ul>
+<p><strong>4. Configuration Auditing</strong></p>
+<ul>
+<li>Verify that the actual configuration matches the documented configuration.</li>
+<li>Two types:
+<ul>
+<li><strong>Physical audit</strong>: Does the actual product (code, docs) match the baseline specification?</li>
+<li><strong>Functional audit</strong>: Does the product meet the functional requirements defined in the baseline?</li>
+</ul>
+</li>
+<li>Ensures that SCM processes are being followed correctly.</li>
+</ul>
+
+<hr>
+<section class="review-questions">
+<h3>Review Questions</h3>
+<ol>
+ <li>What are the purposes of carrying out software configuration management? Explain. <em>(2082)</em> [5]</li>
+ <li>Write short notes on: Schedule variance. <em>(2081)</em> [5]</li>
+ <li>Highlight on configuration management responsibilities. <em>(2081)</em> [5]</li>
+ <li>What is a baseline? Why Software Configuration Management is a critical activity? <em>(2081, 2079)</em> [5]</li>
+ <li>Explain the process of Software Configuration Management. <em>(2078)</em> [5]</li>
+</ol>
+</section>
+</body>
+</html>
+

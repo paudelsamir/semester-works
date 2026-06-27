@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 1050" font-family="Arial, sans-serif">
+  <rect width="550" height="1050" fill="#fff" rx="10"/>
+  <text x="275" y="32" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">Stepwise Project Planning Framework</text>
+
+  <!-- Step 0 -->
+  <rect x="145" y="55" width="260" height="44" rx="22" fill="#2c3e50"/>
+  <text x="275" y="74" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">0. Select Project</text>
+  <text x="275" y="90" text-anchor="middle" fill="#bdc3c7" font-size="10">Choose the right project to proceed with</text>
+
+  <line x1="275" y1="99" x2="275" y2="118" stroke="#555" stroke-width="2"/>
+  <polygon points="270,118 275,128 280,118" fill="#555"/>
+
+  <!-- Step 1 -->
+  <rect x="120" y="128" width="310" height="44" rx="22" fill="#2980b9"/>
+  <text x="275" y="147" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">1. Identify Project Scope &amp; Objectives</text>
+  <text x="275" y="163" text-anchor="middle" fill="#d4e6f1" font-size="10">What are we building? Why? For whom?</text>
+
+  <line x1="275" y1="172" x2="275" y2="191" stroke="#555" stroke-width="2"/>
+  <polygon points="270,191 275,201 280,191" fill="#555"/>
+
+  <!-- Step 2 -->
+  <rect x="120" y="201" width="310" height="44" rx="22" fill="#3498db"/>
+  <text x="275" y="220" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">2. Identify Project Infrastructure</text>
+  <text x="275" y="236" text-anchor="middle" fill="#d4e6f1" font-size="10">Tools, environment, team, processes available</text>
+
+  <line x1="275" y1="245" x2="275" y2="264" stroke="#555" stroke-width="2"/>
+  <polygon points="270,264 275,274 280,264" fill="#555"/>
+
+  <!-- Step 3 -->
+  <rect x="120" y="274" width="310" height="44" rx="22" fill="#1abc9c"/>
+  <text x="275" y="293" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">3. Analyse Project Characteristics</text>
+  <text x="275" y="309" text-anchor="middle" fill="#d1f2eb" font-size="10">Complexity, risks, constraints, assumptions</text>
+
+  <line x1="275" y1="318" x2="275" y2="337" stroke="#555" stroke-width="2"/>
+  <polygon points="270,337 275,347 280,337" fill="#555"/>
+
+  <!-- Step 4 -->
+  <rect x="120" y="347" width="310" height="44" rx="22" fill="#27ae60"/>
+  <text x="275" y="366" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">4. Identify Products &amp; Activities</text>
+  <text x="275" y="382" text-anchor="middle" fill="#d5f5e3" font-size="10">Break deliverables into work packages</text>
+
+  <line x1="275" y1="391" x2="275" y2="410" stroke="#555" stroke-width="2"/>
+  <polygon points="270,410 275,420 280,410" fill="#555"/>
+
+  <!-- Step 5 -->
+  <rect x="120" y="420" width="310" height="44" rx="22" fill="#f39c12"/>
+  <text x="275" y="439" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">5. Estimate Effort for Each Activity</text>
+  <text x="275" y="455" text-anchor="middle" fill="#fef9e7" font-size="10">Person-hours, duration, dependencies</text>
+
+  <line x1="275" y1="464" x2="275" y2="483" stroke="#555" stroke-width="2"/>
+  <polygon points="270,483 275,493 280,483" fill="#555"/>
+
+  <!-- Step 6 -->
+  <rect x="95" y="493" width="360" height="44" rx="22" fill="#e74c3c"/>
+  <text x="275" y="512" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">6. Identify Activity Risks</text>
+  <text x="275" y="528" text-anchor="middle" fill="#fadbd8" font-size="10">Analyse risks for each activity</text>
+
+  <!-- Loop for step 6: For each activity → Review → Lower level detail -->
+  <!-- Right side loop -->
+  <rect x="420" y="560" width="120" height="90" rx="10" fill="#f5b7b1" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="480" y="580" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">For Each</text>
+  <text x="480" y="596" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">Activity</text>
+  <line x1="425" y1="610" x2="535" y2="610" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="480" y="628" text-anchor="middle" fill="#c0392b" font-size="10">Review</text>
+  <text x="480" y="644" text-anchor="middle" fill="#c0392b" font-size="10">Lower-level detail</text>
+
+  <!-- Arrow from step 6 to the loop box -->
+  <line x1="455" y1="515" x2="455" y2="560" stroke="#e74c3c" stroke-width="2"/>
+  <polygon points="450,560 455,570 460,560" fill="#e74c3c"/>
+  <text x="458" y="542" fill="#e74c3c" font-size="9">Yes</text>
+
+  <!-- Arrow from loop box back to step 4 -->
+  <path d="M 480,560 L 480,540 L 30,540 L 30,369 L 115,369" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="115,363 105,369 115,375" fill="#e74c3c"/>
+  <text x="35" y="455" fill="#e74c3c" font-size="10" font-style="italic" transform="rotate(-90,35,455)">More detail needed → iterate</text>
+
+  <!-- Arrow from step 6 continuing down -->
+  <line x1="275" y1="537" x2="275" y2="569" stroke="#555" stroke-width="2"/>
+  <polygon points="270,569 275,579 280,569" fill="#555"/>
+
+  <!-- Step 7 -->
+  <rect x="120" y="579" width="310" height="44" rx="22" fill="#8e44ad"/>
+  <text x="275" y="598" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">7. Allocate Resources</text>
+  <text x="275" y="614" text-anchor="middle" fill="#e8daef" font-size="10">Assign people, budget, tools to activities</text>
+
+  <line x1="275" y1="623" x2="275" y2="642" stroke="#555" stroke-width="2"/>
+  <polygon points="270,642 275,652 280,642" fill="#555"/>
+
+  <!-- Step 8 -->
+  <rect x="120" y="652" width="310" height="44" rx="22" fill="#e67e22"/>
+  <text x="275" y="671" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">8. Review &amp; Publicise Plan</text>
+  <text x="275" y="687" text-anchor="middle" fill="#fdebd0" font-size="10">Get approval, communicate to all stakeholders</text>
+
+  <line x1="275" y1="696" x2="275" y2="715" stroke="#555" stroke-width="2"/>
+  <polygon points="270,715 275,725 280,715" fill="#555"/>
+
+  <!-- Step 9 -->
+  <rect x="145" y="725" width="260" height="50" rx="25" fill="#16a085"/>
+  <text x="275" y="748" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">9. Execute Plan</text>
+  <text x="275" y="764" text-anchor="middle" fill="#d1f2eb" font-size="10">Begin project execution</text>
+
+  <!-- Side note -->
+  <rect x="50" y="810" width="450" height="110" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+  <text x="275" y="832" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Key Points</text>
+  <text x="275" y="852" text-anchor="middle" fill="#555" font-size="10">Steps 0-2 are about understanding the project environment.</text>
+  <text x="275" y="872" text-anchor="middle" fill="#555" font-size="10">Steps 3-5 decompose work and estimate effort.</text>
+  <text x="275" y="892" text-anchor="middle" fill="#555" font-size="10">Step 6 loops back if risks require finer detail.</text>
+  <text x="275" y="912" text-anchor="middle" fill="#555" font-size="10">Steps 7-9 finalise and execute the plan.</text>
+
+  <!-- Legend -->
+  <rect x="275" y="960" width="12" height="12" rx="6" fill="#e74c3c"/>
+  <text x="293" y="971" fill="#555" font-size="10">Loop / iteration for risk-driven detail</text>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowRed" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#e74c3c" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="340" fill="#fff" rx="8"/>
+  <text x="360" y="28" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">CPM Network — Activity-on-Node</text>
+
+  <!-- Start -->
+  <rect x="25" y="120" width="70" height="44" rx="22" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="60" y="147" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Start</text>
+
+  <!-- Start → A -->
+  <line x1="95" y1="142" x2="138" y2="100" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="138,96 150,100 138,106" fill="#7f8c8d"/>
+
+  <!-- Start → B -->
+  <line x1="95" y1="142" x2="138" y2="184" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="138,180 150,184 138,190" fill="#7f8c8d"/>
+
+  <!-- Node A -->
+  <rect x="153" y="72" width="134" height="56" rx="6" fill="#fff" stroke="#2980b9" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="153" y="72" width="134" height="24" rx="6" fill="#2980b9"/>
+  <text x="220" y="89" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">A (2 days)</text>
+  <rect x="157" y="100" width="60" height="20" rx="4" fill="#d4e6f1"/>
+  <text x="187" y="114" text-anchor="middle" fill="#1a5276" font-size="11">ES=0  EF=2</text>
+  <rect x="223" y="100" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="253" y="114" text-anchor="middle" fill="#922b21" font-size="11">LS=1  LF=3</text>
+  <text x="220" y="138" text-anchor="middle" fill="#7f8c8d" font-size="10">Float = 1</text>
+
+  <!-- Node B -->
+  <rect x="153" y="156" width="134" height="56" rx="6" fill="#fdedec" stroke="#e74c3c" stroke-width="2.5" filter="url(#shadowRed)"/>
+  <rect x="153" y="156" width="134" height="24" rx="6" fill="#e74c3c"/>
+  <text x="220" y="173" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">B (4 days)</text>
+  <rect x="157" y="184" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="187" y="198" text-anchor="middle" fill="#922b21" font-size="11" font-weight="bold">ES=0  EF=4</text>
+  <rect x="223" y="184" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="253" y="198" text-anchor="middle" fill="#922b21" font-size="11" font-weight="bold">LS=0  LF=4</text>
+  <text x="220" y="222" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">Float = 0 ✦</text>
+
+  <!-- A → C -->
+  <line x1="287" y1="100" x2="350" y2="100" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="350,96 362,100 350,106" fill="#7f8c8d"/>
+
+  <!-- B → D -->
+  <line x1="287" y1="184" x2="350" y2="184" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="350,180 362,184 350,190" fill="#7f8c8d"/>
+
+  <!-- Node C -->
+  <rect x="365" y="72" width="134" height="56" rx="6" fill="#fff" stroke="#2980b9" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="365" y="72" width="134" height="24" rx="6" fill="#2980b9"/>
+  <text x="432" y="89" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">C (3 days)</text>
+  <rect x="369" y="100" width="60" height="20" rx="4" fill="#d4e6f1"/>
+  <text x="399" y="114" text-anchor="middle" fill="#1a5276" font-size="11">ES=2  EF=5</text>
+  <rect x="435" y="100" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="465" y="114" text-anchor="middle" fill="#922b21" font-size="11">LS=3  LF=6</text>
+  <text x="432" y="138" text-anchor="middle" fill="#7f8c8d" font-size="10">Float = 1</text>
+
+  <!-- Node D -->
+  <rect x="365" y="156" width="134" height="56" rx="6" fill="#fdedec" stroke="#e74c3c" stroke-width="2.5" filter="url(#shadowRed)"/>
+  <rect x="365" y="156" width="134" height="24" rx="6" fill="#e74c3c"/>
+  <text x="432" y="173" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">D (2 days)</text>
+  <rect x="369" y="184" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="399" y="198" text-anchor="middle" fill="#922b21" font-size="11" font-weight="bold">ES=4  EF=6</text>
+  <rect x="435" y="184" width="60" height="20" rx="4" fill="#f5b7b1"/>
+  <text x="465" y="198" text-anchor="middle" fill="#922b21" font-size="11" font-weight="bold">LS=4  LF=6</text>
+  <text x="432" y="222" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">Float = 0 ✦</text>
+
+  <!-- C → End -->
+  <line x1="499" y1="100" x2="555" y2="142" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="555,138 565,142 555,148" fill="#7f8c8d"/>
+
+  <!-- D → End -->
+  <line x1="499" y1="184" x2="555" y2="142" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="555,138 565,142 555,148" fill="#7f8c8d"/>
+
+  <!-- End -->
+  <rect x="558" y="120" width="70" height="44" rx="22" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="593" y="147" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">End</text>
+
+  <!-- Critical path label -->
+  <rect x="27" y="260" width="280" height="28" rx="14" fill="#fdedec" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="167" y="279" text-anchor="middle" fill="#c0392b" font-size="13" font-weight="bold">Critical Path: B → D  |  Duration = 6 days</text>
+
+  <!-- Key -->
+  <rect x="320" y="260" width="370" height="55" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+  <text x="335" y="278" fill="#555" font-size="11" font-weight="bold">Node:</text>
+  <rect x="375" y="265" width="54" height="14" rx="4" fill="#d4e6f1"/>
+  <text x="402" y="276" text-anchor="middle" fill="#1a5276" font-size="9" font-weight="bold">ES | EF</text>
+  <rect x="435" y="265" width="54" height="14" rx="4" fill="#f5b7b1"/>
+  <text x="462" y="276" text-anchor="middle" fill="#922b21" font-size="9" font-weight="bold">LS | LF</text>
+  <rect x="335" y="283" width="16" height="12" rx="3" fill="#fdedec" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="357" y="294" fill="#c0392b" font-size="10" font-weight="bold">Red = Critical</text>
+  <rect x="440" y="284" width="16" height="12" rx="3" fill="#fff" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="462" y="294" fill="#2980b9" font-size="10" font-weight="bold">Blue = Non-critical</text>
+</svg>
