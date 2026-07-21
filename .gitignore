@@ -7,8 +7,26 @@ semester-5/notes.zip
 # Java compiled bytecode
 **/*.class
 
+# Java libraries
+**/*.jar
+
 # PDF documents (cheatsheets, notes, etc.)
 **/*.pdf
 
 # JavaFX SDK (large binaries, exceeds GitHub limit)
 **/javafx/sdk/
+
+# LaTeX build artifacts
+**/*.aux
+**/*.log
+**/*.toc
+
+# Image/webp
+**/*.webp
+
+# Office lock files
+**/.~lock.*
+
+# Archives
+**/*.tar.gz
+**/*.zip

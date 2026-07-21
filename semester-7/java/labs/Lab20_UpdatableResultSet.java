@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class Lab20_UpdatableResultSet {
     
-    static final String DB_URL = "jdbc:mysql://localhost:3306/movie_db";
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/movie_db";
     static final String USER = "root";
     static final String PASS = "password";
     

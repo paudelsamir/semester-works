@@ -1,92 +1,89 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+
 \usepackage[margin=0.6in]{geometry}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{multicol}
+\setmonofont{Inconsolatazi4}[Scale=0.9]
+\usepackage{enumitem}
 
-% Code listing settings - compact version
+% Code listing settings
 \lstset{
     language=Java,
-    basicstyle=\ttfamily\tiny,
+    basicstyle=\ttfamily\footnotesize,
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{gray},
     stringstyle=\color{red},
-    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!5},
+    showspaces=false,
     showstringspaces=false,
+    showtabs=false,
+    frame=single,
     tabsize=2,
-    numbers=none,
-    frame=none,
-    morekeywords={public, private, protected, static, final, class, interface, extends, implements, new, this, super, void, int, String, double, boolean, try, catch, finally, throw, throws, synchronized, volatile}
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    aboveskip=8pt,
+    belowskip=8pt,
+    xleftmargin=10pt,
+    morekeywords={public, private, protected, static, final, class, interface, extends, implements, new, this, super, void, int, String, double, boolean, try, catch, finally, throw, throws, synchronized, volatile, @Override}
 }
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \setlength{\columnsep}{20pt}
 
-\title{\textbf{Advanced Java Programming Laboratory (CSIT-7th Semester)}}
-\author{Samir Paudel (Roll No: 114-079/D)}
-\date{\today}
-
 \begin{document}
 
-\maketitle
-\tableofcontents
-\newpage
-
 % ======================== LAB 1 ========================
-\section*{Lab 1: Box Class with Static Methods}
+\section*{Lab 1: Box Class}
 
-\textbf{Title:} Create a static Box class with volume calculation
+\textbf{Title:} Create a class named "Box" which includes the variables: length, breadth, and height. Add a method to print the values of these variables. Add another method that prints the volume of box. Now create two objects of "Box" class inside main method and initialize the variables for both objects then call above methods using each object.
 
 \subsection*{Theory}
-Static classes and static methods belong to the class itself, not to instances. They can be called without creating an object. Static members are shared across all instances and loaded into memory once. The `new` keyword cannot be used with static classes.
-
-Use Cases:
-\begin{itemize}
-    \item Utility methods (Math.sqrt(), Integer.parseInt())
-    \item Factory methods for object creation
-    \item Storing shared constants and global state
-\end{itemize}
+Classes and objects form the foundation of OOP. A class is a blueprint, and an object is an instance. Instance variables belong to each object, and methods define behavior. The \texttt{new} keyword allocates memory and returns a reference.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab1_BoxClass {
     static class Box {
-        static double length;
-        static double breadth;
-        static double height;
-        
-        static void printValues() {
+        double length;
+        double breadth;
+        double height;
+        void printValues() {
             System.out.println("Length: " + length);
             System.out.println("Breadth: " + breadth);
             System.out.println("Height: " + height);
         }
-        
-        static void printVolume() {
+        void printVolume() {
             double volume = length * breadth * height;
-            System.out.println("Volume: " + volume);
+            System.out.println("Volume of Box: " + volume);
         }
     }
-    
     public static void main(String[] args) {
-        Box.length = 5.0;
-        Box.breadth = 12.0;
-        Box.height = 1.0;
-        
-        Box.printValues();
-        Box.printVolume();
-        
-        Box.length = 10.0;
-        Box.breadth = 20.0;
-        Box.height = 2.4;
-        
-        Box.printValues();
-        Box.printVolume();
-        
-        System.out.println("Lab No.: 1");
+        Box box1 = new Box();
+        box1.length = 5.0;
+        box1.breadth = 4.0;
+        box1.height = 3.0;
+        System.out.println("--- Box 1 ---");
+        box1.printValues();
+        box1.printVolume();
+        Box box2 = new Box();
+        box2.length = 10.0;
+        box2.breadth = 8.0;
+        box2.height = 6.0;
+        System.out.println("\n--- Box 2 ---");
+        box2.printValues();
+        box2.printVolume();
+        System.out.println("\nLab No.: 1");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
     }
@@ -95,94 +92,74 @@ public class Lab1_BoxClass {
 \end{multicols}
 
 \subsection*{Output}
-\begin{verbatim}
-Length: 5.0
-Breadth: 12.0
-Height: 1.0
-Volume: 60.0
-Length: 10.0
-Breadth: 20.0
-Height: 2.4
-Volume: 480.0
-Lab No.: 1
-Name: Samir Paudel
-Roll No./Section: 114-079/D
-\end{verbatim}
-
-\newpage
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.7\linewidth]{images/1.png}
+\end{figure}
 
 % ======================== LAB 2 ========================
+\newpage
 \section*{Lab 2: Matrix and Jagged Array}
 
-\textbf{Title:} Read matrix, display diagonals and jagged array
+\textbf{Title:} WAP to take the elements of a 3x3 matrix from user and display the matrix and all diagonal elements. Also WAP to demonstrate the concept of jagged array.
 
 \subsection*{Theory}
-\textbf{Multidimensional Arrays:} A 2D array has rows and columns. Matrix operations include reading input, displaying elements, and extracting diagonals (main diagonal and anti-diagonal).
+\textbf{Multidimensional Arrays:} A 2D array has rows and columns. The main diagonal runs from top-left to bottom-right (indices i,i). The anti-diagonal runs from top-right to bottom-left (indices i, n-1-i).
 
-\textbf{Jagged Array:} An array of arrays where each row can have different lengths. Memory efficient for irregular data structures. Declared as `type[][]`.
-
-Key Differences:
-\begin{itemize}
-    \item Rectangular array: all rows same length
-    \item Jagged array: rows can have different lengths
-\end{itemize}
+\textbf{Jagged Array:} An array of arrays where each row can have different lengths. Memory efficient for irregular data structures.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 import java.util.Scanner;
-
 public class Lab2_MatrixAndJaggedArray {
-    public static void main(String[] args) {
+    static void displayMatrixAndDiagonals() {
         Scanner sc = new Scanner(System.in);
-        
         int[][] matrix = new int[3][3];
-        
-        System.out.println("Enter 3x3 matrix:");
+        System.out.println("Enter elements for 3x3 matrix:");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                System.out.print("Element [" + i + "][" + j + "]: ");
                 matrix[i][j] = sc.nextInt();
             }
         }
-        
-        System.out.println("Matrix:");
+        System.out.println("\nMatrix:");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
-        
-        System.out.println("Main Diagonal:");
+        System.out.println("\nMain Diagonal Elements:");
         for (int i = 0; i < 3; i++) {
             System.out.print(matrix[i][i] + " ");
         }
-        
-        System.out.println("\nAnti-Diagonal:");
+        System.out.println("\n\nAnti-Diagonal Elements:");
         for (int i = 0; i < 3; i++) {
-            System.out.print(matrix[i][2-i] + " ");
+            System.out.print(matrix[i][2 - i] + " ");
         }
-        
-        System.out.println("\nJagged Array Demo:");
-        int[][] jagged = new int[3][];
-        jagged[0] = new int[2];
-        jagged[1] = new int[3];
-        jagged[2] = new int[4];
-        
-        int value = 1;
-        for (int i = 0; i < jagged.length; i++) {
-            for (int j = 0; j < jagged[i].length; j++) {
-                jagged[i][j] = value++;
-            }
-        }
-        
-        for (int i = 0; i < jagged.length; i++) {
-            for (int j = 0; j < jagged[i].length; j++) {
-                System.out.print(jagged[i][j] + " ");
+        System.out.println();
+    }
+    static void demonstrateJaggedArray() {
+        System.out.println("\n--- Task B: Jagged Array ---");
+        int[][] jaggedArray = {
+            {1, 2, 3},
+            {4, 5},
+            {6, 7, 8, 9},
+            {10}
+        };
+        System.out.println("Jagged Array elements:");
+        for (int i = 0; i < jaggedArray.length; i++) {
+            System.out.print("Row " + i + ": ");
+            for (int j = 0; j < jaggedArray[i].length; j++) {
+                System.out.print(jaggedArray[i][j] + " ");
             }
             System.out.println();
         }
-        
+    }
+    public static void main(String[] args) {
+        displayMatrixAndDiagonals();
+        demonstrateJaggedArray();
         System.out.println("\nLab No.: 2");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -191,61 +168,78 @@ public class Lab2_MatrixAndJaggedArray {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.45\linewidth]{images/2a.png}\hspace{0.3cm}
+\includegraphics[width=0.45\linewidth]{images/2b.png}
 
-% ======================== LAB 3 ========================
+% ===
+\newpage
+% ===================== LAB 3 ========================
 \section*{Lab 3: Static and Final Keywords}
 
-\textbf{Title:} Demonstrate static variables, methods, blocks, and final keyword
+\textbf{Title:} WAP in Java to demonstrate: a) Static variable, static method, static block b) Final keyword (variable/method/class)
 
 \subsection*{Theory}
-\textbf{Static Variables:} Shared across all instances of a class. Initialized once, not recreated for each object.
+\textbf{Static Variables:} Shared across all instances. Initialized once when class loads. Accessed via class name.
 
-\textbf{Static Methods:} Can be called without object creation. Cannot access non-static members directly.
+\textbf{Static Methods:} Can be called without object. Cannot access non-static members directly.
 
-\textbf{Static Block:} Executed once when class loads. Used for static initialization.
+\textbf{Static Block:} Executed once when class is loaded into memory. Used for static initialization.
 
-\textbf{Final Keyword:} Applied to variables (constant), methods (cannot override), classes (cannot extend).
+\textbf{Final Keyword:} Applied to variables (constant, cannot reassign), methods (cannot override), classes (cannot extend).
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab3_StaticAndFinal {
-    static int count = 0;
-    static final String COMPANY = "TechCorp";
-    final String empName;
-    
+    static int staticCount = 0;
+    final int finalValue = 100;
+    static void displayStaticCount() {
+        staticCount++;
+        System.out.println("Static Count: " + staticCount);
+    }
     static {
-        System.out.println("Static block executing");
-        count = 100;
+        System.out.println("--- Static Block Executed ---");
+        staticCount = 10;
+        System.out.println("Initial static count set to: " + staticCount);
     }
-    
-    Lab3_StaticAndFinal(String name) {
-        empName = name;
-        count++;
+    static class Parent {
+        final void finalMethod() {
+            System.out.println("Final method - cannot override");
+        }
     }
-    
-    static void displayCount() {
-        System.out.println("Total objects created: " + count);
+    static class Child extends Parent {
+        // void finalMethod() {} // would cause compile error
     }
-    
-    static void displayCompany() {
-        System.out.println("Company: " + COMPANY);
+    final class FinalClass {
+        void display() {
+            System.out.println("Final class - cannot extend");
+        }
     }
-    
+    // class SubClass extends FinalClass {} // would cause compile error
+    static void taskStaticDemo() {
+        System.out.println("\n--- Task A: Static ---");
+        displayStaticCount();
+        displayStaticCount();
+        System.out.println("Final static count: " + staticCount);
+    }
+    static void taskFinalDemo() {
+        System.out.println("\n--- Task B: Final Keyword ---");
+        final int x = 50;
+        System.out.println("Final variable x: " + x);
+        final String finalString = "This is final";
+        System.out.println("Final string: " + finalString);
+        Child child = new Child();
+        child.finalMethod();
+        FinalClass fc = new FinalClass();
+        fc.display();
+        System.out.println("Final method and class demonstrated");
+    }
     public static void main(String[] args) {
-        System.out.println("Creating first object");
-        Lab3_StaticAndFinal emp1 = 
-            new Lab3_StaticAndFinal("Alice");
-        
-        System.out.println("Creating second object");
-        Lab3_StaticAndFinal emp2 = 
-            new Lab3_StaticAndFinal("Bob");
-        
-        displayCount();
-        displayCompany();
-        
-        System.out.println("Lab No.: 3");
+        taskStaticDemo();
+        taskFinalDemo();
+        System.out.println("\nLab No.: 3");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
     }
@@ -253,75 +247,69 @@ public class Lab3_StaticAndFinal {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/3.png}
+\end{figure}
 
-% ======================== LAB 4 ========================
+% ===
+\newpage
+% ===================== LAB 4 ========================
 \section*{Lab 4: Inheritance - Student Hierarchy}
 
-\textbf{Title:} Three-level inheritance: Student $\rightarrow$ Test $\rightarrow$ Result
+\textbf{Title:} Create a class Student with instance variable roll\_no and two methods to read and display the roll no. Then, create another class Test that inherits class Student, consisting of its own instance variables to hold the marks of two subjects and also methods to read and display the marks. Finally, create another class Result which inherits class Test. It also has its own instance variable total that holds the total of two marks scored by the student. Similarly, it has methods to calculate and display the total. Create some instances of above classes and demonstrate inheritance.
 
 \subsection*{Theory}
-\textbf{Inheritance:} Mechanism to acquire properties and methods from a parent class. Creates hierarchical relationships using `extends` keyword.
+\textbf{Inheritance:} Mechanism where a class acquires properties and methods of another class using \texttt{extends}. Promotes code reusability.
 
-\textbf{Single Inheritance:} A class extends one parent class.
+\textbf{Types:} Single (one parent), Multilevel (chain), Hierarchical (multiple children).
 
-\textbf{Multilevel Inheritance:} Chain of inheritance - A extends B, B extends C.
-
-Key Features:
-\begin{itemize}
-    \item Code reusability
-    \item Method and property inheritance
-    \item Constructor chaining with `super()`
-\end{itemize}
+\textbf{Constructor Chaining:} When a subclass object is created, parent class constructor is called first (automatically or via \texttt{super()}).
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab4_StudentHierarchy {
-    
     static class Student {
-        int roll_no;
-        
-        void getNumber(int n) {
-            roll_no = n;
+        protected int roll_no;
+        void readRollNo(int roll) {
+            this.roll_no = roll;
         }
-        
-        void printNumber() {
+        void displayRollNo() {
             System.out.println("Roll No: " + roll_no);
         }
     }
-    
     static class Test extends Student {
-        int mark1, mark2;
-        
-        void getMarks(int m1, int m2) {
-            mark1 = m1;
-            mark2 = m2;
+        protected int marks1;
+        protected int marks2;
+        void readMarks(int m1, int m2) {
+            this.marks1 = m1;
+            this.marks2 = m2;
         }
-        
-        void printMarks() {
-            System.out.println("Mark1: " + mark1);
-            System.out.println("Mark2: " + mark2);
+        void displayMarks() {
+            System.out.println("Marks 1: " + marks1);
+            System.out.println("Marks 2: " + marks2);
         }
     }
-    
     static class Result extends Test {
         int total;
-        
-        void display() {
-            printNumber();
-            printMarks();
-            total = mark1 + mark2;
-            System.out.println("Total: " + total);
+        void calculateTotal() {
+            this.total = marks1 + marks2;
+        }
+        void displayTotal() {
+            System.out.println("Total Marks: " + total);
         }
     }
-    
     public static void main(String[] args) {
         Result result = new Result();
-        result.getNumber(114);
-        result.getMarks(85, 90);
-        result.display();
-        
+        result.readRollNo(114);
+        System.out.println("Student Information:");
+        result.displayRollNo();
+        result.readMarks(85, 90);
+        result.displayMarks();
+        result.calculateTotal();
+        result.displayTotal();
         System.out.println("\nLab No.: 4");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -330,75 +318,81 @@ public class Lab4_StudentHierarchy {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.75\linewidth]{images/4.png}
+\end{figure}
 
-% ======================== LAB 5 ========================
+% ===
+\newpage
+% ===================== LAB 5 ========================
 \section*{Lab 5: Super Keyword and Multilevel Inheritance}
 
-\textbf{Title:} Demonstrate super keyword: constructor calls, accessing members
+\textbf{Title:} WAP to demonstrate: a) The use of super keyword to access super class constructor b) The use of super keyword to overcome name hiding (to access parent class members from child class) c) Multilevel inheritance in Java
 
 \subsection*{Theory}
-\textbf{Super Keyword:} References the parent class object. Used to:
-\begin{itemize}
-    \item Call parent class constructor: `super()`
-    \item Access parent class method: `super.method()`
-    \item Access parent class variable: `super.variable`
+\textbf{Super Keyword:} References the immediate parent class. Used to:
+\begin{itemize}[nosep]
+    \item Call parent constructor: \texttt{super(args)}
+    \item Access parent members hidden by child: \texttt{super.member}
+    \item Call parent method: \texttt{super.method()}
 \end{itemize}
-
-\textbf{Constructor Chaining:} When a subclass is instantiated, parent constructors are called automatically (if not explicitly called, default constructor is invoked).
+\textbf{Multilevel Inheritance:} A chain where GrandChild $\rightarrow$ Child $\rightarrow$ Parent. Each subclass can access all ancestors' members.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab5_SuperKeyword {
-    
     static class GrandParent {
-        String name = "GrandParent Name";
-        
-        GrandParent() {
-            System.out.println("GrandParent Constructor");
-        }
-        
         void display() {
-            System.out.println("Name: " + name);
+            System.out.println("GrandParent display");
         }
     }
-    
     static class Parent extends GrandParent {
-        String name = "Parent Name";
-        
+        String name = "Parent";
         Parent() {
-            super();
             System.out.println("Parent Constructor");
         }
-        
+        Parent(String name) {
+            this.name = name;
+            System.out.println("Parent Constructor: " + name);
+        }
         void display() {
-            System.out.println("Parent Name: " + name);
-            System.out.println("GrandParent Name: " + super.name);
+            System.out.println("Parent display - Name: " + name);
         }
     }
-    
     static class Child extends Parent {
-        String name = "Child Name";
-        
+        String name = "Child";
         Child() {
-            super();
+            super("Parent from Child");
             System.out.println("Child Constructor");
         }
-        
-        void display() {
-            System.out.println("Child Name: " + name);
+        void callParentConstructor() {
+            System.out.println("\nTask A: Super constructor");
+            System.out.println("Child name: " + name);
+            System.out.println("Parent name via super: " + super.name);
+        }
+        void overriddenDisplay() {
+            System.out.println("\nTask B: Name hiding");
+            System.out.println("Child display - " + name);
             super.display();
         }
     }
-    
+    static class GrandChild extends Child {
+        void demonstrateMultilevel() {
+            System.out.println("\nTask C: Multilevel Inheritance");
+            display();
+        }
+    }
     public static void main(String[] args) {
-        System.out.println("Creating Child object:\n");
         Child child = new Child();
-        System.out.println();
-        child.display();
-        
-        System.out.println("\n\nLab No.: 5");
+        child.callParentConstructor();
+        child.overriddenDisplay();
+        System.out.println("\n--- Multilevel ---");
+        GrandChild grandChild = new GrandChild();
+        grandChild.demonstrateMultilevel();
+        System.out.println("\nLab No.: 5");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
     }
@@ -406,101 +400,83 @@ public class Lab5_SuperKeyword {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.35\linewidth]{images/5.png}
 
-% ======================== LAB 6 ========================
+% ===
+\newpage
+% ===================== LAB 6 ========================
 \section*{Lab 6: Method Overriding and Polymorphism}
 
-\textbf{Title:} Runtime polymorphism with geometric shapes
+\textbf{Title:} WAP to: a) Show method overriding in Java b) Illustrate runtime polymorphism in Java (Hint: Area of Figures - Rectangle, Triangle)
 
 \subsection*{Theory}
-\textbf{Method Overriding:} Subclass provides specific implementation for parent class method. Signature must be identical.
+\textbf{Method Overriding:} Subclass provides a specific implementation of a method from parent class. Method signature must be identical. The \texttt{@Override} annotation is optional but recommended.
 
-\textbf{Runtime/Dynamic Polymorphism:} Method to call determined at runtime based on actual object type, not reference type.
-
-\textbf{Requirements for Overriding:}
-\begin{itemize}
-    \item Must be instance method (not static)
-    \item Same method name, parameters, return type
-    \item Access modifier should be same or more public
-\end{itemize}
+\textbf{Runtime Polymorphism:} The method to call is determined at runtime based on the actual object type, not the reference type. Achieved via method overriding.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab6_MethodOverriding {
-    
     static class Shape {
-        protected String shapeName;
-        
-        Shape(String name) {
-            shapeName = name;
-        }
-        
-        void calculateArea() {
-            System.out.println(shapeName + 
-                " area calculation");
+        void draw() {
+            System.out.println("Drawing a shape");
         }
     }
-    
     static class Circle extends Shape {
-        double radius;
-        
-        Circle(double r) {
-            super("Circle");
-            radius = r;
+        @Override
+        void draw() {
+            System.out.println("Drawing a Circle");
         }
-        
-        void calculateArea() {
-            double area = 3.14159 * radius * radius;
-            System.out.println(shapeName + 
-                " area: " + area);
+        double getArea(double radius) {
+            return Math.PI * radius * radius;
         }
     }
-    
     static class Rectangle extends Shape {
-        double length, width;
-        
-        Rectangle(double l, double w) {
-            super("Rectangle");
-            length = l;
-            width = w;
+        @Override
+        void draw() {
+            System.out.println("Drawing a Rectangle");
         }
-        
-        void calculateArea() {
-            double area = length * width;
-            System.out.println(shapeName + 
-                " area: " + area);
+        double getArea(double length, double width) {
+            return length * width;
         }
     }
-    
     static class Triangle extends Shape {
-        double base, height;
-        
-        Triangle(double b, double h) {
-            super("Triangle");
-            base = b;
-            height = h;
+        @Override
+        void draw() {
+            System.out.println("Drawing a Triangle");
         }
-        
-        void calculateArea() {
-            double area = (base * height) / 2;
-            System.out.println(shapeName + 
-                " area: " + area);
+        double getArea(double base, double height) {
+            return 0.5 * base * height;
         }
     }
-    
+    static void demonstratePolymorphism() {
+        Shape shape1 = new Circle();
+        Shape shape2 = new Rectangle();
+        Shape shape3 = new Triangle();
+        shape1.draw();
+        shape2.draw();
+        shape3.draw();
+        Circle circle = (Circle) shape1;
+        System.out.println("Circle area (r=5): " + 
+            circle.getArea(5));
+        Rectangle rect = (Rectangle) shape2;
+        System.out.println("Rectangle area (10x5): " + 
+            rect.getArea(10, 5));
+        Triangle tri = (Triangle) shape3;
+        System.out.println("Triangle area (b=10, h=6): " + 
+            tri.getArea(10, 6));
+    }
     public static void main(String[] args) {
-        Shape[] shapes = {
-            new Circle(5),
-            new Rectangle(10, 5),
-            new Triangle(10, 6)
-        };
-        
-        for (Shape shape : shapes) {
-            shape.calculateArea();
-        }
-        
+        Circle c = new Circle();
+        Rectangle r = new Rectangle();
+        Triangle t = new Triangle();
+        c.draw();
+        r.draw();
+        t.draw();
+        demonstratePolymorphism();
         System.out.println("\nLab No.: 6");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -509,78 +485,69 @@ public class Lab6_MethodOverriding {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/6.png}
+\end{figure}
 
-% ======================== LAB 7 ========================
+% ===
+\newpage
+% ===================== LAB 7 ========================
 \section*{Lab 7: Nested Classes}
 
-\textbf{Title:} Static nested, inner, and local inner classes
+\textbf{Title:} WAP to demonstrate: a) Static nested class b) Non-static nested class (inner class) c) Local inner class
 
 \subsection*{Theory}
-\textbf{Nested Class:} A class defined inside another class.
+\textbf{Static Nested Class:} Declared with \texttt{static} inside another class. Can be instantiated without outer class instance. Can access only static members of outer class.
 
-\textbf{Types:}
-\begin{itemize}
-    \item \textbf{Static Nested Class:} Can be accessed without outer class instance
-    \item \textbf{Inner Class (Non-static):} Requires outer class instance. Can access outer class members
-    \item \textbf{Local Inner Class:} Defined inside a method. Scope limited to method
-    \item \textbf{Anonymous Inner Class:} Without explicit name, useful for interfaces/abstract classes
-\end{itemize}
+\textbf{Inner Class (Non-static):} Requires outer class instance. Can access all members (including private) of outer class.
+
+\textbf{Local Inner Class:} Defined inside a method. Scope is limited to that method. Can access \texttt{final} or effectively-final local variables.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab7_NestedClasses {
-    static int outerStatic = 100;
-    int outerInstance = 200;
-    
-    static class StaticNested {
-        void display() {
-            System.out.println("Static Nested: " + 
-                outerStatic);
+    static class StaticNestedClass {
+        static int staticVar = 10;
+        static void staticMethod() {
+            System.out.println("Static Nested - Static Method");
+            System.out.println("Static Variable: " + staticVar);
+        }
+        void instanceMethod() {
+            System.out.println("Static Nested - Instance Method");
         }
     }
-    
     class InnerClass {
-        void display() {
-            System.out.println("Inner: " + 
-                outerStatic);
-            System.out.println("Inner: " + 
-                outerInstance);
+        int innerVar = 20;
+        void innerMethod() {
+            System.out.println("Inner Class - Instance Method");
+            System.out.println("Inner Variable: " + innerVar);
         }
     }
-    
-    void methodWithLocal() {
-        final int localVar = 300;
-        
-        class LocalInner {
+    void demonstrateLocalInnerClass() {
+        final int localVar = 30;
+        class LocalInnerClass {
             void display() {
-                System.out.println("Local Inner: " + 
-                    localVar);
-                System.out.println("Local Inner: " + 
-                    outerInstance);
+                System.out.println("Local Inner - Method");
+                System.out.println("Local Variable: " + localVar);
             }
         }
-        
-        LocalInner local = new LocalInner();
+        LocalInnerClass local = new LocalInnerClass();
         local.display();
     }
-    
     public static void main(String[] args) {
-        System.out.println("Static Nested:");
-        StaticNested staticNested = 
-            new StaticNested();
-        staticNested.display();
-        
-        System.out.println("\nInner Class:");
-        Lab7_NestedClasses outer = 
-            new Lab7_NestedClasses();
+        System.out.println("Task A: Static Nested Class");
+        StaticNestedClass.staticMethod();
+        StaticNestedClass nested = new StaticNestedClass();
+        nested.instanceMethod();
+        System.out.println("\nTask B: Inner Class");
+        Lab7_NestedClasses outer = new Lab7_NestedClasses();
         InnerClass inner = outer.new InnerClass();
-        inner.display();
-        
-        System.out.println("\nLocal Inner Class:");
-        outer.methodWithLocal();
-        
+        inner.innerMethod();
+        System.out.println("\nTask C: Local Inner Class");
+        outer.demonstrateLocalInnerClass();
         System.out.println("\nLab No.: 7");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -589,73 +556,73 @@ public class Lab7_NestedClasses {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/7.png}
+\end{figure}
 
-% ======================== LAB 8 ========================
+% ===
+\newpage
+% ===================== LAB 8 ========================
 \section*{Lab 8: Interface Implementation}
 
-\textbf{Title:} Interface with multiple implementations
+\textbf{Title:} Create an interface called Shape which has methods area(double x, double y) and perimeter(double x, double y) to compute area and perimeter. Create a class called Rectangle which implements this interface. Declare instance variables as per requirement in class itself. Create instance of the class Rectangle and demonstrate interface implementation.
 
 \subsection*{Theory}
-\textbf{Interface:} Contract specifying methods without implementation. Uses `interface` keyword.
+\textbf{Interface:} A reference type that defines abstract methods. Uses \texttt{interface} keyword. Classes implement interfaces using \texttt{implements}. All methods are implicitly \texttt{public} and \texttt{abstract}.
 
 \textbf{Key Points:}
 \begin{itemize}
-    \item All methods are abstract and public by default
-    \item Cannot have instance variables (only constants)
-    \item Multiple inheritance possible through interfaces
-    \item Implements keyword used to inherit from interface
-\end{itemize}
-
-\textbf{Benefits:}
-\begin{itemize}
-    \item Loose coupling
-    \item Multiple inheritance
-    \item Polymorphic behavior
+    \item Cannot be instantiated
+    \item Supports multiple inheritance
+    \instance variables are \texttt{public static final} by default
 \end{itemize}
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab8_InterfaceImplementation {
-    
     interface Shape {
-        double calculateArea();
-        double calculatePerimeter();
-        void displayInfo();
+        double area(double x, double y);
+        double perimeter(double x, double y);
     }
-    
     static class Rectangle implements Shape {
-        double length, width;
-        
-        Rectangle(double l, double w) {
-            length = l;
-            width = w;
+        double length;
+        double width;
+        Rectangle(double length, double width) {
+            this.length = length;
+            this.width = width;
         }
-        
-        public double calculateArea() {
+        @Override
+        public double area(double x, double y) {
+            length = x;
+            width = y;
             return length * width;
         }
-        
-        public double calculatePerimeter() {
+        @Override
+        public double perimeter(double x, double y) {
+            length = x;
+            width = y;
             return 2 * (length + width);
         }
-        
-        public void displayInfo() {
-            System.out.println("Rectangle");
+        void displayDimensions() {
+            System.out.println("Rectangle Dimensions:");
             System.out.println("Length: " + length);
             System.out.println("Width: " + width);
-            System.out.println("Area: " + 
-                calculateArea());
-            System.out.println("Perimeter: " + 
-                calculatePerimeter());
         }
     }
-    
     public static void main(String[] args) {
-        Shape rect = new Rectangle(5, 4);
-        rect.displayInfo();
-        
+        Rectangle rectangle = new Rectangle(5.0, 4.0);
+        rectangle.displayDimensions();
+        double area = rectangle.area(5.0, 4.0);
+        System.out.println("Area: " + area);
+        double perimeter = rectangle.perimeter(5.0, 4.0);
+        System.out.println("Perimeter: " + perimeter);
+        Shape shape = new Rectangle(8.0, 6.0);
+        System.out.println("\nUsing Shape reference:");
+        System.out.println("Area: " + shape.area(8.0, 6.0));
+        System.out.println("Perimeter: " + shape.perimeter(8.0, 6.0));
         System.out.println("\nLab No.: 8");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -664,83 +631,120 @@ public class Lab8_InterfaceImplementation {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.75\linewidth]{images/8.png}
+\end{figure}
 
-% ======================== LAB 9 ========================
+% ===
+\newpage
+% ===================== LAB 9 ========================
 \section*{Lab 9: Exception Handling}
 
-\textbf{Title:} All exception handling techniques
+\textbf{Title:} WAP to: a) Demonstrate try, catch, and finally blocks in exception handling b) Have multiple catch blocks in exception handling c) Have nested try statements in exception handling d) Demonstrate the use of throw keyword in exception handling e) Demonstrate the use of throws keyword in exception handling f) Illustrate the idea of custom exceptions in Java (user-defined exceptions)
 
 \subsection*{Theory}
-\textbf{Exception:} Runtime error disrupting program flow.
+\textbf{Exception:} An abnormal event disrupting normal program flow. Java provides a robust exception handling framework.
 
-\textbf{Exception Handling Keywords:}
+\textbf{Keywords:}
 \begin{itemize}
-    \item \textbf{try:} Contains code that may throw exception
-    \item \textbf{catch:} Handles specific exception types
-    \item \textbf{finally:} Executes regardless of exception
-    \item \textbf{throw:} Explicitly throws exception
-    \item \textbf{throws:} Declares that method may throw exception
+    \item \texttt{try}: Contains risky code
+    \item \texttt{catch}: Handles specific exceptions (multiple allowed)
+    \item \texttt{finally}: Always executes (cleanup)
+    \item \texttt{throw}: Explicitly throws an exception
+    \item \texttt{throws}: Declares exceptions a method can throw
 \end{itemize}
 
-\textbf{Exception Hierarchy:} Throwable $\rightarrow$ Exception $\rightarrow$ (checked exceptions, RuntimeException)
+\textbf{Custom Exception:} User-defined class extending \texttt{Exception} or \texttt{RuntimeException}.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
+import java.io.IOException;
 public class Lab9_ExceptionHandling {
-    
-    static class CustomException 
-        extends Exception {
-        public CustomException(String message) {
+    static class CustomException extends Exception {
+        CustomException(String message) {
             super(message);
         }
     }
-    
-    static void divisionExample() 
-        throws ArithmeticException {
-        int a = 10, b = 0;
-        int result = a / b;
-    }
-    
-    static void customException() 
-        throws CustomException {
-        throw new CustomException(
-            "Custom error!");
-    }
-    
-    public static void main(String[] args) {
+    static void taskTryCatchFinally() {
+        System.out.println("\nTask A: Try, Catch, Finally");
         try {
-            int arr[] = {1, 2, 3};
-            System.out.println(arr[5]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("ArrayIndex: " + 
-                e.getMessage());
-        }
-        
-        try {
-            int num = Integer.parseInt("abc");
-        } catch (NumberFormatException e) {
-            System.out.println("Number: " + 
-                e.getMessage());
-        }
-        
-        try {
-            divisionExample();
+            int x = 10 / 0;
         } catch (ArithmeticException e) {
-            System.out.println("Division: " + 
-                e.getMessage());
+            System.out.println("Caught: " + e.getMessage());
         } finally {
             System.out.println("Finally executed");
         }
-        
+    }
+    static void taskMultipleCatch() {
+        System.out.println("\nTask B: Multiple Catch");
         try {
-            customException();
-        } catch (CustomException e) {
-            System.out.println("Custom: " + 
+            String str = "Hello";
+            int num = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormat: " + 
+                e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Caught Exception: " + 
                 e.getMessage());
         }
-        
+    }
+    static void taskNestedTry() {
+        System.out.println("\nTask C: Nested Try");
+        try {
+            try {
+                int[] arr = {1, 2, 3};
+                System.out.println(arr[5]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Inner catch: " + e);
+                throw new Exception("Re-thrown");
+            }
+        } catch (Exception e) {
+            System.out.println("Outer catch: " + 
+                e.getMessage());
+        }
+    }
+    static void taskThrow() {
+        System.out.println("\nTask D: throw keyword");
+        try {
+            throw new ArithmeticException(
+                "Custom arithmetic exception");
+        } catch (ArithmeticException e) {
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+    static void methodWithThrows() throws IOException {
+        throw new IOException("I/O Exception");
+    }
+    static void taskThrows() {
+        System.out.println("\nTask E: throws keyword");
+        try {
+            methodWithThrows();
+        } catch (IOException e) {
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+    static void taskCustomException() {
+        System.out.println("\nTask F: Custom Exception");
+        try {
+            int age = -5;
+            if (age < 0) {
+                throw new CustomException(
+                    "Age cannot be negative");
+            }
+        } catch (CustomException e) {
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        taskTryCatchFinally();
+        taskMultipleCatch();
+        taskNestedTry();
+        taskThrow();
+        taskThrows();
+        taskCustomException();
         System.out.println("\nLab No.: 9");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -749,86 +753,151 @@ public class Lab9_ExceptionHandling {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/9.png}
+\end{figure}
 
-% ======================== LAB 10 ========================
+% ===
+% ===================== LAB 10 ========================
 \section*{Lab 10: Threading}
 
-\textbf{Title:} Thread creation, lifecycle, priorities, and synchronization
+\textbf{Title:} WAP to: a) Demonstrate the process of creating threads by implementing Runnable interface and by extending Thread class b) Show the use of isAlive() and join() methods of Thread c) Demonstrate the process of setting and getting thread priorities d) Illustrate the process of thread synchronization using synchronized method and synchronized block e) Create two threads: first thread prints numbers from 1 to 10 in the interval of 2 seconds and second thread prints numbers from 11 to 20 in the interval of 1 second
 
 \subsection*{Theory}
-\textbf{Thread:} Lightweight process running independently within a program.
+\textbf{Thread:} A lightweight subprocess. Java supports multithreading via \texttt{Thread} class and \texttt{Runnable} interface.
 
-\textbf{Thread Creation:}
-\begin{itemize}
-    \item Extend Thread class
-    \item Implement Runnable interface (preferred)
-\end{itemize}
+\textbf{Key Methods:} \texttt{start()}, \texttt{run()}, \texttt{sleep()}, \texttt{join()}, \texttt{isAlive()}, \texttt{setPriority()}, \texttt{getPriority()}.
 
-\textbf{Thread Methods:}
-\begin{itemize}
-    \item \textbf{start():} Initiates thread execution
-    \item \textbf{run():} Contains thread code
-    \item \textbf{isAlive():} Checks if thread running
-    \item \textbf{join():} Waits for thread completion
-    \item \textbf{setPriority():} Sets thread priority (1-10)
-\end{itemize}
-
-\textbf{Synchronization:} Prevents concurrent access to shared resources using `synchronized` keyword.
+\textbf{Synchronization:} Prevents thread interference on shared resources using \texttt{synchronized} keyword (methods or blocks).
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 public class Lab10_Threading {
-    
-    static class RunnableThread 
-        implements Runnable {
+    static class RunnableThread implements Runnable {
+        private String name;
+        RunnableThread(String name) {
+            this.name = name;
+        }
+        @Override
         public void run() {
-            for (int i = 0; i < 5; i++) {
-                System.out.println(
-                    "Runnable Thread: " + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {}
+            System.out.println(name + " - Runnable started");
+            for (int i = 0; i < 3; i++) {
+                System.out.println(name + " - Iteration " + 
+                    (i + 1));
             }
+            System.out.println(name + " - Runnable ended");
         }
     }
-    
     static class ThreadClass extends Thread {
+        private String name;
+        ThreadClass(String name) {
+            this.name = name;
+        }
+        @Override
         public void run() {
-            for (int i = 0; i < 5; i++) {
-                System.out.println(
-                    "Thread Class: " + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {}
+            System.out.println(name + " - Thread started");
+            for (int i = 0; i < 3; i++) {
+                System.out.println(name + " - Iteration " + 
+                    (i + 1));
+            }
+            System.out.println(name + " - Thread ended");
+        }
+    }
+    static class FirstThread extends Thread {
+        @Override
+        public void run() {
+            System.out.println("\nFirst Thread: 1-10 at 2s");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println("First Thread: " + i);
+                try { Thread.sleep(2000); } 
+                catch (InterruptedException e) {}
             }
         }
     }
-    
+    static class SecondThread extends Thread {
+        @Override
+        public void run() {
+            System.out.println("\nSecond Thread: 11-20 at 1s");
+            for (int i = 11; i <= 20; i++) {
+                System.out.println("Second Thread: " + i);
+                try { Thread.sleep(1000); } 
+                catch (InterruptedException e) {}
+            }
+        }
+    }
+    static void taskIsAliveAndJoin() 
+        throws InterruptedException {
+        System.out.println("\nTask B: isAlive() and join()");
+        Thread t = new ThreadClass("JoinThread");
+        t.start();
+        System.out.println("Is alive? " + t.isAlive());
+        t.join();
+        System.out.println("After join - alive? " + 
+            t.isAlive());
+    }
+    static void taskThreadPriorities() {
+        System.out.println("\nTask C: Thread Priorities");
+        Thread t1 = new ThreadClass("P1");
+        Thread t2 = new ThreadClass("P2");
+        t1.setPriority(Thread.MIN_PRIORITY);
+        t2.setPriority(Thread.MAX_PRIORITY);
+        System.out.println(t1.getName() + " Priority: " + 
+            t1.getPriority());
+        System.out.println(t2.getName() + " Priority: " + 
+            t2.getPriority());
+    }
+    static class SharedCounter {
+        private int count = 0;
+        synchronized void increment() {
+            count++;
+            System.out.println(
+                "Sync method - Count: " + count);
+        }
+        void incrementBlock() {
+            synchronized (this) {
+                count++;
+                System.out.println(
+                    "Sync block - Count: " + count);
+            }
+        }
+    }
+    static void taskSynchronization() 
+        throws InterruptedException {
+        System.out.println(
+            "\nTask D: Synchronization");
+        SharedCounter counter = new SharedCounter();
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 3; i++)
+                counter.increment();
+        });
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 3; i++)
+                counter.incrementBlock();
+        });
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+    }
     public static void main(String[] args) 
         throws InterruptedException {
-        
-        System.out.println("Starting threads");
-        
+        System.out.println("Task A: Creating threads");
         Thread t1 = new Thread(
-            new RunnableThread());
-        Thread t2 = new ThreadClass();
-        
-        t1.setPriority(Thread.MAX_PRIORITY);
-        t2.setPriority(Thread.MIN_PRIORITY);
-        
+            new RunnableThread("R1"));
         t1.start();
+        ThreadClass t2 = new ThreadClass("T1");
         t2.start();
-        
-        System.out.println("t1 alive: " + 
-            t1.isAlive());
-        
-        t1.join();
-        t2.join();
-        
-        System.out.println("Both threads completed");
-        
+        taskIsAliveAndJoin();
+        taskThreadPriorities();
+        taskSynchronization();
+        System.out.println("\nTask E: Interval threads");
+        FirstThread ft = new FirstThread();
+        SecondThread st = new SecondThread();
+        ft.start();
+        st.start();
+        ft.join();
+        st.join();
         System.out.println("\nLab No.: 10");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -837,86 +906,109 @@ public class Lab10_Threading {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.7\linewidth]{images/10.png}
 
-% ======================== LAB 11 ========================
+% ===
+% ===================== LAB 11 ========================
 \section*{Lab 11: File I/O and Serialization}
 
-\textbf{Title:} RandomAccessFile, keyboard input, serialization/deserialization
+\textbf{Title:} WAP to: a) Demonstrate the use of RandomAccessFile class for random accessing of file b) Read text from keyboard and write to a file c) Demonstrate the concept of serialization and deserialization in Java
 
 \subsection*{Theory}
-\textbf{File I/O Classes:}
-\begin{itemize}
-    \item \textbf{FileReader/FileWriter:} Character-based I/O
-    \item \textbf{BufferedReader/Writer:} Buffered I/O for efficiency
-    \item \textbf{RandomAccessFile:} Random access to file data
-\end{itemize}
+\textbf{RandomAccessFile:} Supports random read/write access. Methods like \texttt{seek()}, \texttt{getFilePointer()}, \texttt{readLine()}, \texttt{writeBytes()}.
 
-\textbf{Serialization:} Converting object to byte stream for storage/transmission.
+\textbf{Serialization:} Converting object to byte stream using \texttt{ObjectOutputStream}. Class must implement \texttt{Serializable}.
 
-\textbf{Deserialization:} Reconstructing object from byte stream.
-
-Requirements: Class must implement `Serializable` interface, use `ObjectOutputStream`/`ObjectInputStream`.
+\textbf{Deserialization:} Reconstructing object from byte stream using \texttt{ObjectInputStream}. Requires \texttt{serialVersionUID} for versioning.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 import java.io.*;
-
+import java.io.RandomAccessFile;
+import java.io.Serializable;
 public class Lab11_FileIO {
-    
-    static class Person 
-        implements Serializable {
-        static final long serialVersionUID = 1L;
-        
+    static void taskRandomAccessFile() {
+        System.out.println("\nTask A: RandomAccessFile");
+        try {
+            RandomAccessFile raf = new RandomAccessFile(
+                "randomfile.txt", "rw");
+            raf.writeBytes("Hello ");
+            raf.writeBytes("World ");
+            raf.writeBytes("Java ");
+            System.out.println("File pointer at: " + 
+                raf.getFilePointer());
+            raf.seek(0);
+            System.out.println("seek(0): " + raf.readLine());
+            raf.seek(6);
+            System.out.println("seek(6): " + raf.readLine());
+            raf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    static void taskKeyboardToFile() {
+        System.out.println("\nTask B: Keyboard to file");
+        try {
+            BufferedReader br = new BufferedReader(
+                new InputStreamReader(System.in));
+            FileWriter fw = new FileWriter(
+                "keyboard_input.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            System.out.print("Enter text (exit to stop): ");
+            String line;
+            while (!(line = br.readLine()).equals("exit")) {
+                bw.write(line);
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    static class Person implements Serializable {
+        private static final long serialVersionUID = 1L;
         String name;
         int age;
-        
         Person(String name, int age) {
             this.name = name;
             this.age = age;
         }
-        
+        @Override
         public String toString() {
-            return "Name: " + name + 
-                ", Age: " + age;
+            return "Person{name='" + name + 
+                "', age=" + age + "}";
         }
     }
-    
-    public static void main(String[] args) 
-        throws IOException, ClassNotFoundException {
-        
-        String filename = "data.txt";
-        
-        try (RandomAccessFile raf = 
-            new RandomAccessFile(filename, "rw")) {
-            
-            raf.writeBytes("Line 1\n");
-            raf.writeBytes("Line 2\n");
-            raf.writeBytes("Line 3\n");
-            
-            raf.seek(0);
-            String line = raf.readLine();
-            System.out.println(line);
-        }
-        
-        try (ObjectOutputStream oos = 
-            new ObjectOutputStream(
-                new FileOutputStream("obj.ser"))) {
-            
-            Person p = new Person("Samir", 20);
+    static void taskSerialization() {
+        System.out.println("\nTask C: Serialization");
+        try {
+            Person p = new Person("Samir Paudel", 20);
+            FileOutputStream fos = new FileOutputStream(
+                "person.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(
+                fos);
             oos.writeObject(p);
+            oos.close();
             System.out.println("Serialized: " + p);
+            FileInputStream fis = new FileInputStream(
+                "person.ser");
+            ObjectInputStream ois = new ObjectInputStream(
+                fis);
+            Person dp = (Person) ois.readObject();
+            ois.close();
+            System.out.println("Deserialized: " + dp);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        
-        try (ObjectInputStream ois = 
-            new ObjectInputStream(
-                new FileInputStream("obj.ser"))) {
-            
-            Person p = (Person) ois.readObject();
-            System.out.println("Deserialized: " + p);
-        }
-        
+    }
+    public static void main(String[] args) {
+        taskRandomAccessFile();
+        taskKeyboardToFile();
+        taskSerialization();
         System.out.println("\nLab No.: 11");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
@@ -925,78 +1017,88 @@ public class Lab11_FileIO {
 \end{lstlisting}
 \end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/11.png}
+\end{figure}
 
-% ======================== LAB 12 ========================
-\section*{Lab 12: Swing GUI - Color Buttons}
+% ===
+% ===================== LAB 12 ========================
+\section*{Lab 12: Swing - Colored Buttons}
 
-\textbf{Title:} Three buttons that change color when clicked
+\textbf{Title:} Using swing components, design a form with three buttons with captions "RED," "BLUE," and "GREEN," respectively. Then write a program to handle the event such that when the user clicks the button, the color of that button will be the same as its caption.
 
 \subsection*{Theory}
-\textbf{Swing Components:}
-\begin{itemize}
-    \item \textbf{JFrame:} Top-level container
-    \item \textbf{JButton:} Button component
-    \item \textbf{ActionListener:} Handles button clicks
-\end{itemize}
+\textbf{Swing:} GUI toolkit with platform-independent components. \texttt{JFrame} is the main window, \texttt{JButton} is a clickable component.
 
-\textbf{Layout Managers:} FlowLayout, BorderLayout, GridLayout control component positioning.
+\textbf{Event Handling:} Register \texttt{ActionListener} via \texttt{addActionListener()}. The \texttt{actionPerformed()} method handles clicks.
 
-\textbf{Event Handling:} ActionListener interface with actionPerformed() method responds to button clicks.
+\textbf{Button Appearance:} Use \texttt{setBackground()}, \texttt{setOpaque(true)}, and \texttt{setBorderPainted(true)} for colored buttons.
 
 \subsection*{Code}
 \begin{multicols}{2}
 \begin{lstlisting}
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-
-public class Lab12_SwingColorButtons 
-    extends JFrame 
-    implements ActionListener {
-    
-    JButton redBtn, blueBtn, greenBtn;
-    
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Lab12_SwingColorButtons extends JFrame {
+    private JButton redButton;
+    private JButton blueButton;
+    private JButton greenButton;
     Lab12_SwingColorButtons() {
-        setTitle("Color Buttons");
+        setTitle("Colored Buttons");
         setSize(400, 200);
-        setDefaultCloseOperation(
-            JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
-        
-        redBtn = new JButton("RED");
-        redBtn.addActionListener(this);
-        
-        blueBtn = new JButton("BLUE");
-        blueBtn.addActionListener(this);
-        
-        greenBtn = new JButton("GREEN");
-        greenBtn.addActionListener(this);
-        
-        add(redBtn);
-        add(blueBtn);
-        add(greenBtn);
-        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        redButton = new JButton("RED");
+        redButton.setFont(new Font("Arial", Font.BOLD, 14));
+        redButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                redButton.setBackground(Color.RED);
+                redButton.setOpaque(true);
+                redButton.setBorderPainted(true);
+            }
+        });
+        panel.add(redButton);
+        blueButton = new JButton("BLUE");
+        blueButton.setFont(new Font("Arial", Font.BOLD, 14));
+        blueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                blueButton.setBackground(Color.BLUE);
+                blueButton.setOpaque(true);
+                blueButton.setBorderPainted(true);
+                blueButton.setForeground(Color.WHITE);
+            }
+        });
+        panel.add(blueButton);
+        greenButton = new JButton("GREEN");
+        greenButton.setFont(new Font("Arial", Font.BOLD, 14));
+        greenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                greenButton.setBackground(Color.GREEN);
+                greenButton.setOpaque(true);
+                greenButton.setBorderPainted(true);
+            }
+        });
+        panel.add(greenButton);
+        add(panel);
         setVisible(true);
     }
-    
-    public void actionPerformed(
-        ActionEvent e) {
-        if (e.getSource() == redBtn) {
-            getContentPane()
-                .setBackground(Color.RED);
-        } else if (e.getSource() == blueBtn) {
-            getContentPane()
-                .setBackground(Color.BLUE);
-        } else if (e.getSource() == greenBtn) {
-            getContentPane()
-                .setBackground(Color.GREEN);
-        }
-    }
-    
     public static void main(String[] args) {
-        new Lab12_SwingColorButtons();
-        System.out.println("\nLab No.: 12");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Lab12_SwingColorButtons();
+            }
+        });
+        System.out.println("Lab No.: 12");
         System.out.println("Name: Samir Paudel");
         System.out.println("Roll No./Section: 114-079/D");
     }
@@ -1004,257 +1106,950 @@ public class Lab12_SwingColorButtons
 \end{lstlisting}
 \end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/12.png}
+\end{figure}
+
+% ===
 \newpage
+% ===================== LAB 13 ========================
+\section*{Lab 13: Simple GUI - Text Field}
 
-% ======================== LAB 13 ========================
-\section*{Lab 13: Simple GUI with Text Field}
-
-\textbf{Title:} Text field displaying "Hello World" with button
+\textbf{Title:} Write a simple GUI program that displays "Hello World" in a text field. The program should display output in option dialog if user clicks a button.
 
 \subsection*{Theory}
-\textbf{JTextField:} Text input/display component. Can be set non-editable with `setEditable(false)`.
+\textbf{JTextField:} Single-line text component. Can be set non-editable with \texttt{setEditable(false)}.
 
-\textbf{JOptionPane:} Dialog boxes for user interaction (showMessageDialog, showInputDialog, showConfirmDialog).
+\textbf{JOptionPane:} Standard dialog box for messages. \texttt{showMessageDialog()} displays a simple message with an OK button.
 
-\textbf{Commonly Used Swing Components:}
-\begin{itemize}
-    \item JLabel, JTextField, JTextArea
-    \item JButton, JCheckBox, JRadioButton
-    \item JMenu, JMenuBar
-    \item JDialog, JOptionPane
-\end{itemize}
+\textbf{Layout:} \texttt{JPanel} with default FlowLayout arranges components in a row.
 
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+public class Lab13_SimpleGUI extends JFrame {
+    private JTextField textField;
+    private JButton button;
+    Lab13_SimpleGUI() {
+        setTitle("Simple GUI");
+        setSize(300, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        textField = new JTextField("Hello World", 20);
+        textField.setEditable(false);
+        panel.add(textField);
+        button = new JButton("Click Me");
+        button.addActionListener(e -> {
+            JOptionPane.showMessageDialog(
+                Lab13_SimpleGUI.this,
+                "Output: " + textField.getText(),
+                "Message",
+                JOptionPane.INFORMATION_MESSAGE);
+        });
+        panel.add(button);
+        add(panel);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Lab13_SimpleGUI();
+            }
+        });
+        System.out.println("Lab No.: 13");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/13.png}
+\end{figure}
+
+% ===
 \newpage
-
-% ======================== LAB 14 ========================
+% ===================== LAB 14 ========================
 \section*{Lab 14: Text Area with File Operations}
 
-\textbf{Title:} JTextArea with Read/Write buttons for files
+\textbf{Title:} Write a simple GUI program that has text area and two buttons "Read" and "Write". Whenever write button is clicked, the text in text area should be written to the file named "userinput.txt" and when read button is clicked, the text in file should be shown in text area.
 
 \subsection*{Theory}
-\textbf{JTextArea:} Multi-line text component, scroll-friendly.
+\textbf{JTextArea:} Multi-line text component. Wrap text with \texttt{setLineWrap(true)}. Add scrolling via \texttt{JScrollPane}.
 
-\textbf{File Operations in GUI:} Read files into text area, write text area content to files.
+\textbf{File I/O in GUI:} \texttt{FileWriter/BufferedWriter} write text, \texttt{FileReader/BufferedReader} read text. Use \texttt{JOptionPane} for feedback messages.
 
-Common pattern: FileReader/Writer with BufferedReader/Writer for efficient I/O.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+public class Lab14_TextAreaFileOps extends JFrame {
+    private JTextArea textArea;
+    private JButton readButton;
+    private JButton writeButton;
+    private static final String FILE_NAME = 
+        "userinput.txt";
+    Lab14_TextAreaFileOps() {
+        setTitle("Text Area with File Operations");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        panel.setLayout(
+            new BoxLayout(panel, BoxLayout.Y_AXIS));
+        textArea = new JTextArea(10, 40);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        JScrollPane scrollPane = new JScrollPane(
+            textArea);
+        panel.add(scrollPane);
+        JPanel buttonPanel = new JPanel();
+        readButton = new JButton("Read");
+        readButton.addActionListener(e -> readFromFile());
+        buttonPanel.add(readButton);
+        writeButton = new JButton("Write");
+        writeButton.addActionListener(e -> writeToFile());
+        buttonPanel.add(writeButton);
+        panel.add(buttonPanel);
+        add(panel);
+        setVisible(true);
+    }
+    private void writeToFile() {
+        try {
+            FileWriter fw = new FileWriter(FILE_NAME);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(textArea.getText());
+            bw.close();
+            JOptionPane.showMessageDialog(this, 
+                "Written to " + FILE_NAME);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error: " + ex.getMessage());
+        }
+    }
+    private void readFromFile() {
+        try {
+            FileReader fr = new FileReader(FILE_NAME);
+            BufferedReader br = new BufferedReader(fr);
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            br.close();
+            textArea.setText(content.toString());
+            JOptionPane.showMessageDialog(this, 
+                "Read from " + FILE_NAME);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error: " + ex.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> 
+            new Lab14_TextAreaFileOps());
+        System.out.println("Lab No.: 14");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.35\linewidth]{images/14.png}
+\end{figure}
+
+% ===
 \newpage
-
-% ======================== LAB 15 ========================
+% ===================== LAB 15 ========================
 \section*{Lab 15: Menu Bar}
 
-\textbf{Title:} JFrame with File menu (New, Save, Exit)
+\textbf{Title:} Write a program to create a menu named "File" with menu items "New," "Save," and "Exit".
 
 \subsection*{Theory}
-\textbf{JMenuBar:} Container for menus.
+\textbf{JMenuBar:} Container for menus. Attached to JFrame via \texttt{setJMenuBar()}.
 
-\textbf{JMenu:} Dropdown menu with JMenuItems.
+\textbf{JMenu:} Dropdown menu. \textbf{JMenuItem:} Individual clickable items with \texttt{ActionListener}.
 
-\textbf{JMenuItem:} Individual menu items with ActionListener.
+\textbf{Hierarchy:} JFrame $\rightarrow$ JMenuBar $\rightarrow$ JMenu $\rightarrow$ JMenuItem.
 
-Hierarchy: JFrame → JMenuBar → JMenu → JMenuItem
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+public class Lab15_MenuBar extends JFrame {
+    Lab15_MenuBar() {
+        setTitle("Menu Bar");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem newItem = new JMenuItem("New");
+        newItem.addActionListener(e -> 
+            JOptionPane.showMessageDialog(this, 
+                "New file selected"));
+        fileMenu.add(newItem);
+        JMenuItem saveItem = new JMenuItem("Save");
+        saveItem.addActionListener(e -> 
+            JOptionPane.showMessageDialog(this, 
+                "File saved"));
+        fileMenu.add(saveItem);
+        fileMenu.addSeparator();
+        JMenuItem exitItem = new JMenuItem("Exit");
+        exitItem.addActionListener(e -> System.exit(0));
+        fileMenu.add(exitItem);
+        menuBar.add(fileMenu);
+        setJMenuBar(menuBar);
+        JLabel label = new JLabel(
+            "Menu Bar Example");
+        add(label);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> 
+            new Lab15_MenuBar());
+        System.out.println("Lab No.: 15");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/15.png}
+\end{figure}
+
+% ===
 \newpage
-
-% ======================== LAB 16 ========================
+% ===================== LAB 16 ========================
 \section*{Lab 16: JTextField with KeyListener}
 
-\textbf{Title:} Text field accepting only numeric digits (0-9)
+\textbf{Title:} Write a Java Swing program with a JTextField. Implement a KeyListener such that: a) Only numeric digits (0-9) can be typed into the JTextField b) If any other key is typed (e.g., a letter or symbol), it should be ignored (i.e., not appear in the text field)
 
 \subsection*{Theory}
-\textbf{KeyListener:} Captures keyboard events.
+\textbf{KeyListener:} Captures keyboard events. Methods: \texttt{keyPressed()}, \texttt{keyReleased()}, \texttt{keyTyped()}.
 
-Methods:
-\begin{itemize}
-    \item keyPressed(KeyEvent e): When key pressed
-    \item keyReleased(KeyEvent e): When key released
-    \item keyTyped(KeyEvent e): When character typed
-\end{itemize}
+\textbf{Event Consumption:} \texttt{e.consume()} prevents the character from appearing in the text field. Useful for input validation.
 
-\textbf{Event Filtering:} Consume events to prevent default behavior using `e.consume()`.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+public class Lab16_JTextFieldKeyListener 
+    extends JFrame {
+    private JTextField textField;
+    Lab16_JTextFieldKeyListener() {
+        setTitle("Numeric Digits Only");
+        setSize(400, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(
+            "Enter only numeric digits (0-9):");
+        panel.add(label);
+        textField = new JTextField(20);
+        textField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {}
+            @Override
+            public void keyReleased(KeyEvent e) {}
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        panel.add(textField);
+        JLabel infoLabel = new JLabel(
+            "Non-numeric keys ignored");
+        panel.add(infoLabel);
+        add(panel);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> 
+            new Lab16_JTextFieldKeyListener());
+        System.out.println("Lab No.: 16");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.5\linewidth]{images/16.png}
+\end{figure}
+
+% ===
 \newpage
+% ===================== LAB 17 ========================
+\section*{Lab 17: JCheckBox and JRadioButtons}
 
-% ======================== LAB 17 ========================
-\section*{Lab 17: CheckBox and RadioButtons}
-
-\textbf{Title:} CheckBox enabling/disabling RadioButtons
+\textbf{Title:} Create a GUI with one JCheckBox labeled "Enable Extra Options" and three JRadioButtons (e.g., "Option A," "Option B," "Option C") grouped in a ButtonGroup. a) Initially, the radio buttons should be disabled b) Implement an ItemListener for the JCheckBox. When the checkbox is selected, the radio buttons should become enabled. When it's deselected, they should become disabled c) Implement an ItemListener for the radio buttons. When a radio button is selected, print its label (e.g., "Option A selected") to the console
 
 \subsection*{Theory}
-\textbf{JCheckBox:} Allows multiple selections.
+\textbf{JCheckBox:} Toggleable option that fires \texttt{ItemEvent} on state change.
 
-\textbf{JRadioButton:} Mutually exclusive selections (use ButtonGroup).
+\textbf{JRadioButton:} Mutually exclusive within a \texttt{ButtonGroup}. Only one can be selected.
 
-\textbf{ButtonGroup:} Groups radio buttons for exclusive selection.
+\textbf{ItemListener:} Responds to selection/deselection via \texttt{itemStateChanged()}. Check \texttt{ItemEvent.SELECTED} vs \texttt{ItemEvent.DESELECTED}.
 
-\textbf{ItemListener:} Responds to selection changes via itemStateChanged() method.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+public class Lab17_CheckBoxRadioButtons 
+    extends JFrame {
+    private JCheckBox checkBox;
+    private JRadioButton optionA;
+    private JRadioButton optionB;
+    private JRadioButton optionC;
+    private ButtonGroup buttonGroup;
+    Lab17_CheckBoxRadioButtons() {
+        setTitle("CheckBox and RadioButtons");
+        setSize(400, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        panel.setLayout(
+            new BoxLayout(panel, BoxLayout.Y_AXIS));
+        checkBox = new JCheckBox(
+            "Enable Extra Options");
+        checkBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                boolean selected = e.getStateChange() 
+                    == ItemEvent.SELECTED;
+                optionA.setEnabled(selected);
+                optionB.setEnabled(selected);
+                optionC.setEnabled(selected);
+                if (!selected) 
+                    buttonGroup.clearSelection();
+                System.out.println("Radio buttons " + 
+                    (selected ? "enabled" : "disabled"));
+            }
+        });
+        panel.add(checkBox);
+        optionA = new JRadioButton("Option A");
+        optionA.setEnabled(false);
+        optionA.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED)
+                System.out.println("Option A selected");
+        });
+        panel.add(optionA);
+        optionB = new JRadioButton("Option B");
+        optionB.setEnabled(false);
+        optionB.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED)
+                System.out.println("Option B selected");
+        });
+        panel.add(optionB);
+        optionC = new JRadioButton("Option C");
+        optionC.setEnabled(false);
+        optionC.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED)
+                System.out.println("Option C selected");
+        });
+        panel.add(optionC);
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(optionA);
+        buttonGroup.add(optionB);
+        buttonGroup.add(optionC);
+        add(panel);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> 
+            new Lab17_CheckBoxRadioButtons());
+        System.out.println("Lab No.: 17");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
-\newpage
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.75\linewidth]{images/17.png}
+\end{figure}
 
-% ======================== LAB 18 ========================
-\section*{Lab 18: JDBC Movie Table with JOIN}
+% ===
+% ===================== LAB 18 ========================
+\section*{Lab 18: JDBC - MOVIE Table Operations}
 
-\textbf{Title:} Real JDBC with SQL JOIN between MOVIE and DIRECTOR tables
+\textbf{Title:} Assume a table MOVIE(id, title, genre). Using JDBC, perform the following queries: a) Add any three records to the MOVIE table b) Using a prepared statement, update the genre to "Comedy" where title = "Jatra"
 
 \subsection*{Theory}
-\textbf{JDBC:} Java Database Connectivity API for database operations.
+\textbf{JDBC:} Java Database Connectivity API. Steps: Load driver, connect, create statement, execute query, process results, close.
 
-\textbf{Connection String:} `jdbc:mysql://host:port/database`
+\textbf{PreparedStatement:} Parameterized query using \texttt{?} placeholders. Prevents SQL injection.
 
-\textbf{PreparedStatement:} Prevents SQL injection with parameterized queries using `?`.
+\textbf{CRUD Operations:} INSERT (create), SELECT (read), UPDATE (modify), DELETE (remove).
 
-\textbf{SQL JOIN:} Combines rows from multiple tables based on related columns.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.sql.*;
+public class Lab18_JDBC_MovieTable {
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/java_lab";
+    static final String USER = "root";
+    static final String PASS = "password";
+    static final String DRIVER = "org.mariadb.jdbc.Driver";
+    public static void main(String[] args) {
+        Connection conn = null;
+        try {
+            Class.forName(DRIVER);
+            System.out.println("JDBC Driver loaded");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Connected to database");
+            createTables(conn);
+            insertDirectors(conn);
+            insertMovies(conn);
+            System.out.println("\n=== Movies with Directors (SQL JOIN) ===");
+            displayMoviesWithDirectors(conn);
+            System.out.println("\n=== Updating Jatra genre to Comedy ===");
+            updateMovieGenre(conn, "Jatra", "Comedy");
+            System.out.println("\n=== Updated Movie List ===");
+            displayMoviesWithDirectors(conn);
+            System.out.println("\nLab No.: 18\nName: Samir Paudel\nRoll No./Section: 114-079/D");
+        } catch (ClassNotFoundException e) {
+            System.out.println("JDBC Driver Error: " + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Database Error: " + e.getMessage());
+        } finally {
+            try { if (conn != null) conn.close(); } catch (SQLException e) {}
+        }
+    }
+    static void createTables(Connection conn) throws SQLException {
+        Statement stmt = conn.createStatement();
+        stmt.execute("DROP TABLE IF EXISTS MOVIE");
+        stmt.execute("DROP TABLE IF EXISTS DIRECTOR");
+        stmt.execute("CREATE TABLE DIRECTOR (" +
+            "id INT PRIMARY KEY AUTO_INCREMENT, " +
+            "name VARCHAR(100) NOT NULL)");
+        stmt.execute("CREATE TABLE MOVIE (" +
+            "id INT PRIMARY KEY AUTO_INCREMENT, " +
+            "title VARCHAR(100) NOT NULL, " +
+            "genre VARCHAR(50) NOT NULL, " +
+            "rating DOUBLE NOT NULL, " +
+            "director_id INT NOT NULL, " +
+            "FOREIGN KEY (director_id) REFERENCES DIRECTOR(id))");
+        stmt.close();
+    }
+    static void insertDirectors(Connection conn) throws SQLException {
+        String sql = "INSERT INTO DIRECTOR (name) VALUES (?)";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        String[] directors = {"Anurag Kashyap", "Vikas Bahl", "James Cameron"};
+        for (String d : directors) { pstmt.setString(1, d); pstmt.executeUpdate(); }
+        pstmt.close();
+    }
+    static void insertMovies(Connection conn) throws SQLException {
+        String sql = "INSERT INTO MOVIE (title, genre, rating, director_id) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        Object[][] movies = {
+            {"Inception", "Science Fiction", 8.8, 3},
+            {"Jatra", "Drama", 7.5, 1},
+            {"Avatar", "Science Fiction", 7.8, 3}
+        };
+        for (Object[] m : movies) {
+            pstmt.setString(1, (String) m[0]);
+            pstmt.setString(2, (String) m[1]);
+            pstmt.setDouble(3, (Double) m[2]);
+            pstmt.setInt(4, (Integer) m[3]);
+            pstmt.executeUpdate();
+        }
+        pstmt.close();
+    }
+    static void displayMoviesWithDirectors(Connection conn) throws SQLException {
+        String query = "SELECT m.id, m.title, m.genre, m.rating, d.name AS director_name " +
+            "FROM MOVIE m JOIN DIRECTOR d ON m.director_id = d.id ORDER BY m.id";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        System.out.println("ID | Title      | Genre              | Rating | Director");
+        System.out.println("---+------------+--------------------+--------+-----------");
+        while (rs.next()) {
+            System.out.printf("%d  | %-10s | %-18s | %.1f   | %s%n",
+                rs.getInt("id"), rs.getString("title"),
+                rs.getString("genre"), rs.getDouble("rating"),
+                rs.getString("director_name"));
+        }
+        rs.close(); stmt.close();
+    }
+    static void updateMovieGenre(Connection conn, String title, String newGenre) throws SQLException {
+        String sql = "UPDATE MOVIE SET genre = ? WHERE title = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, newGenre);
+        pstmt.setString(2, title);
+        int rows = pstmt.executeUpdate();
+        System.out.println(rows + " record(s) updated");
+        pstmt.close();
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
-\textbf{Foreign Key:} Relationship constraint between tables.
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.75\linewidth]{images/18.png}
 
-\subsection*{Requirements}
-\begin{itemize}
-    \item MySQL Server installed and running
-    \item mysql-connector-java JAR in classpath
-    \item Database `java\_lab` created
-\end{itemize}
-
+% ===
 \newpage
+% ===================== LAB 19 ========================
+\section*{Lab 19: Scrollable ResultSet Navigation}
 
-% ======================== LAB 19 ========================
-\section*{Lab 19: Scrollable ResultSet}
-
-\textbf{Title:} Navigate scrollable ResultSet to specific rows
+\textbf{Title:} Write a program to create a scrollable ResultSet and navigate it to the last row, then to the first row, and then to the third row. Consider MOVIE table.
 
 \subsection*{Theory}
-\textbf{ResultSet Types:}
-\begin{itemize}
-    \item TYPE\_FORWARD\_ONLY: Default, sequential
-    \item TYPE\_SCROLL\_INSENSITIVE: Scrollable, not sensitive to changes
-    \item TYPE\_SCROLL\_SENSITIVE: Scrollable, reflects changes
-\end{itemize}
+\textbf{ResultSet Types:} \texttt{TYPE\_FORWARD\_ONLY} (default), \texttt{TYPE\_SCROLL\_INSENSITIVE} (scrollable, no live updates), \texttt{TYPE\_SCROLL\_SENSITIVE} (scrollable, reflects changes).
 
-\textbf{Navigation Methods:}
-\begin{itemize}
-    \item rs.first(): Move to first row
-    \item rs.last(): Move to last row
-    \item rs.absolute(n): Move to row n
-    \item rs.relative(n): Move n positions forward/backward
-\end{itemize}
+\textbf{Navigation Methods:} \texttt{first()}, \texttt{last()}, \texttt{absolute(n)}, \texttt{relative(n)}, \texttt{beforeFirst()}, \texttt{next()}, \texttt{previous()}.
 
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.sql.*;
+public class Lab19_ScrollableResultSet {
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/movie_db";
+    static final String USER = "root";
+    static final String PASS = "password";
+    public static void main(String[] args) {
+        System.out.println("--- Scrollable ResultSet Navigation ---");
+        String sql = "SELECT * FROM MOVIE";
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement(
+                 ResultSet.TYPE_SCROLL_INSENSITIVE,
+                 ResultSet.CONCUR_READ_ONLY);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            System.out.println("\nNavigating to Last Row:");
+            if (rs.last()) System.out.println("Last row - ID: " + rs.getInt("id") +
+                ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+            System.out.println("\nNavigating to First Row:");
+            if (rs.first()) System.out.println("First row - ID: " + rs.getInt("id") +
+                ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+            System.out.println("\nNavigating to Third Row:");
+            if (rs.absolute(3)) System.out.println("Third row - ID: " + rs.getInt("id") +
+                ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+            else System.out.println("Third row does not exist");
+            System.out.println("\nAll records from ResultSet:");
+            rs.beforeFirst();
+            while (rs.next()) System.out.println("ID: " + rs.getInt("id") +
+                ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+        } catch (SQLException e) { e.printStackTrace(); }
+        System.out.println("\nLab No.: 19\nName: Samir Paudel\nRoll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.75\linewidth]{images/19.png}
+
+% ===
 \newpage
-
-% ======================== LAB 20 ========================
+% ===================== LAB 20 ========================
 \section*{Lab 20: Updatable ResultSet}
 
-\textbf{Title:} Update records using CONCUR\_UPDATABLE
+\textbf{Title:} Write a program that retrieves data from a movie table using an updatable ResultSet. The program should find a movie with title = 'interstellar' and update its genre to fiction directly through the ResultSet object.
 
 \subsection*{Theory}
-\textbf{Updatable ResultSet:} Allows in-place updates using ResultSet methods.
+\textbf{Updatable ResultSet:} Created with \texttt{CONCUR\_UPDATABLE} concurrency mode. Allows in-place updates through ResultSet.
 
-\textbf{Concurrency Types:}
-\begin{itemize}
-    \item CONCUR\_READ\_ONLY: Default, read-only
-    \item CONCUR\_UPDATABLE: Allows updates
-\end{itemize}
+\textbf{Update Methods:} \texttt{updateString(col, val)}, \texttt{updateInt(col, val)}, then \texttt{updateRow()} to persist.
 
-\textbf{Update Methods:}
-\begin{itemize}
-    \item updateString(columnName, value)
-    \item updateInt(columnName, value)
-    \item updateRow(): Persist changes to database
-\end{itemize}
+\textbf{Concurrency Modes:} \texttt{CONCUR\_READ\_ONLY} (default), \texttt{CONCUR\_UPDATABLE} (allows updates).
 
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.sql.*;
+public class Lab20_UpdatableResultSet {
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/movie_db";
+    static final String USER = "root";
+    static final String PASS = "password";
+    public static void main(String[] args) {
+        System.out.println("--- Updatable ResultSet ---");
+        String sql = "SELECT * FROM MOVIE";
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement(
+                 ResultSet.TYPE_SCROLL_SENSITIVE,
+                 ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            System.out.println("\nSearching for movie with title 'interstellar':");
+            boolean found = false;
+            while (rs.next()) {
+                String title = rs.getString("title");
+                System.out.println("Current row - ID: " + rs.getInt("id") +
+                    ", Title: " + title + ", Genre: " + rs.getString("genre"));
+                if (title.equalsIgnoreCase("interstellar")) {
+                    found = true;
+                    System.out.println("\nFound 'interstellar' movie!");
+                    rs.updateString("genre", "fiction");
+                    rs.updateRow();
+                    System.out.println("Updated genre to 'fiction'");
+                    System.out.println("Updated row - ID: " + rs.getInt("id") +
+                        ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+                    break;
+                }
+            }
+            if (!found) {
+                System.out.println("Movie 'interstellar' not found");
+                rs.beforeFirst();
+                while (rs.next()) System.out.println("ID: " + rs.getInt("id") +
+                    ", Title: " + rs.getString("title") + ", Genre: " + rs.getString("genre"));
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        System.out.println("\nLab No.: 20\nName: Samir Paudel\nRoll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.75\linewidth]{images/20.png}
+
+% ===
 \newpage
+% ===================== LAB 21 ========================
+\section*{Lab 21: TCP Sockets - One-Way Chat}
 
-% ======================== LAB 21 ========================
-\section*{Lab 21: TCP Socket Programming}
-
-\textbf{Title:} TCP server-client communication
+\textbf{Title:} Write a simple one-way chat application using TCP sockets. Server Code: Listens for a connection, reads a line of text from the client, and prints it. Client Code: Connects to the server, reads a line of text from the user's console, and sends it to the server.
 
 \subsection*{Theory}
-\textbf{TCP (Transmission Control Protocol):} Connection-oriented, reliable delivery.
+\textbf{TCP:} Connection-oriented protocol providing reliable communication. Uses \texttt{ServerSocket} (server) and \texttt{Socket} (client).
 
-\textbf{Socket Classes:}
-\begin{itemize}
-    \item ServerSocket: Listens for connections
-    \item Socket: Represents connection
-    \item PrintWriter/BufferedReader: Send/receive data
-\end{itemize}
+\textbf{Process:} Server creates \texttt{ServerSocket} and calls \texttt{accept()} (blocking). Client creates \texttt{Socket} to server. Data flows via streams (\texttt{InputStreamReader}, \texttt{PrintWriter}).
 
-\textbf{Connection Process:}
-\begin{itemize}
-    \item Server: Create ServerSocket, accept connection
-    \item Client: Create Socket to server
-    \item Data exchange through streams
-    \item Close connections
-\end{itemize}
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+public class Lab21_TCPDemo {
+    static class SimpleServer extends Thread {
+        public void run() {
+            try {
+                ServerSocket serverSocket = 
+                    new ServerSocket(5000);
+                System.out.println(
+                    "Server on port 5000");
+                Socket socket = 
+                    serverSocket.accept();
+                System.out.println("Client: " + 
+                    socket.getInetAddress());
+                BufferedReader reader = 
+                    new BufferedReader(
+                        new InputStreamReader(
+                            socket.getInputStream()));
+                String msg = reader.readLine();
+                System.out.println(
+                    "Received: " + msg);
+                reader.close();
+                socket.close();
+                serverSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    static class SimpleClient {
+        public static void main(String[] args) {
+            try {
+                Thread.sleep(1000);
+                Socket socket = new Socket(
+                    "localhost", 5000);
+                System.out.println("Connected");
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Enter message: ");
+                String msg = sc.nextLine();
+                PrintWriter writer = new PrintWriter(
+                    socket.getOutputStream(), true);
+                writer.println(msg);
+                System.out.println("Sent: " + msg);
+                writer.close();
+                socket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void main(String[] args) 
+        throws InterruptedException {
+        SimpleServer server = new SimpleServer();
+        server.start();
+        Thread.sleep(500);
+        SimpleClient.main(new String[]{});
+        server.join();
+        System.out.println("\nLab No.: 21");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.75\linewidth]{images/21.png}
+\end{figure}
+
+% ===
 \newpage
+% ===================== LAB 22 ========================
+\section*{Lab 22: UDP Echo Server and Client}
 
-% ======================== LAB 22 ========================
-\section*{Lab 22: UDP Echo Server}
-
-\textbf{Title:} UDP datagram echo service
+\textbf{Title:} Create a simple UDP Echo Server and Client. Server Code: Listens on a port, receives a packet, and sends the exact same data back to the sender's address and port. Client Code: Sends a message to the server and waits to receive the echo, then prints it.
 
 \subsection*{Theory}
-\textbf{UDP (User Datagram Protocol):} Connectionless, faster but unreliable.
+\textbf{UDP:} Connectionless protocol. Uses \texttt{DatagramSocket} for sending/receiving and \texttt{DatagramPacket} for data with address info.
 
-\textbf{DatagramSocket:} UDP socket for sending/receiving datagrams.
+\textbf{Echo Pattern:} Client sends packet to server. Server receives, creates response packet with same data and client's address/port, sends back.
 
-\textbf{DatagramPacket:} Encapsulates UDP data with sender address.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.net.*;
+public class Lab22_UDPDemo {
+    static class EchoServer extends Thread {
+        public void run() {
+            try {
+                DatagramSocket socket = 
+                    new DatagramSocket(5001);
+                System.out.println(
+                    "UDP Server on port 5001");
+                byte[] buf = new byte[1024];
+                DatagramPacket recv = 
+                    new DatagramPacket(
+                        buf, buf.length);
+                socket.receive(recv);
+                String msg = new String(
+                    recv.getData(), 0, 
+                    recv.getLength());
+                System.out.println(
+                    "Received: " + msg);
+                byte[] sendData = msg.getBytes();
+                DatagramPacket send = 
+                    new DatagramPacket(
+                        sendData, sendData.length,
+                        recv.getAddress(), 
+                        recv.getPort());
+                socket.send(send);
+                System.out.println("Echo sent");
+                socket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    static class EchoClient {
+        public static void main(String[] args) {
+            try {
+                Thread.sleep(1000);
+                DatagramSocket socket = 
+                    new DatagramSocket();
+                String msg = "Hello UDP Server!";
+                byte[] data = msg.getBytes();
+                InetAddress addr = 
+                    InetAddress.getByName(
+                        "localhost");
+                DatagramPacket send = 
+                    new DatagramPacket(
+                        data, data.length, 
+                        addr, 5001);
+                socket.send(send);
+                System.out.println("Sent: " + msg);
+                byte[] buf = new byte[1024];
+                DatagramPacket recv = 
+                    new DatagramPacket(
+                        buf, buf.length);
+                socket.receive(recv);
+                String echo = new String(
+                    recv.getData(), 0, 
+                    recv.getLength());
+                System.out.println(
+                    "Echo: " + echo);
+                socket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void main(String[] args) 
+        throws InterruptedException {
+        EchoServer server = new EchoServer();
+        server.start();
+        Thread.sleep(500);
+        EchoClient.main(new String[]{});
+        server.join();
+        System.out.println("\nLab No.: 22");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
-\textbf{UDP Echo:} Server receives packet and sends identical data back.
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.35\linewidth]{images/22.png}
+\end{figure}
 
+% ===
 \newpage
-
-% ======================== LAB 23 ========================
+% ===================== LAB 23 ========================
 \section*{Lab 23: URL Object Handling}
 
-\textbf{Title:} Parse and extract URL components
+\textbf{Title:} Write a Java program that creates a URL object for https://www.example.com/index.html?user=test and prints its protocol, host, and file path.
 
 \subsection*{Theory}
-\textbf{URL (Uniform Resource Locator):} Web address structure.
+\textbf{URL:} Uniform Resource Locator identifies a web resource. The \texttt{java.net.URL} class parses URLs and provides access to components: protocol, host, port, path, query, file.
 
-Components:
-\begin{itemize}
-    \item Protocol: http, https, ftp
-    \item Host: www.example.com
-    \item Port: 80 (http), 443 (https)
-    \item Path: /index.html
-    \item Query: user=test
-\end{itemize}
+\textbf{Methods:} \texttt{getProtocol()}, \texttt{getHost()}, \texttt{getPort()}, \texttt{getPath()}, \texttt{getQuery()}, \texttt{getFile()}.
 
-\textbf{java.net.URL:} Class for URL handling and parsing.
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import java.net.*;
+public class Lab23_URLObject {
+    public static void main(String[] args) {
+        String urlString = 
+            "https://www.example.com/" +
+            "index.html?user=test";
+        try {
+            URL url = new URL(urlString);
+            System.out.println("URL: " + urlString);
+            System.out.println(
+                "Protocol: " + url.getProtocol());
+            System.out.println(
+                "Host: " + url.getHost());
+            System.out.println(
+                "File: " + url.getFile());
+            System.out.println(
+                "Port: " + url.getPort());
+            System.out.println(
+                "Path: " + url.getPath());
+            System.out.println(
+                "Query: " + url.getQuery());
+        } catch (MalformedURLException e) {
+            System.out.println(
+                "Invalid URL: " + e.getMessage());
+        }
+        System.out.println("\nLab No.: 23");
+        System.out.println("Name: Samir Paudel");
+        System.out.println("Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
+\subsection*{Output}
+\begin{figure}[h!]
+    \raggedright
+    \includegraphics[width=0.75\linewidth]{images/23.png}
+\end{figure}
+
+% ===
 \newpage
+% ===================== LAB 24 ========================
+\section*{Lab 24: Email Using JavaMail API}
 
-% ======================== LAB 24 ========================
-\section*{Lab 24: Send Email Using JavaMail API}
-
-\textbf{Title:} Real SMTP email transmission
+\textbf{Title:} Write a Java program to send a simple email using the JavaMail API. Assume you have a Session object properly configured. The email should be from sender@test.com to receiver@test.com with the subject "Test Mail".
 
 \subsection*{Theory}
-\textbf{JavaMail API:} Email sending/receiving library.
+\textbf{JavaMail API:} Library for email operations. Uses \texttt{Session}, \texttt{MimeMessage}, and \texttt{Transport}.
 
-\textbf{SMTP (Simple Mail Transfer Protocol):} Email transmission protocol.
+\textbf{SMTP Configuration:} Host (smtp.gmail.com), Port (587 for TLS), authentication required, STARTTLS enabled.
 
-\textbf{Configuration:}
-\begin{itemize}
-    \item SMTP Host: smtp.gmail.com
-    \item SMTP Port: 587 (TLS), 465 (SSL)
-    \item Authentication: Email and password/app password
-    \item TLS Security: Encrypt communication
-\end{itemize}
+\textbf{Requirements:} mail.jar, activation.jar in classpath. For Gmail, use App Password with 2FA.
 
-\textbf{JavaMail Components:}
-\begin{itemize}
-    \item Session: Email session configuration
-    \item Message/MimeMessage: Email message
-    \item Transport: Send email via SMTP
-    \item Authenticator: Handle credentials
-\end{itemize}
+\subsection*{Code}
+\begin{multicols}{2}
+\begin{lstlisting}
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
+public class Lab24_SendEmail {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        System.out.println("SMTP Configuration:");
+        System.out.println("  Host: smtp.gmail.com");
+        System.out.println("  Port: 587");
+        System.out.println("  Auth: true");
+        System.out.println("  STARTTLS: true");
+        Session session = Session.getInstance(props);
+        System.out.println("Session created");
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(
+                new InternetAddress("sender@test.com"));
+            message.setRecipients(
+                Message.RecipientType.TO,
+                InternetAddress.parse(
+                    "receiver@test.com"));
+            message.setSubject("Test Mail");
+            message.setText(
+                "This is a test email sent " +
+                "using JavaMail API.");
+            System.out.println("\n--- Email Details ---");
+            System.out.println(
+                "From:    sender@test.com");
+            System.out.println(
+                "To:      receiver@test.com");
+            System.out.println(
+                "Subject: " + message.getSubject());
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+        } catch (MessagingException e) {
+            System.out.println("Error: " +
+                e.getMessage());
+        }
+        System.out.println(
+            "\nLab No.: 24\nName: Samir Paudel");
+        System.out.println(
+            "Roll No./Section: 114-079/D");
+    }
+}
+\end{lstlisting}
+\end{multicols}
 
-\textbf{Requirements:}
-\begin{itemize}
-    \item mail.jar and activation.jar
-    \item Gmail: Generate App Password
-    \item Other SMTP servers: Valid credentials
-\end{itemize}
+\subsection*{Output}
+\raggedright
+\includegraphics[width=0.75\linewidth]{images/24.png}
 
 \end{document}

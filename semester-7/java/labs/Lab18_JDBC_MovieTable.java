@@ -12,10 +12,10 @@ import java.sql.Statement;
  */
 public class Lab18_JDBC_MovieTable {
     
-    static final String DB_URL = "jdbc:mysql://localhost:3306/java_lab";
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/java_lab";
     static final String USER = "root";
     static final String PASS = "password";
-    static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String DRIVER = "org.mariadb.jdbc.Driver";
     
     public static void main(String[] args) {
         Connection conn = null;
